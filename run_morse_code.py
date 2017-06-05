@@ -1,7 +1,7 @@
 from package_i.code_morse import *
 
 
-a1 = get_morse_sentence('this-is-my-first-visit')
+a1 = get_morse_sentence('this-is-my-first-visit!')
 a2 = get_morse_sentence('033213-2423187-1912374')
 print( "%s\n%s"%(a1,a2) )
 print()
@@ -33,3 +33,6 @@ d5 = get_english_sentence(b5)
 print("%s\n%s\n%s\n%s\n%s"%(d1,d2,d3,d4,d5))
 print()
 print('\t-----------------------------')
+
+
+print(get_english_sentence('..-. .-'))

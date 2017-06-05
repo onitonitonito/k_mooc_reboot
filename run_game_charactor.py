@@ -20,15 +20,35 @@ sleep(0.5)
 
 b.attacked(a.super['HIT'])
 sleep(0.2)
+print()
 
 status()
 sleep(3)
+print()
 
 b.assult(a)
 sleep(0.5)
+print()
+
+c.assult(b)
+sleep(0.5)
+print()
+
+c.assult(b)
+sleep(0.5)
+print()
+
+c.assult(b)
+sleep(0.5)
+print()
+
+c.assult(b)
+sleep(0.5)
+print()
 
 status()
 sleep(1)
+print()
 
 os.system('cls')
 b.assult(c)

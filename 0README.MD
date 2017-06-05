@@ -1,3 +1,48 @@
+
+# READ ME FIRST
+
+- # <b><u>Classify</u></b>
+  > # <i> italic letters </i>
+  > ## 1. unins stuff
+  - GET more unins stuff is here
+  - DESCRIPTIONS
+  - MOST BANG OF THE BUG
+  - MORE STUFF
+  - OK I'm done
+
+<table border='0'>
+    <tr>
+      <td colspan='2' align='left'>
+      <strong>DESERT CAT WARRIOR</strong>
+      </td>
+  </tr>
+
+>
+  <tr>
+      <td>
+        <img src="./static/imgs/SD-idle.gif" height="220">
+      </td>
+
+      <td>
+        <img src="./static/imgs/SD-attack-short-range.gif" height="220">
+      </td>
+  </tr>
+  <tr>
+      <td>
+        [fig.01 - UNINS Stuff 01 - IDLE Desert CAT!]
+      </td>
+
+      <td>
+        [fig.01 - UNINS Stuff 01 - IDLE Desert CAT!]
+      </td>
+  </tr>
+</table>  
+> <a href="http://steamcommunity.com/groups/dbn008">Clan site</a>
+IF YOU WANT MORE INFORMATION, REFER
+    [<a href="https://onito.github.io">
+          HERE
+    </a>]
+
 # __Title : README MarkDown Example__ (bold)
 <hr>
 ## 1. Letter Transformation

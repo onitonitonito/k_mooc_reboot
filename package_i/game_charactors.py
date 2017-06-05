@@ -5,7 +5,7 @@ FORM_INFORMATION='''\
 1.NAME(Trb): %s (%s)
 2.HEALTH   : %s HP
 3.HIT_POINT: %s points
-4.ABBILATY : %s / [points:%d]
+4.ABBILATY : %s / [Demage:-%d]
 ---------------------------------
 =================================\n\n'''
 

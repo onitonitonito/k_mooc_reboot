@@ -31,7 +31,7 @@ def bar_chart_with_value():
     plt.xlim(-.5,n), plt.xticks([])
     plt.ylim(-1.25,+1.25), plt.yticks([])
     plt.show()
-bar_chart_with_value()
+#bar_chart_with_value()
 
 def text_equation_cloud():
     eqs = []
@@ -54,4 +54,4 @@ def text_equation_cloud():
 
     plt.xticks([]), plt.yticks([])
     plt.show()
-#text_equation_cloud()
+text_equation_cloud()
