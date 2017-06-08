@@ -10,8 +10,8 @@ tk.wm_attributes("-topmost",1)              # always on top (f)
 
 canvas = tki.Canvas(tk, width='640', height='480', bd=1, highlightthickness=0)
 
-obj_bground = tki.PhotoImage(file='./static/img_stickman/bground_sq060.png', name='tile_060px')
-obj_photo = tki.PhotoImage(file='./static/imgs/favicon_backpack.png', name='backpack')
+obj_bground = tki.PhotoImage(file='../static/img_stickman/bground_sq060.png', name='tile_060px')
+obj_photo = tki.PhotoImage(file='../static/img/favicon_backpack.png', name='backpack')
 
 def set_bground():
     w = tki.PhotoImage.width(obj_bground)              # width (f) .. return image size_w

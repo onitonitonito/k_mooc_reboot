@@ -11,22 +11,22 @@
   - OK I'm done
 
 <table border='0'>
-    <tr>
+  <tr>
       <td colspan='2' align='left'>
       <strong>DESERT CAT WARRIOR</strong>
       </td>
   </tr>
 
->
   <tr>
       <td>
-        <img src="./static/imgs/SD-idle.gif" height="220">
+        <img src="./static/img/SD-idle.gif" height="220">
       </td>
 
       <td>
-        <img src="./static/imgs/SD-attack-short-range.gif" height="220">
+        <img src="./static/img/SD-attack-short-range.gif" height="220">
       </td>
   </tr>
+
   <tr>
       <td>
         [fig.01 - UNINS Stuff 01 - IDLE Desert CAT!]
@@ -37,14 +37,13 @@
       </td>
   </tr>
 </table>  
-> <a href="http://steamcommunity.com/groups/dbn008">Clan site</a>
-IF YOU WANT MORE INFORMATION, REFER
-    [<a href="https://onito.github.io">
-          HERE
-    </a>]
+
+ <a href="http://steamcommunity.com/groups/dbn008">Clan site</a> IF YOU WANT MORE INFORMATION, REFER
+    [<a href="https://onito.github.io">HERE</a>]
 
 # __Title : README MarkDown Example__ (bold)
 <hr>
+
 ## 1. Letter Transformation
  - read me.. carefully, please! this is MarkDown
  - <b>Bold</b> or __Bold__
@@ -52,15 +51,20 @@ IF YOU WANT MORE INFORMATION, REFER
  - <strike>Strike</strike> : no use for strike in MD.
 
 ## 2. Title, HERE
- - <h1>H1 TITLE is Here</h1>
-> If want to use code = HIT! 4 TABS
-         def triangle(tree_leaf_end, tree_base_width):
-             for x in range(1,tree_leaf_end+1, 2):
-                 print(("*"*x).center(tree_base_width))
+ - #### H1 TITLE is Here
+
+> If want to use code = HIT! 4 TABS(X) ...> Use""" (O)
+```
+def triangle(tree_leaf_end, tree_base_width):
+  for x in range(1,tree_leaf_end+1, 2):
+  print(("*"*x).center(tree_base_width))
+```
 >         
-         def trapezoid(tree_leaf_start, tree_leaf_end, tree_base_width):
-             for x in range(tree_leaf_start, tree_leaf_end+1, 2):
-                 print(("*"*x).center(tree_base_width))    
+```
+def trapezoid(tree_leaf_start, tree_leaf_end, tree_base_width):
+  for x in range(tree_leaf_start, tree_leaf_end+1, 2):
+    print(("*"*x).center(tree_base_width))
+```  
 
 ## 3. __The ASIA DB Clan__
 
@@ -73,7 +77,7 @@ IF YOU WANT MORE INFORMATION, REFER
 <table>
   <tr>
     <td>
-     <img src="./static/imgs/1492084147_noo8e.png" height="300">
+     <img src="./static/img/1492084147_noo8e.png" height="300">
     </td>
   </tr>  
   <tr>

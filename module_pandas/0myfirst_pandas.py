@@ -1,33 +1,51 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import random as rd
+
+DESTIN_DIR ='../static/data_doc/'
+
+HEADER='''
+==================================================
+        %s
+--------------------------------------------------'''
 
 #data = pd.read_csv('blog_blogpost.csv')
 #print(data.head(10))
 
 def test_index():       # have a problem with UTF-8
     data = pd.Series( [231312,123123123,123123,123123,1231],
-                #index=['Seoul','Incheon','Dejeon','Degu','Busan',],)
-                index=['서울','인천','대전','대구','부산',],)
+                index=['Seoul','Incheon','Dejeon','Degu','Busan',],)
+                # index=['서울','인천','대전','대구','부산',],)
+    print(HEADER %"data = pd.Series( [231] .., index=['서울',..]")
     print(data)
-#test_index()
+test_index()
 
 def change_pbd():
-    data = pd.read_csv('./static/data_docs/blog_blogpost.csv', index_col='id', encoding='UTF-8')
-    pd.read_csv
-    print(data.head(3))      # head(n)... n = num of data
+    data = pd.read_csv(DESTIN_DIR+'blog_blogpost.csv', index_col='id', encoding='UTF-8')
+    # #[SMALL TEST] ---------------
+    # print(data)    # Show all
+    # print(data.head(3))      # head(n)... n = num of data --> Show 3 EA.
+    # #[TEST END] -----------------
 
-    print ("="*40,"\n\tdata.INFO()\n"+"_"*40,"\n",)
+    print("data = pd.read_csv(DESTIN_DIR+'blog_blogpost.csv', index_col='id', encoding='UTF-8')")
+    print (HEADER %'data.INFO()')
     print(data.info())
     print("\n\n")
 
-    print ("\n"+"="*40,"\n\tdata.DESCRIBE()\n"+"_"*40,"\n",data.describe(),"\n"+"-"*40,)
+    print(HEADER %'data.DESCRIBE()')
+    print (data.describe())
+    print("\n\n")
 
-    f = open('./static/data_docs/new_file.pdb', 'w', encoding='UTF-8')
+    f = open(DESTIN_DIR+'new_file.pdb', 'w', encoding='UTF-8')
     f.write(str(data))      # f.write(data) need string data,not array.
     f.close()
-    # conv = pd.Series(data.head())
+
+    # #[SMALL TEST] ---------------
+    # print(data.head())
+    # conv = pd.Series(data.head())     # Show all
     # print(conv)
+    # #[TEST END] -----------------
 
     ''' RUN RESULT of change_pdb """
         =======================================
@@ -50,8 +68,6 @@ def change_pbd():
         memory usage: 184.0+ bytes
         None
 
-
-
         ========================================
         	data.DESCRIBE()
         ________________________________________
@@ -68,16 +84,17 @@ def change_pbd():
         [Finished in 3.308s]'''
 # change_pbd()
 
-data = pd.Series(range(10, 14))
-sep="\n"+"-"*40+"\n"
-print("data = pandas.Series(range(10,14,1)) = ",sep,data,sep,)
-print("data.index = ", data.index,sep,)
-print("data.values = ", data.values,sep,)
-print("data.values[-1] = ", data.values[-1],sep,)
+def make_series():
+    data = pd.Series(range(10, 14))
+    sep="\n"+"-"*40+"\n"
+    print("1.data = pandas.Series(range(10,14,1)) = ",sep,data,sep,)
+    print("2.data.index = ", data.index,sep,)
+    print("3.data.values = ", data.values,sep,)
+    print("3-1.data type = ", type(data.values),sep,)
+    print("4.data.values[-1] = ", data.values[-1],sep,)
 
-x = np.arange(0,3,1)
-y = data.values
-
+    x = np.arange(0,3,1)
+    y = data.values
 def plot_bars_lines(x,y,title=None):
     plt.figure(figsize=(7,5))           # window size
     if title :
@@ -92,4 +109,6 @@ def plot_bars_lines(x,y,title=None):
 
     plt.grid()
     plt.show()
-plot_bars_lines(x,y,title='NEW TRENDS DATA:2017')
+
+# make_series()
+# plot_bars_lines(x,y,title='NEW TRENDS DATA:2017')

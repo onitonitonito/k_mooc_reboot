@@ -26,7 +26,7 @@ def main1():
     print("data=",data)
     print("\n")
 
-#main0()
+main0()
 #main1()
 
 #import webbrowser

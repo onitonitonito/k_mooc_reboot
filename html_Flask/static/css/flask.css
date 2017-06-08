@@ -1,0 +1,38 @@
+html  {
+  //background-color: orange;
+}
+
+
+div#header  {
+  font-size: 50px;
+  font-weight: 600;
+  width: 400px;
+  background-color: darkorange;
+  padding: 0 0 0 100px;
+  border-radius: 30px;
+  color: red;
+}
+
+div#footer  {
+  font-size: 130px;
+  font-weight: 600;
+  width: 400px;
+  background-color: darkorange;
+  padding: 0 0 0 100px;
+  border-radius: 80px;
+  color: red;
+}
+
+div#menu  {
+  position: fixed;
+  background-color: aqua;
+  width: 680px;
+  top: 0px;
+  left: 0px;
+}
+
+.fix_h1  {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 25 5 25 5px;
+}

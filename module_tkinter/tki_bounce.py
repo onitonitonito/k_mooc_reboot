@@ -79,7 +79,7 @@ tk.resizable(0,0)
 tk.wm_attributes("-topmost",1)      # Always on top
 
 canvas = Canvas(tk, width=480, height=640, bd=0, highlightthickness=0)
-obj_bground = PhotoImage(file='./static/img_stickman/bground_sq060.png', name='bground')
+obj_bground = PhotoImage(file='../static/img_stickman/bground_sq060.png', name='bground')
 
 
 def set_bground():

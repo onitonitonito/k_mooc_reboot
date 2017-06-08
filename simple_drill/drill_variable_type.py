@@ -36,7 +36,7 @@ def dicVAL():
         "Pocket": {"knife",3, "Money",1000},\
         "Backpack" : {"water":3, "axe":2} } # defined with fair
 
-    print("\t",a["Name"],"\n\t", a["Backpack"])
+    print("\tNAME: ",a["Name"],"\n\tBACKPACK: ", a["Backpack"])
 
 def header():
     print("\n\t   --INVENTORY--")
@@ -49,5 +49,28 @@ def main():
     header()
     dicVAL()
     footer()
+
+#main()
+
+
+def dynamic_limited_calc(a,b):          # from codefighter
+    if not(a >= -100 and a <=1000):
+        a = False
+
+    if not(b >= -100 and b <=1000):
+        b = False
+
+    if a and b:
+        sum =  a + b
+        print("%s + %s = "%(a,b),sum)
+        return True
+    else:
+        print("*** ERROR: Out Of Range Error!")
+        print ("a=%s, b=%s"%(a,b))
+
+        return False
+def main():
+    a = dynamic_limited_calc(100,-1000)
+    print(a)
 
 main()

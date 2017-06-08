@@ -17,29 +17,29 @@ tk.title("This is Tkinter module TEST_r01 (600x800)")
 tk.resizable(1,1)           # resizable = 1, Not = 0
 tk.wm_attributes("-topmost",1)
 
-fname_bgrnd = PhotoImage(file="./static/img_stickman/bground_105sq.png")  # Use filename(image)
-fname_door = PhotoImage(file="./static/img_stickman/door_01.png")         # Use filename(image)
+fname_bgrnd = PhotoImage(file="../static/img_stickman/bground_105sq.png")  # Use filename(image)
+fname_door = PhotoImage(file="../static/img_stickman/door_01.png")         # Use filename(image)
 
 for y in range(8):
     for x in range(6):
         canvas.create_image(x*105, y*105, image=fname_bgrnd, anchor='nw')
 canvas.create_image(10,10, image=fname_door, anchor='nw')
 
-images_left=[PhotoImage(file="./static/img_stickman/sman_01.png"),
-    PhotoImage(file="./static/img_stickman/sman_02.png"),
-    PhotoImage(file="./static/img_stickman/sman_03.png")]
-images_right=[PhotoImage(file="./static/img_stickman/sman_04.png"),
-    PhotoImage(file="./static/img_stickman/sman_05.png"),
-    PhotoImage(file="./static/img_stickman/sman_06.png")]
+images_left=[PhotoImage(file="../static/img_stickman/sman_01.png"),
+    PhotoImage(file="../static/img_stickman/sman_02.png"),
+    PhotoImage(file="../static/img_stickman/sman_03.png")]
+images_right=[PhotoImage(file="../static/img_stickman/sman_04.png"),
+    PhotoImage(file="../static/img_stickman/sman_05.png"),
+    PhotoImage(file="../static/img_stickman/sman_06.png")]
 
 for k in range(3):
     canvas.create_image(130,645, image=images_right[2], anchor='nw')
 
 
-#fname_stick = PhotoImage(file="./static/img_stickman/sman_04.png")
+#fname_stick = PhotoImage(file="../static/img_stickman/sman_04.png")
 #canvas.create_image(130,645, image=fname_stick, anchor='nw')
 # cannot USE Direct filename on Parameter.
-# canvas.create_image(10,10, image=PhotoImage(file="./static/img_stickman/door_01.png"), anchor='nw')
+# canvas.create_image(10,10, image=PhotoImage(file="../static/img_stickman/door_01.png"), anchor='nw')
 
 # refer canvas.syntax= https://www.tutorialspoint.com/python/tk_canvas.htm
 canvas.pack()       # Create OBJECT --> Object Name = canvas.create_AAA ( )
