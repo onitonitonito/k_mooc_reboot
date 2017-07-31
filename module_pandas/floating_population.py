@@ -1,4 +1,15 @@
+#!/bin/user/python3
+
 import csv, os, sys
+\
+''' add parent dir in system path
+'''
+import sys
+from os.path import dirname
+sys.path.append(dirname(dirname(__file__)))
+PARENT_DIR = sys.path[len(sys.path)-1]+"/"
+# bg = PhotoImage(file=PARENT_DIR+"static/img_stickman/bground_sq060.png")
+# -----------------------------------------
 
 #FIND_KEY = '서울특별시'
 #FIND_KEY = '서울특별시 동대문구'
@@ -13,11 +24,11 @@ import csv, os, sys
 #FIND_KEY = '전라북도 전주시'
 FIND_KEY = '전라북도 전주시 중앙동'
 
-
 CHOSEN_DATA = []
-DESTIN_DIR = '../static/data_doc/log/'
+DESTIN_DIR = PARENT_DIR + 'static/data_doc/log/'
+CSV_FILE = '00_data_population_floating.pdbv'
 
-with open(DESTIN_DIR +'00_data_population_floating.pdbv', 'r', encoding='utf8') as pop_file:
+with open(DESTIN_DIR + CSV_FILE, 'r', encoding='utf8') as pop_file:
     header = []
     row_num = 0                     # when row[0] = header
 

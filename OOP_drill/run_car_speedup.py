@@ -1,3 +1,10 @@
+from sys import path as sys_path
+from os.path import dirname
+
+# inc'l x1 upper from file exist.
+sys_path.append(dirname(dirname(__file__)))
+
+
 from package_i.model_car import *
 
 a = Car('ACCENT')

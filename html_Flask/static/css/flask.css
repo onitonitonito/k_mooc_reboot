@@ -2,37 +2,40 @@ html  {
   //background-color: orange;
 }
 
-
 div#header  {
-  font-size: 50px;
+  font-size: 20px;
   font-weight: 600;
   width: 400px;
-  background-color: darkorange;
+  background-color: #fccb8f;
   padding: 0 0 0 100px;
-  border-radius: 30px;
+  border-radius: 10px;
   color: red;
 }
 
 div#footer  {
-  font-size: 130px;
+  font-size: 20px;
   font-weight: 600;
   width: 400px;
-  background-color: darkorange;
+  background-color: #fccb8f;
   padding: 0 0 0 100px;
-  border-radius: 80px;
+  border-radius: 16px;
   color: red;
 }
 
 div#menu  {
   position: fixed;
-  background-color: aqua;
+  background-color: #ceffff;
   width: 680px;
   top: 0px;
   left: 0px;
 }
 
-.fix_h1  {
-  font-size: 1.1em;
-  font-weight: bold;
-  padding: 25 5 25 5px;
+.small  {
+    color: #b58ed9;
+  font-size: 0.9em;
+    font-weight: 600;
+    width: 450px;
+    text-align: right;
+    padding: 10 0 10 0px;
+
 }

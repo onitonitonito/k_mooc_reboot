@@ -1,10 +1,19 @@
+#!/bin/user/python3
+''' add parent dir in system path
+'''
+import sys
+from os.path import dirname
+sys.path.append(dirname(dirname(__file__)))
+PARENT_DIR = sys.path[len(sys.path)-1]+"/"
+# bg = PhotoImage(file=PARENT_DIR+"static/img_stickman/bground_sq060.png")
+# -----------------------------------------
+
 from tkinter import *
 from tkinter import ttk
 import tkinter.messagebox
 import sys
 
-
-DESTIN_DIR = './static/img/'
+DESTIN_DIR = PARENT_DIR+'static/img/'
 
 # -------------------------------------------------------
 # tk = Tk()
@@ -69,6 +78,7 @@ DESTIN_DIR = './static/img/'
 #
 # tk.mainloop()
 # -------------------------------------------------------
+
 tk = Tk()
 tk.wm_geometry(newGeometry='300x300+800+100')
 tk.wm_attributes("-topmost",1)

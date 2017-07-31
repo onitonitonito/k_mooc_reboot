@@ -1,16 +1,35 @@
+import os, random
 from flask import Flask, render_template, request
 from flask import redirect, url_for, session, send_from_directory
 
 # set the project root directory as the static folder, you can set others,
 app = Flask(__name__, static_url_path='')
 
-@app.route('/')
-def index():
-    return render_template('./index_flask.html')
+#------------------ CSS cache buster (override) -------------------------
+@app.context_processor
+def override_url_for():
+    # app.logger.debug(dict(url_for=dated_url_for))
+    return dict(url_for=dated_url_for)
+
+def dated_url_for(endpoint, **values):          # double stars = dict_type
+    if endpoint == 'static' :
+        filename = values.get('filename', None)  # None = default values if it's missing.
+        if filename and filename[0:3] == 'css':
+            file_path = os.path.join(app.root_path, endpoint, filename)
+            values['q'] = int(random.randint(0,10000000))
+    app.logger.debug(values)
+    return url_for(endpoint, **values)
+# ------------------------------------------------------------------------
 
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('page_not_found.html'), 404
+
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template('./index_flask.html')
 
 @app.route('/main')
 def hello_workd():
@@ -31,7 +50,12 @@ def logging_test():         # logger message
     app.logger.debug('NEED : Debugging!')
     app.logger.warning(str(test) + ' Line')
     app.logger.error('*** ERROR!! ***')
-    return "_EOL_ : End of Logging message is printed out at console : DONE!"
+
+    header = "Console Logging Test ... proceed ..."
+    footer = " End of Logging message : DONE!"
+    return render_template('./logger.html', header=header, footer=footer )
+    # html?message="eee"
+
 
 @app.route('/login_form')
 def login_form():
@@ -74,8 +98,6 @@ def template_test(temp_id='Golf'):
 app.secret_key = 'sample_secret_key'
 # session & request were used.
 # app.secret_key = 'abc' --> should be added!
-
-
 
 
 if __name__ == '__main__':

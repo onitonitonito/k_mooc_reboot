@@ -1,3 +1,9 @@
+from sys import path as sys_path
+from os.path import dirname
+
+# inc'l x1 upper from file exist.
+sys_path.append(dirname(dirname(__file__)))
+
 from package_i.calc_area import Rectangular
 from package_i.calc_area import Area
 

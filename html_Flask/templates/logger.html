@@ -1,5 +1,7 @@
 {% extends './0base.html' %}
-{% block title %}TEST TEMPLATE!{% endblock %}
+
+{% block title %}Flask index{% endblock %}
+{% block style %}{% endblock %}
 
 
 
@@ -8,15 +10,19 @@
     {% if header %}
       {{ header }}
     {% else %}
-      {{ city1 }}
+      ... [default] $input header..
     {% endif %}
   </div>
 {% endblock%}
 
 
+
 {% block content %}
-  {% include '/_include/which_Sports.html'  %}
-{% endblock %}
+  <div style="width: 480px; text-align: center;">
+    <img src="{{ url_for('static',filename='./icons/logo_flask_python.jpg') }}" width="300">
+  </div>
+{% endblock  %}
+
 
 
 {% block footer %}
@@ -24,12 +30,7 @@
     {% if footer %}
       {{ footer }}
     {% else %}
-      {{ city2}}
+      ... [default] $input footer ...
     {% endif %}
   </div>
 {% endblock %}
-
-
-<!--
-refer here = https://www.slideshare.net/ssusercf5d12/ss-40104301?next_slideshow=1
--->

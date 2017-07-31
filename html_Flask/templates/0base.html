@@ -5,16 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{% block title %}{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/flask.css') }}?ver=1.02">
-  <link rel="icon" href="{{ url_for('static', filename='imgs/0_angry_tig.jpg') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/flask.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='icons/favicon_angryTIG.jpg') }}" size="32x32">
   <style>
     {% block style %}{% endblock %}
   </style>
 </head>
 <body>
+{% include './_include/menu.html' %}
+
+{% block header %}
+{% endblock %}
 
 {% block content %}
 {% endblock %}
+
+{% block footer %}
+<div id="footer" class="small">
+  BACK TO [<a href="/">HOME</a>], HERE!
+</div>
+{% endblock %}
+
 
 </body>
 </html>

@@ -1,5 +1,14 @@
+#!/bin/user/python3
 from package_i.code_morse import *
 
+''' add parent dir in system path
+'''
+import sys
+from os.path import dirname
+sys.path.append(dirname(dirname(__file__)))
+PARENT_DIR = sys.path[len(sys.path)-1]+"/"
+# bg = PhotoImage(file=PARENT_DIR+"static/img_stickman/bground_sq060.png")
+# -----------------------------------------
 
 a1 = get_morse_sentence('this-is-my-first-visit!')
 a2 = get_morse_sentence('033213-2423187-1912374')

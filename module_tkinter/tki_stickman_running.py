@@ -1,4 +1,14 @@
-# StickMan_Running
+#!/bin/user/python3
+''' add parent dir in system path
+'''
+import sys
+from os.path import dirname
+sys.path.append(dirname(dirname(__file__)))
+PARENT_DIR = sys.path[len(sys.path)-1]+"/"
+# bg = PhotoImage(file=PARENT_DIR+"static/img_stickman/bground_sq060.png")
+# -----------------------------------------
+
+
 import random, time
 from tkinter import *
 
@@ -10,10 +20,10 @@ class Game:
         self.tk.wm_attributes("-topmost",1)
         self.canvas = Canvas(self.tk, height=550, width=500,highlightthickness=0)
         self.canvas.pack()
-        
+
         self.tk.update()
         self.canvas_height = 500; self.canvas_width = 500   # ....N0 NEED.
-        self.bg = PhotoImage(file="../static/img_stickman/bground_sq060.png")
+        self.bg = PhotoImage(file=PARENT_DIR+"static/img_stickman/bground_sq060.png")
         w = self.bg.width()     # What's this ?
         h = self.bg.height()
         for x in range(0,10):
@@ -100,12 +110,12 @@ class PlatformSprite(Sprite):
 class StickFigureSprite(Sprite):
     def __init__(self, game):
         Sprite.__init__(self, game)
-        self.images_left=[PhotoImage(file="../static/img_stickman/sman_01.png"),
-            PhotoImage(file="../static/img_stickman/sman_02.png"),
-            PhotoImage(file="../static/img_stickman/sman_03.png")]
-        self.images_right=[PhotoImage(file="../static/img_stickman/sman_04.png"),
-            PhotoImage(file="../static/img_stickman/sman_05.png"),
-            PhotoImage(file="../static/img_stickman/sman_06.png")]
+        self.images_left=[PhotoImage(file=PARENT_DIR+"static/img_stickman/sman_01.png"),
+            PhotoImage(file=PARENT_DIR+"static/img_stickman/sman_02.png"),
+            PhotoImage(file=PARENT_DIR+"static/img_stickman/sman_03.png")]
+        self.images_right=[PhotoImage(file=PARENT_DIR+"static/img_stickman/sman_04.png"),
+            PhotoImage(file=PARENT_DIR+"static/img_stickman/sman_05.png"),
+            PhotoImage(file=PARENT_DIR+"static/img_stickman/sman_06.png")]
         self.image = game.canvas.create_image(300,470,\
             image=self.images_left[0],anchor='nw')
         self.x = -2;    self.y = 0
@@ -208,16 +218,16 @@ class DoorSprite(Sprite):
 
 g = Game()          # Automatically run __init__() when it's' called
 
-platform1 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/Platform_03.png"),0, 480, 100, 10 )
-platform2 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/Platform_03.png"),150, 440, 100, 10 )
-platform3 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/Platform_03.png"),300, 400, 100, 10 )
-platform4 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/Platform_03.png"),300, 160, 100, 10 )
-platform5 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/Platform_02.png"),175, 350, 100, 10 )
-platform6 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/Platform_02.png"),50, 300, 100, 10 )
-platform7 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/Platform_02.png"),170, 120, 100, 10 )
-platform8 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/Platform_02.png"),45, 60, 100, 10 )
-platform9 = PlatformSprite(g, PhotoImage(file="../static/img_stickman/platform_01.png"),170, 250, 32, 10 )
-platform10 = PlatformSprite(g,PhotoImage(file="../static/img_stickman/platform_01.png"),230, 200, 32, 10 )
+platform1 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/Platform_03.png"),0, 480, 100, 10 )
+platform2 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/Platform_03.png"),150, 440, 100, 10 )
+platform3 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/Platform_03.png"),300, 400, 100, 10 )
+platform4 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/Platform_03.png"),300, 160, 100, 10 )
+platform5 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/Platform_02.png"),175, 350, 100, 10 )
+platform6 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/Platform_02.png"),50, 300, 100, 10 )
+platform7 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/Platform_02.png"),170, 120, 100, 10 )
+platform8 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/Platform_02.png"),45, 60, 100, 10 )
+platform9 = PlatformSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/platform_01.png"),170, 250, 32, 10 )
+platform10 = PlatformSprite(g,PhotoImage(file=PARENT_DIR+"static/img_stickman/platform_01.png"),230, 200, 32, 10 )
 
 g.sprites.append(platform1)
 g.sprites.append(platform2)
@@ -230,7 +240,7 @@ g.sprites.append(platform8)
 g.sprites.append(platform9)
 g.sprites.append(platform10)
 
-door = DoorSprite(g, PhotoImage(file="../static/img_stickman/door_01.png"), 45, 30, 40, 35)
+door = DoorSprite(g, PhotoImage(file=PARENT_DIR+"static/img_stickman/door_01.png"), 45, 30, 40, 35)
 sf = StickFigureSprite(g)
 
 g.sprites.append(door)

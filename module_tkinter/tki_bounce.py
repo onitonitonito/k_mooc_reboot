@@ -1,3 +1,13 @@
+#!/bin/user/python3
+''' add parent dir in system path
+'''
+import sys
+from os.path import dirname
+sys.path.append(dirname(dirname(__file__)))
+PARENT_DIR = sys.path[len(sys.path)-1]+"/"
+# bg = PhotoImage(file=PARENT_DIR+"static/img_stickman/bground_sq060.png")
+# -----------------------------------------
+
 from tkinter import *
 import random, time
 
@@ -79,7 +89,7 @@ tk.resizable(0,0)
 tk.wm_attributes("-topmost",1)      # Always on top
 
 canvas = Canvas(tk, width=480, height=640, bd=0, highlightthickness=0)
-obj_bground = PhotoImage(file='../static/img_stickman/bground_sq060.png', name='bground')
+obj_bground = PhotoImage(file=PARENT_DIR+'static/img_stickman/bground_sq060.png', name='bground')
 
 
 def set_bground():

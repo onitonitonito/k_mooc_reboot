@@ -1,9 +1,20 @@
+#!/bin/user/python3
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import random as rd
 
-DESTIN_DIR ='../static/data_doc/'
+
+''' add parent dir in system path
+'''
+import sys
+from os.path import dirname
+sys.path.append(dirname(dirname(__file__)))
+PARENT_DIR = sys.path[len(sys.path)-1]+"/"
+# bg = PhotoImage(file=PARENT_DIR+"static/img_stickman/bground_sq060.png")
+# -----------------------------------------
+
+DESTIN_DIR= PARENT_DIR + 'static/data_doc/'
 
 HEADER='''
 ==================================================
@@ -19,7 +30,7 @@ def test_index():       # have a problem with UTF-8
                 # index=['서울','인천','대전','대구','부산',],)
     print(HEADER %"data = pd.Series( [231] .., index=['서울',..]")
     print(data)
-test_index()
+# test_index()
 
 def change_pbd():
     data = pd.read_csv(DESTIN_DIR+'blog_blogpost.csv', index_col='id', encoding='UTF-8')
@@ -82,9 +93,11 @@ def change_pbd():
         max    3.0   2.000000     2.000000
         ----------------------------------------
         [Finished in 3.308s]'''
-# change_pbd()
+change_pbd()
 
 def make_series():
+    global x, y
+
     data = pd.Series(range(10, 14))
     sep="\n"+"-"*40+"\n"
     print("1.data = pandas.Series(range(10,14,1)) = ",sep,data,sep,)
@@ -95,6 +108,7 @@ def make_series():
 
     x = np.arange(0,3,1)
     y = data.values
+
 def plot_bars_lines(x,y,title=None):
     plt.figure(figsize=(7,5))           # window size
     if title :

@@ -1,5 +1,5 @@
-colors = ['Red','Green','Blue','Hue']
-
+# colors = ['Red','Green','Blue','Hue']
+#
 # print(colors[0])
 # print(colors[1])
 # print(colors[2])
@@ -31,10 +31,10 @@ os.system('cls')
 #
 # color3 = color1 + color2
 # print(color3)
-
+#
 # color4 = color1 *2
 # print(color4)
-
+#
 # a = 'Blue' in color1
 # print(a)
 # print(color2)
@@ -62,15 +62,36 @@ MAT_SCORE = [56,99,93,96,87]
 ENG_SCORE = [66,89,99,75,66]
 MIDTERM = [KOR_SCORE, MAT_SCORE, ENG_SCORE]
 
+# a = list(zip(KOR_SCORE,MAT_SCORE,ENG_SCORE))
+a = zip(*MIDTERM)       # * = unpacking matrix into 3 pieces
+print(tuple(a))
+
 print(MIDTERM)
 
-print(MIDTERM[0][0])
-
-print(MIDTERM[0][4])
-print(MIDTERM[0][-1])
+print(MIDTERM[0][0])        # 67
+print(MIDTERM[0][4])        # last item = 95
+print(MIDTERM[0][-1])       # last item = 95
 
 print(SCORE %(
     MIDTERM[0][0], MIDTERM[0][1], MIDTERM[0][2], MIDTERM[0][3], MIDTERM[0][4],
     MIDTERM[1][0], MIDTERM[1][1], MIDTERM[1][2], MIDTERM[1][3], MIDTERM[1][4],
     MIDTERM[2][0], MIDTERM[2][1], MIDTERM[2][2], MIDTERM[2][3], MIDTERM[2][4],)
     )
+
+score = []
+for x in range(3):
+    for y in range(5):
+        score.append(MIDTERM[x][y])
+
+
+
+print(SCORE % tuple(score) )
+
+# ---- list type : test -----
+print(score)
+print(len(score))
+print(type(score))
+
+# print(SCORE % [67, 87, 98, 100, 95, 56, 99, 93, 96, 87, 66, 89, 99, 75, 66,] )
+# If <class 'tuple'>, TypeError: not enough arguments for format string
+print(SCORE % (67, 87, 98, 100, 95, 56, 99, 93, 96, 87, 66, 89, 99, 75, 66,) )

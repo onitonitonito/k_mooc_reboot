@@ -1,10 +1,20 @@
+#!/bin/user/python3
+''' add parent dir in system path
+'''
+import sys
+from os.path import dirname
+sys.path.append(dirname(dirname(__file__)))
+PARENT_DIR = sys.path[len(sys.path)-1]+"/"
+# bg = PhotoImage(file=PARENT_DIR+"static/img_stickman/bground_sq060.png")
+# -----------------------------------------
+
 import tkinter as tki
 import sys
 
 WIND_WIDTH = 350
 WIND_HEIGHT = 300
 
-DESTIN_DIR = './static/img/'
+DESTIN_DIR = PARENT_DIR+'static/img/'
 
 def close():
     sys.exit()
@@ -23,15 +33,15 @@ lb1.grid(row=1, column=0, sticky=tki.W)
 lb2.grid(row=2, column=0, sticky=tki.W)
 
 # ----------------
-e1 = tki.Entry(tk,width=10, bd=5)
-e2 = tki.Entry(tk,width=10, bd=5)
+e1 = tki.Entry(tk,width=10, bd=3)
+e2 = tki.Entry(tk,width=10, bd=3)
 
 e1.grid(row=1, column=1, sticky=tki.W)
 e2.grid(row=2, column=1, sticky=tki.W)
 
 #--------------------
-b1 = tki.Button(tk, text="SUBMIT")
-b2 = tki.Button(tk, text="CANCEL", command=close, fg='red')
+b1 = tki.Button(tk, bd=4, text="SUBMIT")
+b2 = tki.Button(tk, bd=4, text="CANCEL", command=close, fg='red')
 
 b1.grid(row=3, column=0, columnspan=2, sticky=tki.W)
 b2.grid(row=3, column=1, sticky=tki.W)

@@ -1,48 +1,20 @@
 {% extends './0base.html' %}
+
 {% block title %}404-NOT-FOUND{% endblock %}
-
-{% block style %}
-  .img_fixed  {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-  }
-
-    .sty03  {
-      font-size: 40px;
-      font-weight: 600;
-      width: 400px;
-      background-color: darkorange;
-      text-align:  center;
-      padding: 0 10 0 10px;
-      border-radius: 30px;
-      color: red;
-    }
-
-    .sty04  {
-      font-size: 100px;
-      font-weight: 600;
-      width: 400px;
-      background-color: darkorange;
-      padding: 0 10 0 10px;
-      border-radius: 80px;
-      color: red;
-    }
-{% endblock %}
-
+{% block style %}{% endblock %}
 
 {% block content %}
-  <div class="sty03">
+  <div id="header">
     404 NOT FOUND.
   </div>
-    <br><br>
 
-  <div style="width: 480px; text-align: center; background-color: orange;">
-    <img class="img-fixed" src="{{ url_for('static',filename='./imgs/logo_flask.png') }}" alt="logo" width="250">
+
+  <div>
+    <img class="img-fixed" src="{{ url_for('static',filename='./icons/favicon_backpack.png') }}" alt="logo">
   </div>
-  <br><br>
 
-  <div class="sty04">
+
+  <div id="footer">
     N.G!
   </div>
 
