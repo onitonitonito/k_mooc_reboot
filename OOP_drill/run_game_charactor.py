@@ -11,9 +11,9 @@ import os
 
 def status():
     print()
-    print("NAME:%s / LIFE:%s"%(a.super['NAME'], a.super['LIFE']))
-    print("NAME:%s / LIFE:%s"%(b.super['NAME'], b.super['LIFE']))
-    print("NAME:%s / LIFE:%s"%(c.super['NAME'], c.super['LIFE']))
+    print("NAME:%s / LIFE:%s"%(a.attribution['NAME'], a.attribution['LIFE']))
+    print("NAME:%s / LIFE:%s"%(b.attribution['NAME'], b.attribution['LIFE']))
+    print("NAME:%s / LIFE:%s"%(c.attribution['NAME'], c.attribution['LIFE']))
 
 
 a = Warrior('ALEXANDER')
@@ -22,10 +22,10 @@ c = Begger('TRUMPH')
 sleep(3)
 
 
-a.attacked(b.super['HIT'],verbose=1)
+a.attacked(b.attribution['HIT'],verbose=1)
 sleep(0.5)
 
-b.attacked(a.super['HIT'])
+b.attacked(a.attribution['HIT'])
 sleep(0.2)
 print()
 
@@ -57,5 +57,5 @@ status()
 sleep(1)
 print()
 
-os.system('cls')
+# os.system('cls')
 b.assult(c)

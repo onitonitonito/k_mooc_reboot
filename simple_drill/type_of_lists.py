@@ -2,31 +2,27 @@ import numpy as np
 
 def x():            # trash : 'x' = means temporarily dumped into gabage
     m = 0
-
     def diffsum(x1, x2, x3):
         global m                # declair global.. at in def()
-
         y1 = x1 + x2 + x3
         y2 = x1*2 + x2*2 + x3**2
 
         if ((y2 - y1) > m):
             m = (y2 - y1)
-
         return (x1,x2,x3), m, (y2-y1), y1, y2
 
     m_list = []
-
     for x in range(10):
         for y in range(10):
             for z in range(10):
                 a = diffsum(x,y,z)
                 m_list.append(a[1])
                 print(a)
-
     print(m_list)
 
     a = dir(np)
     print(a)
+
 def sep(arg="-"):          # make seperator '----------------'
     print("-"*20+"%s\n"%arg)
 

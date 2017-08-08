@@ -1,5 +1,15 @@
+#1 cache & build files
 __pycache__
 *.pyc
 *.csv
 *.txt
+*.xlsx
 
+#2 PyInstaller Distribution
+dist/
+
+#3 Temporary exec files for TEST
+_.py
+
+#4 Temporary python DB files
+_*.pdb
