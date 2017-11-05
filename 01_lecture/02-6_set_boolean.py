@@ -40,7 +40,7 @@ for _a in a_arr:
         print(_a, end="\n")
     else:
         print(_a, end="")
-print()        
+print()
 
 """ Try to use : enumerate() = add index number into array(list) data """
 for i, _a in enumerate(a_arr):

@@ -78,9 +78,9 @@ def input_phrase():                 # return CHKD_word...
                 print("\n\n\n.. WRONG LETTERS ... TRY AGAIN~!!!! \n SYSTEM TERMINATED~!! ")
                 chkd_word = ""
                 break
-    return chkd_word                                    # <class 'str'>
+    return chkd_word                            # <class 'str'>
 
-def get_NPA_encode(normal_word, dict_code):             # input = srt, dict
+def get_NPA_encode(normal_word, dict_code):     # input = srt, dict
     NPA_encode_word = ""
     # print("normal_word =", normal_word)
     for letter in normal_word:

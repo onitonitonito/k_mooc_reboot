@@ -172,7 +172,7 @@ def test03_if_deal_with_str_OK():
         print('\n\n\n')
         print('OK...!')
         print("Let's go again")
-# test03_if_deal_with_str_OK()
+test03_if_deal_with_str_OK()
 
 def test03_but_deal_with_int_NG():
     while True:
@@ -189,4 +189,4 @@ def test03_but_deal_with_int_NG():
             else:
                 print('WRONG INPUT! - Try Again')
                 print('\n\n\n')
-test03_but_deal_with_int_NG()
+# test03_but_deal_with_int_NG()

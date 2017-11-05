@@ -51,4 +51,4 @@ def get_USD2KRW_in_naver():
     Difference =   1.80
     Changes =  ÇÏ¶ô             # .decode('CP949').decode('UTF-8') in script_run
     """
-# get_USD2KRW_in_naver()
+get_USD2KRW_in_naver()

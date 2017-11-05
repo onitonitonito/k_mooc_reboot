@@ -12,4 +12,5 @@ dist/
 _.py
 
 #4 Temporary python DB files
+pdb_temp/
 _*.pdb

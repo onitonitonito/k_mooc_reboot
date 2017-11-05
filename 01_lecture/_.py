@@ -1,50 +1,26 @@
-# B = [[0, 8, 14, 0, 0], [0, 6, 4, 4, 0], [0, 0, 14, 2, 0], [0, 4, 4, 12, 0]]
-#
-# J = [[
-#     0b_00000,
-#     0b_01000,
-#     0b_01110,
-#     0b_00000,
-#     0b_00000],[
-#
-#     0b_00000,
-#     0b_00110,
-#     0b_00100,
-#     0b_00100,
-#     0b_00000],[
-#
-#     0b_00000,
-#     0b_00000,
-#     0b_01110,
-#     0b_00010,
-#     0b_00000],[
-#
-#     0b_00000,
-#     0b_00100,
-#     0b_00100,
-#     0b_01100,
-#     0b_00000],]
-#
-# J2 = []
-# for n in range(len(J)):
-#     J1 = []
-#     for k in range(len(J[n])):
-#         J1.append(J[n][k])
-#     print(J1)
-#     J2.append(J[n])
-# print()
-#
-# print(J2)   # [[0, 8, 14, 0, 0], [0, 6, 4, 4, 0], [0, 0, 14, 2, 0], [0, 4, 4, 12, 0]]
-#
-#
-# print("0b_110110 = ", 0b_110110)
-# print("bin(54) =", bin(54))
-#
-# a = str(bin(54))[2:]
-# print(type(a))
-# print(a.replace("1","★").replace("0","®"))
-import random
 
-for n in range(10):
-    _n = random.randint(64,104)
-    print('%3s %3s %3s %3s '%(_n, _n//5, _n%5, 5*(_n//5)))
+_str_1 = 'hello'
+_s1_set = set(_str_1)
+print(_s1_set)
+
+_str_2 = 'how are you'
+_s2_set = set(_str_2)
+print(_s2_set, '\n\n')
+
+""" (1) Union() """
+union_ = _s1_set.union(_s2_set)
+print(len(union_), union_)
+
+""" (2) intersection() """
+inter_ = _s1_set.intersection(_s2_set)
+print(len(inter_), inter_)
+
+""" (3) Difference(s2 - s1) """
+differ_ = _s1_set.difference(_s2_set)
+print(len(differ_), differ_)
+
+
+_a = [1, 2, 3, 4]
+
+for n in range(4):
+    print(_a.pop())
