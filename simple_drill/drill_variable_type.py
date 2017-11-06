@@ -66,11 +66,38 @@ def dynamic_limited_calc(a,b):          # from codefighter
         return True
     else:
         print("*** ERROR: Out Of Range Error!")
-        print ("a=%s, b=%s"%(a,b))
-
+        print ("a=%s, b=%s"% (a,b))
         return False
+
 def main():
     a = dynamic_limited_calc(100,-1000)
     print(a)
+# main()
 
-main()
+def obvious_comparison():
+    import datetime
+    today = datetime.datetime.now()
+
+    str_readable = str(today)
+    repr_itself = repr(today)
+
+    print('1.str ... ',str_readable)
+    # 2017-11-07 13:39:02.963331
+    print('2.repr... ',repr_itself)
+    # datetime.datetime(2017, 11, 7, 13, 39, 2, 963331)
+    print()
+
+    get_back1 = eval(repr_itself)
+    print('1... ', type(get_back1))
+    print('2... ', get_back1)
+    print()
+
+    try:
+        get_back2 = eval(str_readable)  # Syntax error = given 'str'
+    except:
+        get_back2 = "Syntax Error = given 'str' tp eval()"
+
+    print('3... ', type(get_back2))
+    print('4... ', get_back2)
+    print()
+obvious_comparison()

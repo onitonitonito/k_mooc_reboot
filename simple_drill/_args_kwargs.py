@@ -1,5 +1,7 @@
+FINF_ARR = []
+
 def fx1():
-    print("fx1...")
+    print("fx1.. None")
 
 def fx2(a):
     print("fx2..", a)
@@ -15,44 +17,40 @@ def fx5(a, b, c=11, d=33):
 
 def fx6(a, b_list):
     print("fx6..", a)
-    for x in b_list:
-        print(x)
+    for i, args in enumerate(b_list):
+        print('  L(%s) = %s' %(i, args))
 
-
-ff2 = []
-
-def add_callback(callback, *args, **kw):
-    print(callback, args, kw)
-    """
+def add_funcs(funcs, *args, **kw):
+    """ append(funcs, args=tuple, kwargs=dict) in 'FINF_ARR'
     <function fx1 at 0x022CDC00> () {}
     <function fx4 at 0x022D61E0> (93,) {}
     <function fx4 at 0x022D61E0> (93,) {'b': 777}
     <function fx5 at 0x022D6198> (91, 92) {'c': 93, 'd': 94}
     <function fx6 at 0x022D6150> (11, [100, 101, 102]) {}
     """
-    ff2.append((callback, args, kw))
+    # print(funcs, args, kw)
+    # # funcs = body, args_obj = tuple, kw_obj = dict
 
-def run_fx2(ff):
-    # print("ff2 = ", ff)
-    for callback, arg, kw in ff:
-        callback(*arg, **kw)        # callback = function
+    FINF_ARR.append((funcs, args, kw))
+    # print(FINF_ARR)
 
-# MAKE EXECUTE LIST in ff2 (f=exe + f2=callback)
-add_callback(fx1)
-add_callback(fx4, 93)
-add_callback(fx4, 93, b=777)
-add_callback(fx5, 91, 92, c=93, d=94)
-add_callback(fx6, 11, [100, 101, 102])
+# MAKE EXECUTE LIST in FINF_ARR (f=exe + f2=funcs)
+add_funcs(fx1)
+add_funcs(fx4, 93)
+add_funcs(fx4, 93, b=777)
+add_funcs(fx5, 91, 92, c=93, d=94)
+add_funcs(fx6, 11, [100, 101, 102])
 
-run_fx2(ff2)
+for funcs, arg, kw in FINF_ARR:
+    funcs(*arg, **kw)        # funcs = function
 
-"""
-fx1...
+""" RESULTS
+fx1.. None
 fx4.. 93 4
 fx4.. 93 777
 fx5.. 91 92 93 94
 fx6.. 11
-100
-101
-102
+  L(0) = 100
+  L(1) = 101
+  L(2) = 102
 """

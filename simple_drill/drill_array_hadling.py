@@ -1,47 +1,78 @@
-import keyword, random
+import random
+import keyword
 
-def kw_show():
-     print(keyword.kwlist)
-#kw_show()
-#------------------------
+def show_keyword_list_python():
+    """ print(key for key in keyword.kwlist)
+    #<generator obj. show_keyword_list_python.<locals>.<genexpr> at.. >
+    print((keyword.kwlist).sort())        # 'list' but return 'None' """
 
-li_st = [1,2,3,]          # array
-tu_ple = (1,2,3,)
-dic_t = {'a':1, 'b':2}
+    for key in keyword.kwlist:
+        print(key)
+# show_keyword_list_python()
 
-for x in range(5):
-    li_st.append(4+x)
-print(li_st)
+sample_list = [1, 2, 3,]          # array
+sample_tuple = (1, 2, 3,)
+sample_dict = {'a':1, 'b':2, 'c':3}
 
-#for x in range(5):
-#    tu_ple.append(4+x)
-# print(li_st)
-#
+def tes1t_add_list():
+    for x in range(5):              # [1,2,3] append[4,5,6,7,8]
+        sample_list.append(x+4)
+    print(sample_list)
+# tes1t_add_list()
 
-li_st = []
-for x in range(10):
-    li_st.append(random.randint(0,11))
-print(li_st)
+def test1_add_tuple_error():
+    for x in range(5):             # ERROR !!!!... Tuple can't be appended
+       sample_tuple.append(x+4)
+    print(sample_list)
+# tes1t_add_list()
 
+def test1_add_dict():
+    sample_dict['d'] = 4
+    print(sample_dict)
 
-li_st = [ random.randint(0,11) for x in range(10)] # global Num; Num=[random.randint(0,100) for n in range(5)]
-print(li_st)
+    is_in = 'a' in sample_dict
+    print("is in 'a'? ... ", is_in)
+    print("is in 'b'? ... ", (lambda key_str: key_str in sample_dict)('b'))
+test1_add_dict()
 
-print(li_st[0])
-print(li_st[9])
+def test2_append_new_list():
+    """ The Same with the one-line comprehension list below
+    sample_list = [random.randint(0,10) for n in range(10)]
+    print(sample_list)
+    """
+    sample_list = []
+    for n in range(10):
+        sample_list.append(random.randint(0,10))
+    print(sample_list)
+# test2_append_new_list()
 
-matrix_li = [[1,2,3],[3,4,5],[4,5,6]]
-print(matrix_li[0])
-print(matrix_li[1][1])
+def test2_same_comp_list():
+    sample_list = [ random.randint(0,10) for n in range(10)]
+    print(sample_list)
+    print(sample_list[0])
+    print(sample_list[9])
+# test2_same_comp_list()
 
-# Dictionary use in - ZIP function
-name = ['Park', 'Choi', 'Kim',]
-position = ['FW','MD','DF',]
-number = [18,15,4,]
+def test3_matics_list():
+    matrics_list = [
+            [1,2,3,4,5],
+            [3,4,5,6,7],
+            [4,5,6,8,9],]
 
-national_team = { name: [position, number] for name, position, number in zip(name, position, number) }
-print (national_team)
+    print(matrics_list[0])         # [1, 2, 3, 4, 5]
+    print(matrics_list[1][0])      # 3
+# test3_matics_list()
 
-print( 'PARK =' , national_team['Park'] )
-print( national_team['Park'][1] )
-# -----------------------------------------
+def test4_dict_in_zip():
+    """ Dictionary use in - ZIP function """
+    name = ['Park', 'Choi', 'Kim',]
+    position = ['FW','MD','DF',]
+    number = [18,15,4,]
+
+    team_dict = { number: [name, position] for name, position, number in zip(
+                    number, name, position) }
+    print (team_dict)
+
+    print( 'PARK =' , team_dict['Park'] )
+    print( team_dict['Park'][1] )
+# test4_dict_in_zip()

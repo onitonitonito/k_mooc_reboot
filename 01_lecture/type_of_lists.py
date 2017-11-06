@@ -1,9 +1,15 @@
 import numpy as np
 
-def x():            # trash : 'x' = means temporarily dumped into gabage
+def sep(arg="-"):          # make seperator '----------------'
+    print("-"*20+"%s\n"%arg)
+
+def x_IDK():            # trash : 'x' = means temporarily dumped into gabage
+    global m
     m = 0
+
     def diffsum(x1, x2, x3):
         global m                # declair global.. at in def()
+        # print(m, end=', ')
         y1 = x1 + x2 + x3
         y2 = x1*2 + x2*2 + x3**2
 
@@ -12,19 +18,15 @@ def x():            # trash : 'x' = means temporarily dumped into gabage
         return (x1,x2,x3), m, (y2-y1), y1, y2
 
     m_list = []
-    for x in range(10):
-        for y in range(10):
-            for z in range(10):
-                a = diffsum(x,y,z)
-                m_list.append(a[1])
-                print(a)
-    print(m_list)
+    for x in range(3):
+        for y in range(3):
+            for z in range(3):
+                _, m_, *_ = diffsum(x,y,z)
+                m_list.append(m_)             # a[1] = value 'm'
 
-    a = dir(np)
-    print(a)
 
-def sep(arg="-"):          # make seperator '----------------'
-    print("-"*20+"%s\n"%arg)
+    print('\n', m_list)
+x_IDK()
 
 def numpy_():
     a = np.arange(5)    # make NUMPY range [0 1 2 3 4] there's no ',' : NOT array
@@ -84,7 +86,7 @@ def iterate_():
     for x in range(1,4):
         for y in range(1,4):
             print("(%s, %s)"%(x,y))
-    sep('forx-fory combo')
+    sep('for.x-for.y combo')
 
     c1 = [(x, y) for y in range(1,4) for x in range(1,4)]
     c2 = [(x, y) for x in range(1,4) for y in range(1,4)]
@@ -93,10 +95,3 @@ def iterate_():
     print(c2)
     print(c3)
     sep('comparison')
-
-numpy_()
-range_()
-tuffle_()
-enumerate_()
-dict_()
-iterate_()
