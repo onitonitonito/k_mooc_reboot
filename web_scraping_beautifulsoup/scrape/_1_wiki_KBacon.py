@@ -6,7 +6,7 @@ import re
 # URL = 'http://www.naver.com'
 URL1 = 'https://en.wikipedia.org/wiki/Kevin_Bacon'
 URL2 = 'https://namu.wiki/w/Dirty%20Bomb(%EA%B2%8C%EC%9E%84)'
-def show_whole_scrap(target_url):
+def get_whole_scrap(target_url):
     # READOUT Whole DATA
     _html = urlopen(url=target_url)
     _bs_obj = BeautifulSoup(_html, 'html.parser')
@@ -14,15 +14,16 @@ def show_whole_scrap(target_url):
     byte_data = _html.read()
     return byte_data
 
-def test1_show_whole_bytes():
-    byte_data = show_whole_scrap(URL)   # 'byte' data
+def test1_show_whole_bytes(target_url):
+    byte_data = get_whole_scrap(target_url)   # 'byte' data
     print('\n(1) DATA = ', byte_data)  # byte type 'str'
 
     # SHOW DATA Decoded
     _text = byte_data.decode('UTF-8')
     print('\n(2) TEXT = ', _text)  # decoded 'str' with 'CODEC=UTF-8'
+# test1_show_whole_bytes(URL1)
 
-def for_URL1_wiki_kevin_bacon(target_url):
+def show_URL1_wiki_kevin_bacon(target_url):
     """ scraping internal links : start with '/wiki'
     /wiki/Benicio_del_Toro
     /wiki/Michael_Douglas
@@ -36,7 +37,7 @@ def for_URL1_wiki_kevin_bacon(target_url):
 
         if 'href' in link.attrs:
             print(link.attrs['href'])
-for_URL1_wiki_kevin_bacon(URL1)
+show_URL1_wiki_kevin_bacon(URL1)
 
 def for_URL2_namu_dirty_bomb(target_url):
     html = urlopen(target_url)

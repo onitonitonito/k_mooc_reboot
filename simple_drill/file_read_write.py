@@ -1,3 +1,10 @@
+import os
+
+F_NAME = 'new_file.pdb'
+DESTIN_DIR = os.path.join(
+            os.path.dirname(os.path.dirname(__file__)),
+            '_static', '_log', '')
+
 def compose_data():
     global dict_list
 
@@ -12,7 +19,7 @@ def compose_data():
     #           ..... }
 
 def write_file():
-    f = open('./static/data_doc/new_file.pdb', 'w', encoding='UTF-8')
+    f = open(DESTIN_DIR + F_NAME, 'w', encoding='UTF-8')
     key_list = dict_list.keys()     # extract, key_list = [uids.. onito, kaka,..]
     n = 1                           # numbering start from 'n'
 
@@ -24,7 +31,7 @@ def write_file():
     f.close()
 
 def read_file():
-    f = open('./static/data_doc/new_file.pdb', 'r', encoding='UTF-8')
+    f = open(DESTIN_DIR + F_NAME, 'r', encoding='UTF-8')
     for x in range(MEMBER):
         line = f.readline()
         print(line, end="")
@@ -41,7 +48,7 @@ def mod_file(uid, postion=None, number=None):
     if position == None:
         postion = None
     elif number == None:
-            number = None
+        number = None
     pass
 
 

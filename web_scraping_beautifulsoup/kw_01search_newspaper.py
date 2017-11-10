@@ -2,6 +2,7 @@
   (1) Can't performed with CMD - lxml parser libraryError, DLL errors.. etc.
   (2) Only run with Anaconda env = Ipython, Jupyter, Spyder etc..
 """
+import os
 import sys
 # import lxml               # can't find a tree builder : lxml. Install parser?
 # from lxml import etree    # ImportError: DLL load failed:
@@ -36,35 +37,40 @@ def get_text(URL, output_file):
         string_item = str(item.find_all(text=True))
         output_file.write(string_item)
 
+KEY_WORD = '사드'
+PAGE_NUM = 2
+OUT_F_NAME = '_1_thadd_article.pdb'
+DESTIN_DIR = os.path.join(
+            os.path.dirname(os.path.dirname(__file__)),
+            '_static', '_temp', '')
+
 def main(argv):
-    global output_file_name
+    """
     # if len(argv) != 4:
     #     return
-    # keyword = argv[1]
-    # page_num = int(argv[2])
-    # output_file_name = argv[3]
-
-    keyword = '사드'
-    page_num = 2
-    output_file_name = '_1_thadd_article.pdb'
+    # KEY_WORD = argv[1]
+    # PAGE_NUM = int(argv[2])
+    # OUT_F_NAME = argv[3]"""
 
     meta_string_on_top = 'KEY WORD = %s / PAGE NUMBER = %s / FILE_NAME = %s'%(
-                keyword, page_num, output_file_name )+ '\n' + '^+^+^' + '\n'
+                KEY_WORD, PAGE_NUM, OUT_F_NAME )+ '\n' + '^+^+^' + '\n'
 
     # ...com/search?p= | &query= |
     target_URL = TARGET_URL_BEFORE_PAGE_NUM \
                + TARGET_URL_BEFORE_KEWORD \
-               + parse.quote(keyword) \
+               + parse.quote(KEY_WORD) \
                + TARGET_URL_REST
 
-    # print(type(parse.quote(keyword)))
-    # print('----',parse.quote(keyword))
+    # print(type(parse.quote(KEY_WORD)))
+    # print('----',parse.quote(KEY_WORD))
 
-    output_file = open(output_file_name, 'w', encoding='utf-8')
+    output_file = open(DESTIN_DIR + OUT_F_NAME, 'w', encoding='utf-8')
 
     output_file.write(meta_string_on_top)      # write meta_string @TOP
-    get_link_from_news_title(page_num, target_URL, output_file)
+    get_link_from_news_title(PAGE_NUM, target_URL, output_file)
     output_file.close()
+
+
 
 if __name__ == '__main__':
     main(sys.argv)

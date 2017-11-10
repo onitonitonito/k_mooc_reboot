@@ -1,11 +1,11 @@
-
+#! python
 import turtle as tu
 """ n is the size parameter, the shown tree is for n=50.
 Takes a minute or two to draw. (this is fastest mode of TURTLE)
 refer to SOF(StackOverFlow) Here: https://goo.gl/ZnN7Sh
 """
 
-# n = int(input('n= : '))*1.0
+# n = int(input('n= : '))*1.0   ... SIZE(SCALE) of TREE
 n = 50
 
 tu.speed("fastest")

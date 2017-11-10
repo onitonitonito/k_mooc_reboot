@@ -33,10 +33,13 @@ def dicVAL():
     a={
         "Name":"DAVE the Asshole", "Age":45,\
         "Strength":10, "Inteligence":110,\
-        "Pocket": {"knife",3, "Money",1000},\
+        "Pocket": {"knife":3, "Money":1000},\
         "Backpack" : {"water":3, "axe":2} } # defined with fair
 
-    print("\tNAME: ",a["Name"],"\n\tBACKPACK: ", a["Backpack"])
+    for key in a.keys():
+        print('\t%s: %s'% (key, a[key]))
+
+    # print("\tNAME: ",a["Name"],"\n\tBACKPACK: ", a["Backpack"])
 
 def header():
     print("\n\t   --INVENTORY--")
@@ -50,7 +53,7 @@ def main():
     dicVAL()
     footer()
 
-#main()
+main()
 
 
 def dynamic_limited_calc(a,b):          # from codefighter
@@ -100,4 +103,4 @@ def obvious_comparison():
     print('3... ', type(get_back2))
     print('4... ', get_back2)
     print()
-obvious_comparison()
+# obvious_comparison()

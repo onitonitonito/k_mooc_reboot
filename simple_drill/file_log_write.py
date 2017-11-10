@@ -1,15 +1,15 @@
 import os
 import time
-
-MY_FILE ='i_have_a_dream.pdb'    # Address of minister, Martin Luter King
-LOGFILE ='count_file_log.pdb'
-
 """ What's the -- 'os.path.dirname'..?
  DESTIN_DIR ='../_static/_log/'  --- ONLY!!! kick in 'console' screen..
  os.path.dirhame(__file__) = D:\My Documents\GitHub\k_mooc_reboot\simple_drill
  os.path.dirhame(__file__)*2 = D:\My Documents\GitHub\k_mooc_reboot
  DESTIN_DIR = D:\My Documents\GitHub\k_mooc_reboot\_static\_log\
  """
+
+MY_FILE ='i_have_a_dream.pdb'    # Address of minister, Martin Luter King
+LOGFILE ='count_file_log.pdb'
+
 DESTIN_DIR =os.path.join(
             os.path.dirname(os.path.dirname(__file__)),
             '_static', '_log', '')

@@ -1,5 +1,5 @@
 #1 cache & build files
-__pycache__
+__pycache__/
 *.pyc
 *.csv
 *.txt
@@ -10,8 +10,10 @@ dist/
 
 #3 Temporary exec files for TEST
 _.py
+_.html
+_.*
 
 #4 Temporary python DB files
 pdb_temp/
 _log/
-_*.pdb
+_temp/
