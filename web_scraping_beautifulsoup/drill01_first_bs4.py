@@ -10,8 +10,8 @@ import re
 
 URL = 'https://en.wikipedia.org/wiki/Kevin_Bacon'
 
-def lesson_01():
-    """ scraping internal links : start with '/wiki'
+def test01_wiki_kevin_bacon(URL):
+    """ scraping internal links : start with '/wiki/'
     /wiki/Benicio_del_Toro
     /wiki/Michael_Douglas
     /wiki/Miguel_Ferrer ....
@@ -24,7 +24,7 @@ def lesson_01():
 
         if 'href' in link.attrs:
             print(link.attrs['href'])
-# lesson_01()
+# test01_wiki_kevin_bacon(URL)
 
 """ -------- LESSON.02 -- Make function / add module. (P.56)
   : get <article_name>
@@ -35,7 +35,6 @@ import random
 
 random.seed(datetime.datetime.now())        # init. hashable internals.
 URL = 'https://en.wikipedia.org'
-links = get_links('/wiki/Kevin_Bacon')
 
 def get_links(article_url):
     """ from the contentsfunc() lesson_01 --> make function """
@@ -50,9 +49,9 @@ def get_links(article_url):
     # print('2)',link.__class__.__name__)
     # raise SystemExit
     # """--- END --------------------"""
-
     return link
 
+links = get_links('/wiki/Kevin_Bacon')
 
 while len(links) > 0:
     """ randomly surf the target <article_url> link's links until None """

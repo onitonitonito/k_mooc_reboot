@@ -16,7 +16,10 @@ def simple_text_scraping():
 
 """ -------- LESSON.01 -- Naver finance USD to KRW
 """
-import os, time
+
+import os
+import sys
+import time
 from bs4 import BeautifulSoup
 
 def get_USD2KRW_in_naver():
@@ -43,6 +46,7 @@ def get_USD2KRW_in_naver():
         print('\tDifference = %5.2f'%flt_differ)
         print('\tChanges    = ', change.encode().decode('CP949'))
         # b'\xc3\x87\xc3\x8f\xc2\xb6\xc3\xb4'
+        sys.stdout.flush()
         time.sleep(10)
         os.system('cls')
 
