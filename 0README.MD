@@ -1,9 +1,8 @@
 
 # READ ME FIRST
-
 - # <b><u>Classify</u></b>
-  > # <i> italic letters </i>
-  > ## 1. unins stuff
+- # <i> italic letters </i>
+> ## 1. unins stuff
   - GET more unins stuff is here
   - DESCRIPTIONS
   - MOST BANG OF THE BUG
@@ -19,11 +18,11 @@
 
   <tr>
       <td>
-        <img src="./static/img/SD-idle.gif" height="220">
+        <img src="./_static/img/SD-idle.gif" height="220">
       </td>
 
       <td>
-        <img src="./static/img/SD-attack-short-range.gif" height="220">
+        <img src="./_static/img/SD-attack-short-range.gif" height="220">
       </td>
   </tr>
 
@@ -77,7 +76,7 @@ def trapezoid(tree_leaf_start, tree_leaf_end, tree_base_width):
 <table>
   <tr>
     <td>
-     <img src="./static/img/1492084147_noo8e.png" height="300">
+     <img src="./_static/img/1492084147_noo8e.png" height="300">
     </td>
   </tr>  
   <tr>

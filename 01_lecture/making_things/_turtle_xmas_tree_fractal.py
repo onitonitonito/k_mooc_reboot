@@ -38,5 +38,14 @@ def tree(d, s):
 tree(15, n)
 tu.backward(n/2)
 
+import sys
 import time
-time.sleep(60)
+
+def click_function():
+    tu.onclick(None)
+    print('Say Good bye~!')
+    time.sleep(3)
+    sys.exit()
+
+tu.onclick(click_function)
+tu.mainloop()

@@ -19,5 +19,6 @@ while True:
     print('second =',type(second))
     print('\n\n\n',"%s %s : %s : %s - %s" %(ampm, hour, minute, second, weekday))
     print()
+    
     time.sleep(1)
     os.system('cls')
