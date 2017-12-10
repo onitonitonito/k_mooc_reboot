@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+  }
+
+.content {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 18px;
+    color: #0083e8;
+    line-height: 0.5;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 2em 2em 4em;
+  }
+
+.subtitle_01 {
+    position: absolute;
+    top: 400px;
+    left: 25px;
+    font-size: 15px;
+    color: #0083e8;
+  }
+
+.subtitle_02 {
+    position: absolute;
+    top: 360px;
+    left: 30px;
+    font-size: 15px;
+    color: #0083e8;
+  }
