@@ -92,3 +92,7 @@ def test1_encode_decode_repeatation():
 test1_encode_decode_repeatation()
 
 print('찦차를 타고온 팹시맨과 쑛다리 똠방각하')
+
+# print(sys.stdout.encoding)
+# print(sys.stderr.encoding)
+# print(sys.getdefaultencoding())

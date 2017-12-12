@@ -29,3 +29,17 @@ def test2_show_flushing():
             # print('\a',end='')
         time.sleep(1)
         os.system('cls')
+
+def test3_very_confused():
+    byt_ = b'abcd'
+    print(type(byt_))           # <class 'bytes'>
+    print(byt_[0] == 'a')       # False : NEVER!
+    print(byt_[0] == 97)        # True : 0x61
+    print(byt_[0] == 0x61)      # True
+
+    print(b'\x61')              # b'a' : b'\x61'
+    print(b'a')                 # b'a' : b'a'
+    print(byt_[0])              # 97   : byt_[0]
+
+    print(byt_[0] == b'\x61')   # True : \x61
+test3_very_confused()

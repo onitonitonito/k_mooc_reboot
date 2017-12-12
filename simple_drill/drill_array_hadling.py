@@ -27,6 +27,12 @@ def test1_add_tuple_error():
 # tes1t_add_list()
 
 def test1_add_dict():
+    """
+    is_true? in dict -- lambda expression 
+    {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+    is in 'a'? ...  True
+    is in 'b'? ...  True
+    """
     sample_dict['d'] = 4
     print(sample_dict)
 
