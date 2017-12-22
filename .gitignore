@@ -17,5 +17,5 @@ _.pdb
 
 #4 Temporary python DB files
 pdb_temp/
-_log/
+#_log/
 _temp/
