@@ -1,5 +1,5 @@
 """
-# Section.4 / lecture-07
+# Section.4 / lecture-07 ~ 10
 # Class Attributes & Instance Attributes
 # Udemy lecture site (free)
 # : https://www.udemy.com/python-oops-beginners/learn/v4/t/lecture/7359316
