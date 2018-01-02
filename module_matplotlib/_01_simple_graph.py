@@ -173,14 +173,22 @@ def _11():
     t = np.arange(10)
 
     plt.plot(t, t, 'r--', t, 0.5 * t**2, 'bs:', t, 0.2 * t**3, 'g^-')
-    plt.legend(labels=['plot1', 'plot2', 'plot3'], loc='center')
+    plt.legend(labels=['plot1', 'plot2', 'plot3'], loc='center left')
     plt.xlabel("xlabel (x)")
     plt.ylabel("ylabel (y)")
-    plt.title("Three Plot : f({:})".format(this_func_name))
-    plt.annotate('annotate exam', xy=(1, 1), xytext=(0.5, 30),
-                 arrowprops=dict(facecolor='black', shrink=0.05,
-                                 connectionstyle='angle3,angleA=0,angleB=90'),
-                 )
+    plt.title(f"Three Plot : f({this_func_name})")
+    plt.annotate(
+        'annotate exam',
+        xy=(1, 1),
+        xytext=(0.5, 30),
+        arrowprops=dict(
+            facecolor='black',
+            shrink=0.05,
+            connectionstyle='angle3,angleA=0,angleB=90'
+            ),
+        )
+    plt.gca().invert_yaxis()            # flip y-dir
+    plt.gca().invert_xaxis()            # flip x-dir
     plt.grid(True)
     plt.show()
 
@@ -300,19 +308,20 @@ def _16():
 
 
 if __name__ == '__main__':
-    _00()
-    _02()
-    _03()
-    _04()
-    _05()
-    _06()
-    _07()
-    _08()
-    _09()
-    _10()
+    # _00()
+    # _02()
+    # _03()
+    # _04()
+    # _05()
+    # _06()
+    # _07()
+    # _08()
+    # _09()
+    # _10()
     _11()
-    _12()
-    _13()
-    _14()
-    _15()
-    _16()
+    # _12()
+    # _13()
+    # _14()
+    # _15()
+    # _16()
+    pass
