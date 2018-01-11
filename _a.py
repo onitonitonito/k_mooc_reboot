@@ -2,9 +2,7 @@ import turtle as tu
 import random
 import time
 
-
 tu.speed(0)
-tu.color('black', 'white')
 
 def move(pos_x, pos_y):
     tu.penup()
@@ -12,6 +10,7 @@ def move(pos_x, pos_y):
     tu.pendown()
 
 def card(pos_x, pos_y, size=100):
+    tu.color('black', 'white')
     move(pos_x-(size*0.6*0.5), pos_y-(size*0.5))
     tu.begin_fill()
     tu.forward(size*0.6)
@@ -42,17 +41,16 @@ def heart():
     curvemove()
     tu.forward(111.65)
     tu.end_fill()
+
+move(0,0)
 heart()
-tu.heading()
-card(0,0,size=300)
-#
-# x_arr = [-160, -80, 0, 80, 160]
-# y_arr = [(lambda x: x*0)(x) for x in range(5)]
-#
-# for x in x_arr:
-#     card(x, 0, size=200)
 
+tu.home()
+x_arr = [-160, -80, 0, 80, 160]
+y_arr = [(lambda x: x*-20)(x) for x in range(5)]
 
+for i, x in enumerate(x_arr):
+    card(x, y_arr[i], size=200)
 
 
 tu.mainloop()
