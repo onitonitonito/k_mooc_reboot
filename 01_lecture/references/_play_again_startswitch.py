@@ -1,25 +1,28 @@
 #!/usr/bin/python
-SEPARATOR = '\n' + '__'*30 + '\n'
+SEPARATOR = "__"*30+ "\n"
+TEST_STR = "this is test_string example....wow!!!";
+NOTICE = """
+ ## Test.02 - Start Swicn Function
+  - startswitch(TEST_STR, start, end+1) = True/False
+  - print("( 'this' ) = ", TEST_STR.startswith( 'this' ))
+  - print("( 'is', 2, 4 ) = ", TEST_STR.startswith( 'is', 2, 4 ))
+  - print("( 'this', 2, 4 ) = ", TEST_STR.startswith( 'this', 2, 4 ))
+  """
+
 def playAgain():
-    # This function returns True if the player wants to play again, otherwise it returns False.
-    print('Do you want to play again? (yes or no)')
-    return input().lower().startswith('y')
+    """ If Y/y = True, NOT=False """
+    return input("Do you want to play again? (yes or no)").lower().startswith('y')
 
-while True:
-    """
-    ## Test.02 - Start Swicn Function
-    > - startswitch(test_str, start, end+1) = True/False
-    - print("( 'this' ) = ", test_str.startswith( 'this' ))
-    - print("( 'is', 2, 4 ) = ", test_str.startswith( 'is', 2, 4 ))
-    - print("( 'this', 2, 4 ) = ", test_str.startswith( 'this', 2, 4 ))
-    """
+def main():
+    while True:
+        print(SEPARATOR + NOTICE + SEPARATOR)
+        print('TEST_STRING  :\n\n', TEST_STR, '\n\n')
+        print("( 'this' ) = ", TEST_STR.startswith('this'))
+        print("( 'is', 2, 4 ) = ", TEST_STR.startswith('is', 2, 4))
+        print("( 'this', 2, 4 ) = ", TEST_STR.startswith('this', 2, 4))
 
-    test_str = "this is test_string example....wow!!!";
-    print(SEPARATOR)
-    print('test_string =', test_str, '\n\n')
-    print("( 'this' ) = ", test_str.startswith( 'this' ))
-    print("( 'is', 2, 4 ) = ", test_str.startswith( 'is', 2, 4 ))
-    print("( 'this', 2, 4 ) = ", test_str.startswith( 'this', 2, 4 ))
+        if not playAgain():
+            break
 
-    if not playAgain():
-        break
+if __name__ == '__main__':
+    main()

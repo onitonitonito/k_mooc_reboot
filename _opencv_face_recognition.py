@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import cv2
 import numpy as np
 
-
 # File "D:\My Documents\GitHub\k_mooc_reboot\_1.py", line 11, in <module>
 # f.write(xmldata) - TypeError: write() argument must be str, not bytes
 # ---------------------
@@ -14,7 +13,6 @@ import numpy as np
 # f = open('haarcascade_frontalface.xml','w')
 # f.write(xmldata)
 # f.close()
-
 
 def findfaces(full_url_to_image):
     f = urllib.request.urlopen(full_url_to_image)

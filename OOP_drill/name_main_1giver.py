@@ -4,7 +4,7 @@ def func():
 def main():
     print("CASE.0a(main) - This is TOP LEVEL of A.py")
 
-
+# CASE.1a(direct) - A.py is running directly!!
 if __name__ == '__main__':
     print("CASE.1a(direct) - A.py is running directly!!\n")
 else:
