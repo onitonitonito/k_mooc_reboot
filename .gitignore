@@ -1,7 +1,6 @@
 #1 cache & build files
 __pycache__/
 *.pyc
-*.csv
 *.txt
 *.xlsx
 *.xml
