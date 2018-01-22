@@ -1,25 +1,62 @@
 """ ML/DL for everyone (Reinforcement Learning)
 # using OpenAI GYM, import gym
+# https://gym.openai.com/
 # agent (action) / observation / state, reward
 # Q-Table method
 """
+import sys
 import gym
+
+""" 리눅스 터미널 모듈 (윈도우=없음)
+import tty
+import termios
+"""
 
 env = gym.make("FrozenLake-v0")
 observation = env.reset()
 
 for _ in range(10**3):
-    env.render()    #환경을 화면으로 출력한다 (state)
-    # your agent here (this takes random action)
-    action = env.action_space.sample()
-    print(env.step(action))
-    # (observation, reward, done, info) = env.step(action)
-
     """
     # get something? reward = False
     # finish? done = False
     # information? info = state
     """
+    env.render()    #환경을 화면으로 출력한다 (state)
+
+    # your agent here (this takes random action)
+    action = env.action_space.sample()
+    observation, reward, done, info = env.step(action)
+
+class GetCh(object):
+    def __call__(self):
+        fd = sys.stdin.fileno()
+        old_setting = termios.tcgetattr(fd)
+
+        try:
+          tty.setraw(sys.stdin.fileno())
+          ch = sys.stdin.read(3)
+
+        finally:
+            termios.tcsetattr(fd, termios, TCSADRAIN, old_settings)
+
+        return ch
+
+inkey = GetCh()
+
+# MACROS
+LEFT= 0
+DOWN = 1
+RIGHT = 2
+UP = 3
+
+#Key_mapping
+arrow_key = {
+    '\x1b[A' : UP,
+    '\x1b[B' : DOWN,
+    '\x1b[C' : RIGHT,
+    '\x1b[D' : LEFT }
+
+
 
 """ Exploit vs. Exploration : (1) E-greedy method
 # assume small e=0.1
@@ -37,6 +74,7 @@ for _ in range(10**3):
 # Determistic = returned reward, condition always the same
 # Stochastic = not always, like a slippery ice surface.
 """
+
 """
 # register Frozen lake with is_slippery False
 """
@@ -54,6 +92,7 @@ for _ in range(10**3):
 # Q(s,a) = (1-alpha)*Q(s,a) + alpha * ( r + gamma * Q(s',a'))
 #
 """
+
 """ Q-Learning : Q-Table (4x4) : FrozenLake
 # Maze 100x100 = 100x100x 4-actions = 4e4, it's OK.
 # Q-Networks = pow(2, 80*80) =
