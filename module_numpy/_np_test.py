@@ -36,13 +36,49 @@ def softmax(x):
     # TODO: Compute and return softmax(x)
     return np.exp(x) / np.sum(np.exp(x), axis=0)
 
+def test3_multi_variable_classification():
+    """ Multi Variable Classification = (다중 선택문제)
+    # 1개 이상의 스코어(y)를 Softmax()에 넣어서 확률(%)로 변환 시킨다
+    # argmax()를 이용하여 1-hot Encoding을 구현한다.
+    # 1개의 레이블만 선택한다.
+    """
+    _a = [n for n in range(1, 10)]    # 9개의 입력값을 준다.
+    _a_np = np.array(_a)
+
+    print(_a, type(_a), "\n")         # x = 'list' class
+    print(_a_np, type(_a_np), "\n")   # x = 'np.ndarray' class
+    print(softmax(_a), "\n")          # make it to (%) probablity
+
+    sum_n = 0                         # 확률의 총 합계=1 (100%)
+    for n in softmax(_a):
+        sum_n += n
+        print("%11.2f %%" %(n*100))
+    print(SEP)
+    print("SUM : {:}%".format(sum_n*100))
+
 
 if __name__ == '__main__':
     # test1_ndarray_convert_matrics()
     # test2_like_ones()
-    _a = [n for n in range(1, 10)]
-    _a_np = np.array(_a)
+    test3_multi_variable_classification()
 
-    print(_a, type(_a))         # x = 'list' class
-    print(_a_np, type(_a_np))   # x = 'np.ndarray' class
-    print(softmax(_a))          # make it to probablity
+
+
+""" SoftMAx() 산출값 (0~1의 값 ... 전체의 총합=1 )
+[  2.12078996e-04   5.76490482e-04   1.56706360e-03   4.25972051e-03
+   1.15791209e-02   3.14753138e-02   8.55587737e-02   2.32572860e-01
+   6.32198578e-01]
+
+   백분율 확률 환산값 (소프트맥스 값을 백분율로 환산, 9가지 케이스)
+       0.02 %
+       0.06 %
+       0.16 %
+       0.43 %
+       1.16 %
+       3.15 %
+       8.56 %
+      23.26 %
+      63.22 %
+____________________
+SUM : 100.0%
+"""

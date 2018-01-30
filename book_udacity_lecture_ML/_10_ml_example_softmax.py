@@ -1,11 +1,13 @@
-"""10. Softmax."""
+"""Udacity ML.10 Softmax()
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 
 SCORES = np.array([3.0, 1.0, 0.2])
 
 def softmax(x):
-    """Compute softmax values for each sets of SCORES in x."""
+    """ Compute softmax values for each sets of SCORES in x.
+    """
     # pass  # TODO: Compute and return softmax(x)
     return np.exp(x) / np.sum(np.exp(x), axis=0)
 
@@ -17,7 +19,7 @@ def display_graph_softmax():
     #  The graph shows how probablity changed
     """
     # Plot softmax curves
-    x = np.arange(start=-2.0, stop=6.0, step=1)        # range for 'x'
+    x = np.arange(start=-2.0, stop=6.0, step=0.1)        # range for 'x'
     SCORES = np.vstack([x, np.ones_like(x), 0.2 * np.ones_like(x)])
 
     print(SCORES)

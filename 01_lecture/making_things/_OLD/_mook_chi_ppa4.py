@@ -39,32 +39,32 @@ while True:
         print('\n'*10 + '\t\t ...... thinking ......' + '\n'*15)
 
     n_trial += 1
-
-    for n in range(20):     # competes 20 times
+    os.system('cls')
+    for n in range(10):     # competes 20 times
         pick_mine_arr = set_piece_arr_to_user()   # ('str', ('int','int'))
         pick_oppo_arr = set_piece_arr_to_user()   # ('str', ('int','int'))
-        # print('%s vs %s'% (pick_mine_arr[0], pick_oppo_arr[0]))
+        print('%s vs %s'% (pick_mine_arr[0], pick_oppo_arr[0]))
 
         # [n0, n1, n2, n3]
         judge_table = get_judge_table(pick_mine_arr, pick_oppo_arr)
 
         if -1 in judge_table:
             total_score_arr[0] += 1
-            # print("VICTORY!!!................. ^^")
+            print("VICTORY!!!................. ^^")
 
         elif 0 in judge_table:
             total_score_arr[1] += 1
-            # print("--- DRAW ---")
+            print("--- DRAW ---")
 
         elif 1 in judge_table:
             total_score_arr[2] += 1
-            # print("DEFEATED....")
-        # print()
+            print("DEFEATED....")
+        print()
 
-    # print('Your Score [W,D,L] = %s :   Try = %d times'% (total_score_arr, n_trial))
-    # print('__'*30 + '\n')
+    print('Your Score [W,D,L] = %s :   Try = %d times'% (total_score_arr, n_trial))
+    print('__'*30 + '\n')
 
-    if total_score_arr[0] == 20:            # if, 20 wins in a row
+    if total_score_arr[0] == 7:            # if, 20 wins in a row
         time_laps_end = datetime.datetime.now()
         time_laps = (time_laps_end - time_laps_start)
         # print(type(time_laps))
@@ -83,7 +83,6 @@ while True:
             raise SystemExit
         # ---------------------------------------------------------------
 
-        os.system('cls')
         n_trial = 0
         time_laps_start = datetime.datetime.now()
 

@@ -7,8 +7,12 @@
 #   = [1x3] = [1,3]*[3,1] = [1x1]
 # [케글:Kaggle] = https://www.kaggle.com --> 데이터과학 예제 무료로 연습하는 법.
 """
+import os
 import numpy as np
 import tensorflow as tf
+import matplotlib.pyplot as plt
+
+CSV_DIR = os.path.join(os.path.dirname(__file__), "_csv_hunkim/")
 
 def single_linear_regression(learnig_rate=1e-5, repeatation=2001):
     """ 전통적인 방법의 선형회귀(Linear Regression)
@@ -127,7 +131,7 @@ def show_each_prediction_01_02(sess, hypothesis, X):
     # 인자 값 = 계산을 위해서 정의되지 않은 값은 외부에서 받아온다
     #    - sess = tf.Session()
     #    - hypothesis = X.W + b
-    #    - X : x_data = xy[:, 0:-1] from .CSV
+    #    - X : x_data = xy[:, 0:-1] from CSV_DIR = "./_csv_hunkim/"+ data.CSV
     """
     x1_data = [[100, 70, 101]]
     x2_data = [[60, 70, 110]]
@@ -147,12 +151,12 @@ def show_each_prediction_01_02(sess, hypothesis, X):
 def matrics_file_import_linear(learnig_rate=1e-5, repeatation=2001):
     """ Lecture.04-2 : 파일로 매트릭스 데이터 읽어오기
     # CSV화일 임포트, 매트릭스 선형회귀 (metrics linear regression)
-    # 임포트 화일 = 'data01_test_score.csv'
+    # 임포트 화일 = CSV_DIR+ 'data01_test_score.csv'
     # CSV에 저장된 값은 [n,3]x[3,1] = [n,1] 의 매트릭스 배열
     """
     tf.set_random_seed(777)         # for reproducibility
     xy = np.loadtxt(
-        "data01_test_score.csv",
+        CSV_DIR+ "data01_test_score.csv",
         delimiter=',',
         dtype=np.float32)
 
@@ -218,7 +222,7 @@ def thread_queues_runner_linear(learnig_rate=1e-5, repeatation=2001):
     """
     tf.set_random_seed(777)  # for reproducibility
     filename_queue = tf.train.string_input_producer(
-        ['data01_test_score.csv'],      # tensor_list,
+        [CSV_DIR+ 'data01_test_score.csv'],      # tensor_list,
         shuffle=False,                  # shuflle=Tre
         # num_epochs=max_nrof_epochs,
         name='filename_queue')          # name=None
@@ -285,25 +289,25 @@ def softMax_func_to_probablity(learnig_rate=1e-5, repeatation=2001):
     # 소프트맥스() 만 적용한 상태, 'Hot-dot Encoding' 적용 전..
     """
     x_data = [      # [8x4] 행열
-        [1,2,1,1],
-        [2,1,3,2],
-        [3,1,3,4],
-        [4,1,5,5],
-        [1,7,5,5],
-        [1,2,5,6],
-        [1,6,6,6],
-        [1,7,7,7]]
+        [1, 2, 1, 1],
+        [2, 1, 3, 2],
+        [3, 1, 3, 4],
+        [4, 1, 5, 5],
+        [1, 7, 5, 5],
+        [1, 2, 5, 6],
+        [1, 6, 6, 6],
+        [1, 7, 7, 7]]
     y_data = [      # Y:[8x3] 행열   - 'One-hot' Encoding 표기법
-        [0,0,1],    # 2  ... 레이블의 갯수 = 3 = number_classes --> 0,1,2
-        [0,0,1],    # 2
-        [0,0,1],    # 2
-        [0,1,0],    # 1
-        [0,1,0],    # 1
-        [0,1,0],    # 1
-        [1,0,0],    # 0
-        [1,0,0]]    # 0
+        [0, 0, 1],    # 2  ... 레이블의 갯수 = 3 = number_classes --> 0,1,2
+        [0, 0, 1],    # 2
+        [0, 0, 1],    # 2
+        [0, 1, 0],    # 1
+        [0, 1, 0],    # 1
+        [0, 1, 0],    # 1
+        [1, 0, 0],    # 0
+        [1, 0, 0]]    # 0
 
-    """ placeholder """
+    """ placeholder = x:[n,4] * w:[4,3] + b:[3] = y:[n,3] """
     X = tf.placeholder(dtype="float32", shape=[None, 4])
     Y = tf.placeholder(dtype="float32", shape=[None, 3])
     nb_classes = 3      # columns (예측값의 열 = 편향값의 행(?)  )
@@ -327,6 +331,7 @@ def softMax_func_to_probablity(learnig_rate=1e-5, repeatation=2001):
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
 
+        cost_plots = []
         for step in range(repeatation):
             sess.run(
                 optimizer,
@@ -337,6 +342,15 @@ def softMax_func_to_probablity(learnig_rate=1e-5, repeatation=2001):
                     step,
                     sess.run(cost, feed_dict={X:x_data , Y:y_data}))
                     )
+
+            """ for drawing cost_minimize : cost_plots """
+            cost_plots.append(
+                sess.run(
+                    cost,
+                    feed_dict={X:x_data , Y:y_data}))
+
+        """ draw cost_minimize curve graph """
+        draw_lists_pyplot(cost_plots, line_weight=0.5, learnig_rate=learnig_rate)
 
         separator = "----------------------"
         print("\n\nHypothesis= \n{:}\n{:}......\n\n".format(
@@ -361,9 +375,26 @@ def softMax_func_to_probablity(learnig_rate=1e-5, repeatation=2001):
                 [1, 3, 4, 3],
                 [1, 1, 0, 1]])
 
+def draw_lists_pyplot(y_array, line_weight=3, learnig_rate=1):
+    """ Basic Array Plotting Graph """
+    y = y_array
+    plt.plot(y, lw=line_weight, label='cost(a={:})'.format(learnig_rate))
+    plt.legend()
+
+    plt.title("Gradient Descent Optimizing Method\nminimize cost function")
+    plt.xlabel('time-itoration')
+    plt.ylabel('cost-function')
+
+    plt.xlim(0,)
+    plt.ylim(0,)
+
+    plt.grid(b=None, which='major', axis='both')
+    plt.show()
+
 if __name__ == '__main__':
-    # single_linear_regression(4.5e-5, 20001)         # cost=0.36
-    # matrics_linear_regression(1e-5, 20001)          # cost=0.43
-    # matrics_file_import_linear(1e-5, 20001)         # cost=0.87
+    # single_linear_regression(4.5e-5, 2001)         # cost=0.36
+    # matrics_linear_regression(1e-5, 2001)          # cost=0.43
+    matrics_file_import_linear(1e-5, 2001)         # cost=0.87
     # thread_queues_runner_linear()
-    softMax_func_to_probablity(0.75, 2001)          # cost=0.0012
+    # softMax_func_to_probablity(0.75, 2001)          # cost=0.0012
+    # softMax_func_to_probablity(0.11, 1301)          # cost=0.0012
