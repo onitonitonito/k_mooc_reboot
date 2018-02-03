@@ -129,6 +129,7 @@ lives = set_obj('lives', DESTIN_DIR+'Ship_White.png', rotate=0 )
 if __name__ == '__main__':
     """ INITIALIZE GAME """
     pygame.init()
+
     DISPLAYSURF = pygame.display.set_mode((PAD_WIDTH, PAD_HEIGHT))
     pygame.display.set_caption('My GALAGA!!')
     FPS_CLK = pygame.time.Clock()   # FPS_CLK.tick(FPS)
@@ -204,7 +205,7 @@ if __name__ == '__main__':
                         game_over_display()
                     ENEMY_Y = 0
 
-        print("", bullet_xy)
+        # print("!:", bullet_xy)
         """ IF ENEMY IS SHOT """
         if len(bullet_xy) != 0:
             for i, bxy in enumerate(bullet_xy):
@@ -229,7 +230,7 @@ if __name__ == '__main__':
         y += y_change
 
         # [POS] Give ENEMY a BUMBLE(togo) move
-        togo = random.randint(12)
+        togo = random.randint(0,12)
         if togo % 3 == 0:
             for n in range(random.randint(0,20)):
                 ENEMY_X += 1
@@ -241,10 +242,12 @@ if __name__ == '__main__':
                 ENEMY_X -= 1
 
         ENEMY_Y += ENEMY_SPEED
+        # print(ENEMY_Y)
 
-        if ENEMY_Y > PAD_HEIGHT:
-            ENEMY_Y = 0
+        if ENEMY_Y > PAD_HEIGHT - (FIGHTER_HEIGHT + 30):
             enemy_passed += 1
+            ENEMY_Y = 0
+            print(enemy_passed)
 
         if enemy_passed >= 3:
             game_over_display()
@@ -269,7 +272,7 @@ if __name__ == '__main__':
         draw_passed(enemy_passed)
         draw_socre(shot_count)
 
-        for n in range(1, lives_count+1):
+        for n in range(1, lives_count):
             draw_object(
                 lives,
                 PAD_WIDTH - (DICT_OBJ['lives'][0]*n),

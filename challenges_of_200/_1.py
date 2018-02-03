@@ -12,6 +12,6 @@ pygame.display.set_caption('TEST SCREEN')
 FIGHTER = pygame.image.load(DESTIN_DIR + FILE_IMG)
 
 while True:
-    DISPLAYSURF.blit(FIGHTER,(100,100))
+    DISPLAYSURF.blit(FIGHTER,(0, 0))
     pygame.display.update()
     FPSCLOCK.tick(60)

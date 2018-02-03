@@ -1,4 +1,4 @@
-#1 cache & build files
+#1 cache & build files ______________
 __pycache__/
 *.pyc
 *.txt
@@ -6,15 +6,13 @@ __pycache__/
 *.xml
 *.sqlite3
 
-#2 PyInstaller Distribution
+#2 PyInstaller Distribution __________
 dist/
 
-#3 Temporary exec files for TEST
-#_.py
+#3 Temporary exec files for TEST _____
 _.html
 _.pdb
 
-#4 Temporary python DB files
+#4 Temporary python DB files _________
+MNIST_data/
 pdb_temp/
-#_log/
-_temp/

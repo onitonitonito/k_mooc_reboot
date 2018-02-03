@@ -89,6 +89,7 @@ def matrics_linear_regression(learnig_rate=1e-5, repeatation=2001):
         [89., 91., 90.],
         [96., 91., 100.],
         [73., 66., 70.]]
+
     y_data = [
         [152.],
         [185.],
@@ -158,7 +159,7 @@ def matrics_file_import_linear(learnig_rate=1e-5, repeatation=2001):
     xy = np.loadtxt(
         CSV_DIR+ "data01_test_score.csv",
         delimiter=',',
-        dtype=np.float32)
+        dtype=tf.float32)
 
     x_data = xy[:, 0:-1]    # 행=모든것, 열= 처음~마지막열의 앞까지 (n-1)
     y_data = xy[:, [-1]]    # 행=모든것, 열= 마지막열(n)
@@ -202,11 +203,6 @@ def matrics_file_import_linear(learnig_rate=1e-5, repeatation=2001):
 
     show_each_prediction_01_02(sess, hypothesis, X)
 
-""" '모두의 딥러닝 예제 : 깃허브 이슈#71 = 'OutOfRangeError: FIFOQueue'
-# https://github.com/hunkim/DeepLearningZeroToAll/issues/71
-# OutOfRangeError: FIFOQueue '_2_batch/fifo_queue' is closed and
-# has insufficient elements (requested 10, current size 0)
-"""
 def thread_queues_runner_linear(learnig_rate=1e-5, repeatation=2001):
     """ 여러 개 화일CSV를 순차적으로 Que에 넣고, 학습하는 Batch prediction
     # 메모리에 한꺼번에 올릴수 없음 = 큐 러너 시스템 (Queue Runners System)
@@ -216,19 +212,16 @@ def thread_queues_runner_linear(learnig_rate=1e-5, repeatation=2001):
     # ------
     #  - 화일네임큐 = tf.train.slice_input_producer([화일1, 화일2, 화일3.csv..],
     #         셔플=트루, 네임=화일네임큐).. 셔플로 섞어서 화일네임 큐에 쌓은다.
-    #  - 리더 = tf.TextLineReader() / key, val = reader.read(화일네임큐)
+    #  - 리더 = tf.TextLineReader() / _, val = reader.read(화일네임큐)
     #  - record_defaults = [[0.],[0.],...]
     #    xy = tf.decode_csv(value, record_defaults=record_defaults )
     """
     tf.set_random_seed(777)  # for reproducibility
     filename_queue = tf.train.string_input_producer(
-        [CSV_DIR+ 'data01_test_score.csv'],      # tensor_list,
-        shuffle=False,                  # shuflle=Tre
-        # num_epochs=max_nrof_epochs,
-        name='filename_queue')          # name=None
+        [CSV_DIR+ 'data01_test_score.csv'], name='filename_queue')
 
     reader = tf.TextLineReader()
-    key, value = reader.read(filename_queue)
+    _, value = reader.read(filename_queue)
 
     """ default value, in case of empty columns,
     # also specifies the type of the decorate result
@@ -255,33 +248,36 @@ def thread_queues_runner_linear(learnig_rate=1e-5, repeatation=2001):
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learnig_rate)
     train = optimizer.minimize(cost)
 
-    sess = tf.Session()
-    sess.run(tf.global_variables_initializer())
+    # sess = tf.Session()
+    with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
 
-    """ Batch로 인해서, 추가되는 부분 """
-    coord = tf.train.Coordinator()
-    threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+        """ Batch로 인해서, 추가되는 부분 """
+        coord = tf.train.Coordinator()
+        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
 
-    for step in range(repeatation):
-        x_batch, y_batch = sess.run([train_x_batch, train_y_batch])
-        cost_val, hypo_val, _ = sess.run(
-            [cost, hypothesis, train],
-            feed_dict={X: x_batch, Y: y_batch})
-        if step%100 == 0:
-            print("{:0>5}__cost: {:} _____ prediction: \n{:}".format(
-                step, cost_val, hypo_val))
-    coord.request_stop()
-    coord.join(threads)
+        for step in range(repeatation):
+            x_batch, y_batch = sess.run([train_x_batch, train_y_batch])
+            cost_val, hypo_val, _ = sess.run(
+                [cost, hypothesis, train],
+                feed_dict={X: x_batch, Y: y_batch})
+            if step%100 == 0:
+                # print("{:0>5}__cost: {:} _____ prediction: \n{:}".format(
+                #     step, cost_val, hypo_val))
+                print("{:>5}__cost: {:}".format(
+                    step, cost_val))
+        coord.request_stop()
+        coord.join(threads)
 
 def show_asking_result_to_softmax(sess, hypothesis, X, x_data):
-        # testing & 'One-Hot' Encoding
-        predict = sess.run(
-            hypothesis,
-            feed_dict={X:x_data})
+    # testing & 'One-Hot' Encoding
+    predict = sess.run(
+        hypothesis,
+        feed_dict={X:x_data})
 
-        print("\n\n%s \n___ 'One-Hot'Encoding choice = %s" %(
-            predict,
-            sess.run(tf.arg_max(predict, 1))))    # 'One-Hot'Encoding
+    print("\n\n%s \n___ 'One-Hot'Encoding choice = %s" %(
+        predict,
+        sess.run(tf.arg_max(predict, 1))))    # 'One-Hot'Encoding
 
 def softMax_func_to_probablity(learnig_rate=1e-5, repeatation=2001):
     """ X.W = Y ...  X:[nx4] * W:[4x3] + b:[3] = Y:[nx3]
@@ -394,7 +390,7 @@ def draw_lists_pyplot(y_array, line_weight=3, learnig_rate=1):
 if __name__ == '__main__':
     # single_linear_regression(4.5e-5, 2001)         # cost=0.36
     # matrics_linear_regression(1e-5, 2001)          # cost=0.43
-    matrics_file_import_linear(1e-5, 2001)         # cost=0.87
-    # thread_queues_runner_linear()
+    # matrics_file_import_linear(1e-5, 2001)         # cost=0.87
+    thread_queues_runner_linear(1e-5, 10001)        # cost = 4.55 -> 4.42 min.
     # softMax_func_to_probablity(0.75, 2001)          # cost=0.0012
     # softMax_func_to_probablity(0.11, 1301)          # cost=0.0012
