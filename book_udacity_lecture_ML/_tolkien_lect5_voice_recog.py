@@ -1,13 +1,22 @@
-""" TOKIEN's Example for Voice Recogniton (M or F?)
-# Training Data
+""" TOLKIEN's Example for Voice Recogniton (M or F?)
+# Training Data : voice.csv
 # Lab 5 Logistic Regression Classifier
 # reference : https://www.kaggle.com/primaryobjects/voicegender
 """
 import os
 import numpy as np
+import urllib.request
 import tensorflow as tf
 
 CSV_DIR = os.path.join(os.path.dirname(__file__), '_csv_hunkim\\')
+
+r = urllib.request.urlopen(
+    'https://raw.githubusercontent.com/primaryobjects/voice-gender/master/voice.csv')
+r.readline()                    # r 객체에서 한 줄 팝 아웃 (readline)
+voice_csv = r.read()            # r 객체에서 잔여라인을 뽑아옴(read)
+
+with open(CSV_DIR+'voice.csv', 'wb') as f:
+    f.write(voice_csv)
 
 tf.set_random_seed(743)  # for reproducibility
 file_queue = tf.train.string_input_producer(

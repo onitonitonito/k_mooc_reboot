@@ -6,64 +6,47 @@ import time
 import math
 import winsound
 
-TEMPO = 1000    # playing speed = 1000
+TEMPO = 80    # playing speed = 1000
+
 DICT_NOTE = {   # DICT_NOTE = do, re, mi, pa, sol, ra, ti --->  Hz
     'do':261, 're':293, 'mi':329, 'pa':349, 'sol':391, 'ra':440, 'ti':493,
     'DO':530, 'RE':590, }
 A_NOTES = [
-    [['do', 'mi', 'mi', 'mi', 'sol', 'sol', 're', 'pa', 'pa', 'ra', 'ti', 'ti'],
-     [4, 4, 2, 4, 4, 2, 4, 4, 2, 4, 4, 2]],
+    'do', 'mi', 'mi', 'mi', 'sol', 'sol', 're', 'pa', 'pa', 'ra', 'ti', 'ti',
+    'sol', 'do', 'ra', 'pa', 'mi', 'do', 're',
+    'sol', 'do', 'ra', 'ti', 'DO', 'RE', 'DO','end']
+A_TEMPOS = [
+    4, 2, 6, 4, 2, 6, 4, 2, 6, 4, 2, 8,
+    6, 6, 4, 4, 4, 4, 8,
+    4, 4, 4, 4, 4, 4, 8, 0]
 
-    [['sol', 'do', 'ra', 'pa', 'mi', 'do', 're'],
-     [1, 1, 1, 1, 1, 1, 0.5]],
+def play_notes(notes, tempos):
+    for note, tempo in list(zip(notes, tempos)):
+        if note == 'end':
+            break
 
-    [['sol', 'do', 'ra', 'ti', 'DO', 'RE', 'DO']+['end'],
-     [1, 1, 1, 1, 1, 1, 0.5]+[0]],
-    ]
-    # print(len(A_NOTES))         # n = 3
-    # print(len(A_NOTES[0]))      # n = 2
-    # print(len(A_NOTES[0][0]))   # n = 12
+        print("{:>3} : ({} Hrz.) __ {:4,}".format(
+            note,
+            DICT_NOTE[note],
+            int(tempo*TEMPO)))
 
-def show_a_score(a_notes):  # Score of note
-    print('__'*40)
-    print('PLAYING NOTES for DO-RE-MI')
-    print('..'*40)
-    for num in enumerate(a_notes):
-        print(a_notes[num][0])        # ['do', 're', 'me', ...]
-    print()
-    print('__'*40)
-
-def get_ziped_music(a_notes): # IN= 'list' / OUT= ZIP_OBJ
-    note = []
-    hrzs = []
-    for num in enumerate(a_notes):   # n=3
-        note += a_notes[num][0]
-        hrzs += a_notes[num][1]
-    return zip(note, hrzs)
-
-def get_play_sound(zip_music):      #IN= ZIP_OBJECT
-    for key, duration in list(zip_music):
-        if key != 'end':
-            winsound.Beep(DICT_NOTE[key], int(TEMPO/duration))
-        else:
-            pass
-            # return False  # play once ...
-    return True             # play repeatedly ...
+        winsound.Beep(DICT_NOTE[note], int(tempo*TEMPO))
 
 def main_abc_song():
-    show_a_score(A_NOTES)
+    if len(A_NOTES) == len(A_TEMPOS):
+        print("...Numbers of Notes & Tempos are all the same!...")
 
-    for i in range(2):
-        zip_music = get_ziped_music(A_NOTES)
-        get_play_sound(zip_music)
-# main_abc_song()
+    while True:
+        play_notes(A_NOTES, A_TEMPOS)
 
+        if input('\n\n\nSTOP(y/NO)?').lower().startswith('y'):
+            break
 
-# """ -------------- Window beep sound :: calculating Hz :
+""" -------------- Window beep sound :: calculating Hz :
 #   refer to : stack overflow .com = 440 Hz is A4.
 #   reference blog : https://goo.gl/k89nFG
 #    - FRENCH SONG: "au clair de la lune"!! 'r' is a rest
-# """
+"""
 
 LABELS = ['a', 'a#', 'b', 'c', 'c#', 'd', 'd#', 'e', 'f', 'f#', 'g', 'g#']
 
@@ -91,7 +74,6 @@ def show_notes_hrz():
             print()
             column_count = 0
 
-
 def main_au_clair():
     show_notes_hrz()
 
@@ -103,5 +85,5 @@ def main_au_clair():
         # tempo = 180 bpm...
 
 if __name__ == '__main__':
-    main_abc_song()    # play 2 times
-    main_au_clair()    # play 2 times
+    main_abc_song()    # continueous playing
+    # main_au_clair()    # play 2 times
