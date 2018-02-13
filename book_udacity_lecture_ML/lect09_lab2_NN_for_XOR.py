@@ -27,6 +27,7 @@ accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, Y), dtype=tf.float32))
 """ Run graph """
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
+    # writer = tf.summary.FileWriter('./_logdir', sess.graph)
 
     costs = []
     for step in range(10001):

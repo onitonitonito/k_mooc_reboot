@@ -6,6 +6,50 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
+def test_show_linestyle():
+    color = 'cornflowerblue'
+    points = np.ones(5)  # Draw 5 points for each line
+    text_style = dict(horizontalalignment='right', verticalalignment='center',
+                      fontsize=12, fontdict={'family': 'monospace'})
+
+    def format_axes(ax):
+        ax.margins(0.2)
+        ax.set_axis_off()
+
+    def nice_repr(text):
+        return repr(text).lstrip('u')
+
+    # Plot all line styles.
+    fig, ax = plt.subplots()
+    linestyles = ['-', '--', '-.', ':']
+
+    for y, linestyle in enumerate(linestyles):
+        ax.text(-0.1, y, nice_repr(linestyle), **text_style)
+        ax.plot(y * points, linestyle=linestyle, color=color, linewidth=3)
+        format_axes(ax)
+        ax.set_title('The Line Styles')
+
+    plt.show()
+
+def test_simple_plot():
+    # x = list(range(0, 81, 1))     # 일반 list를 쓰지 못함.
+    x = np.arange(0, 81, 1)
+    print(x)
+
+    looking = [
+        {'lw':5, 'ls':':', 'color':'#ff9999', 'label':'first'},
+        {'lw':10, 'ls':'--', 'color':'#9999ff', 'label':'second'},
+        {'lw':3, 'ls':'-.', 'color':'#ee3377', 'label':'third'},]
+
+    plt.plot(x, np.sqrt(x), **looking[0])
+    plt.plot(x, 3e-3*x**2, **looking[1])
+    plt.plot(x, 1.45e-1*x, **looking[2])
+
+    plt.axis([0,81,0,10])   # [x=0~81, y=0,10]
+    plt.grid()
+    plt.legend()
+    plt.show()
+
 def line_plot_random():
     y = [.1,.5,1.2,1.3,2.1,2.5,2.7,2.9,3.5,3.7,4.7,5.1,6.1]
     plt.plot(y, lw=5)
@@ -133,10 +177,12 @@ def matplot_test02():
 
 
 if __name__ == '__main__':
+    # test_show_linestyle()       # Show 4-line styles in legend
+    test_simple_plot()          # So simple examples
     # matplot_test01()
     # matplot_test02()
     # line_graph()
-    line_plot_random()
+    # line_plot_random()
     # tangential_graph()
     # matplot_test01()
     # matplot_test02()

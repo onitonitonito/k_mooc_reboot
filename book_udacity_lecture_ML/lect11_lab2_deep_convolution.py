@@ -1,5 +1,4 @@
 """ DEEP convolution NN - Practice
-
 """
 import random
 import tensorflow as tf

@@ -10,7 +10,6 @@ def test_1():
     print(base_number)
 # test_1()
 
-
 def test_2():
     while True:
         for i in range(10):
@@ -52,7 +51,6 @@ def test_3():
     for i in range(len(value_list) - 1):
         print(',',type(value_list[i + 1]), end='')
     print(' 입니다.')
-
 # test_3()
 
 def test_4():

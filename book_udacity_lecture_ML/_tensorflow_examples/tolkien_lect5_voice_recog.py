@@ -19,6 +19,7 @@ with open(CSV_DIR+'voice.csv', 'wb') as f:
     f.write(voice_csv)
 
 tf.set_random_seed(743)  # for reproducibility
+
 file_queue = tf.train.string_input_producer(
     [CSV_DIR+'voice.csv'], name='file_queue')
 

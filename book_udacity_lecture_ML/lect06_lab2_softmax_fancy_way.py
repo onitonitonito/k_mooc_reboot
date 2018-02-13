@@ -52,6 +52,7 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 # Launch the Graph = Learning
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
+    writer = tf.summary.FileWriter('./_logdir', sess.graph)
 
     loss_array, accuracy_array = [], []
     print()

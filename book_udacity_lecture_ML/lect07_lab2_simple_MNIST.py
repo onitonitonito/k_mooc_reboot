@@ -46,6 +46,8 @@ accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
+    writer = tf.summary.FileWriter('./_logdir', sess.graph)
+
 
     for epoch in range(training_epoches):
         average_cost = 0.
