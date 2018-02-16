@@ -1,4 +1,8 @@
-from package_i.teamlab_note import Note, NoteBook
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+from package_i.class_note_notebook import Note, NoteBook
 
 new_note = Note()                           # declair OBJECT
 quote_book = NoteBook("Very good Word Book")# declair OBJECT

@@ -1,3 +1,5 @@
+""" this is for ../oop_drill/run_notebook.py
+"""
 class Note():       # contains only 1 content per OBJECT.
     def __init__(self, content=None):
         self.content = content
