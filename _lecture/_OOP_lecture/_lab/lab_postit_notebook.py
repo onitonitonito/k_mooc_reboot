@@ -1,8 +1,10 @@
+import os
+import time
 import random
 
-class PostIt(object):
-    def __init__(self, content):
-        self.content = content
+# class PostIt(object):
+#     def __init__(self, content):
+#         self.content = content
 
 
 class NoteBook(object):
@@ -24,15 +26,16 @@ class NoteBook(object):
         keys.sort()
 
         for key in keys:
-            print("{:2d}. {}".format(key, self.note_dict[key]))
+            print("{:2d}. {}".format(key, self.note_dict[key]), flush=True)
 
     def show_status(self):
         print("~~~~ %s ~~~~"% self.book_title)
-        print("포스트잇 갯수 = ", self.get_total_pages())
+        print("포스트잇 갯수 = ", self.get_total_pages(), flush=True)
         print('=='*10)
         self.show_used_pages()
         print('\n\n')
-
+        time.sleep(0.2)
+        os.system('cls')
 
 def add_list_to_postit(obj, titles,):
     for title in titles:
@@ -67,6 +70,24 @@ titles = [
     '저녁노을 바라보며',
     '아침에 이슬이 맺힌다',
     '돈크라이포미 알젠티나',
+    '내가 제일 잘나가',
+    '이세상에 하나밖에',
+    '저녁노을 바라보며',
+    '아침에 이슬이 맺힌다',
+    '돈크라이포미 알젠티나',
+    '내가 제일 잘나가',
+    '이세상에 하나밖에',
+    '저녁노을 바라보며',
+    '아침에 이슬이 맺힌다',
+    '내가 제일 잘나가',
+    '이세상에 하나밖에',
+    '저녁노을 바라보며',
+    '아침에 이슬이 맺힌다',
+    '돈크라이포미 알젠티나',
+    '내가 제일 잘나가',
+    '이세상에 하나밖에',
+    '저녁노을 바라보며',
+    '아침에 이슬이 맺힌다',
     '내가 제일 잘나가',
     '이세상에 하나밖에',
     '저녁노을 바라보며',

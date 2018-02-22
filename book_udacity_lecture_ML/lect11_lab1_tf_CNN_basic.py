@@ -11,9 +11,11 @@ X = tf.placeholder(dtype=tf.float32, shape=[None, 784], name='mnist_img')
 X_img = tf.reshape(tensor=X, shape=[-1,28,28,1])        # image reshape
 Y = tf.placeholder(dtype=tf.float32, shape=[None, 10], name='hypothesis')
 
+""" Hyper Parameter """
 nb_classes = 64             # number of choices 64
 training_epoches = 15
 learning_rate = 1e-2
+keep_prob = tf.placeholder(tf.float32)
 
 
 """ LAYER-01, HIDDEN
@@ -158,10 +160,6 @@ with tf.Session() as sess:
             average_cost))
 
     print('... learnig is finished! ...')
-
-
-
-
 
 with tf.InteractiveSession() as sess:
     sess.run(tf.global_variables_initializer())

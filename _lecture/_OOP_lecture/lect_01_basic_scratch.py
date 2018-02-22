@@ -16,6 +16,7 @@
 import _script_run_utf8
 _script_run_utf8.main()
 
+
 class ManOne(object):
     icon = '성격 나쁨'
 
@@ -35,10 +36,6 @@ class ManOne(object):
     def __sub__(self, other_obj):
         print("{}, {}.. 결국 이혼하다.".format(self.name, other_obj.name))
 
-    """ # '프라이빗' 매서드는 인스턴스로 보이지 않는다. = 클래스로 호출한다. """
-    def __dont_use_by_anyone(self):
-        print("*** 어떤! '인스턴스'도 /접/근/금/지/..!! ***")
-
     """ 클래스 매서드는, 인스턴스 명으로 클래스변수에 접근할 방법을 열어준다."""
     @classmethod
     def set_icon_change(cls, modified_string):
@@ -46,12 +43,17 @@ class ManOne(object):
 
     """ 스테틱 매서드는, 객체기능과 상관없지만 그림(편의)상 포함시켜야 할 때"""
     @staticmethod
-    def show_shortened_life_story_with(obj1, obj2): # 상관없으니 'self'인자 없음
+    def show_shortened_life_story_with(obj1, obj2):  # 상관없으니 'self'인자 없음
         print("\n\n'{}'와 '{}'의 짧은 인생스토리~ 시작!!.."
-            '\n--------------------'.format(obj1.name, obj2.name))
+              '\n--------------------'.format(obj1.name, obj2.name))
         obj1 + obj2
         obj1 - obj2
         obj1.__del__()
+        print('\n\n')
+
+    # '프라이빗' 매서드는 인스턴스로 보이지 않는다. = 클래스로 호출한다.
+    def __dont_use_by_anyone(self):
+        print("*** 어떤! '인스턴스'도 /접/근/금/지/..!! ***")
 
 
 class ManTwo(ManOne):
@@ -61,12 +63,11 @@ class ManTwo(ManOne):
         print("{}: 고마우어이~~ '{}!'".format(self.name, other_obj.name))
 
 
-
 m1, m2 = ManOne('철수'), ManTwo('영희')         # 객체 선언! .. 뾰로롱~!!
 
 m1.say_hello(m2)
 m2.say_thank_you(m1)
-# m1.say_thank_you(m2)      # 에러 = 맨1은 땡큐기능 없음! = 성격이 더럽기 때문
+# m1.say_thank_you(m2)      # 에러: 맨1은 땡큐기능 없음! = 성격 더럽기 때문
 
 """ 여기서,  질문~!!:
 .. 성격을 알아보는 기능은 어느 객체의 것일까? = 공통기능 (바깥에 정의)
@@ -74,6 +75,7 @@ m2.say_thank_you(m1)
 """
 def show_secret_of(obj):
     print("{}의 성격은... {}".format(obj.name, obj.icon))
+
 
 show_secret_of(m1)
 show_secret_of(m2)
@@ -92,7 +94,7 @@ m22 = ManTwo('똘똘이')
 show_secret_of(m22)
 
 
-""" 스테틱 매서드를 호출할 때는, '인스턴스'로 호출한다. """
+# @staticmethod (스태틱매서드)를 호출할 때는, 객체 상관없지만, '인스턴스'로 호출!! """
 m1.show_shortened_life_story_with(m1, m2)
 
 """ 프라이빗 매서드(더블언더스코어)를 호출하는 방법

@@ -1,25 +1,28 @@
-""" DEEP convolution NN - Practice
+""" DEEP Convolution Neural Network - Practice for MNIST
 """
 import random
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
 from tensorflow.examples.tutorials.mnist import input_data
+
 tf.set_random_seed(777)     # reproducibility
 
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
 """ HYPER PARAMETER """
-learning_rate = 1e-2
+learning_rate = 1e-3
 training_epoches = 15
 batch_size = 100
+nb_classes = 10             # number of choices, 10
+
 # dropout(keep_prob) rate = 0.7~0.5 on training, but should be 1 for testing.
 keep_prob = tf.placeholder(tf.float32)
-# nb_classes = 64             # number of choices 64
+
 
 X = tf.placeholder(dtype=tf.float32, shape=[None, 784], name='mnist_img')
 X_img = tf.reshape(tensor=X, shape=[-1,28,28,1])   # img = 28x28x1=784.px
-Y = tf.placeholder(dtype=tf.float32, shape=[None, 10], name='label')
+Y = tf.placeholder(dtype=tf.float32, shape=[None, nb_classes], name='label')
 
 """ LAYER-01, HIDDEN
 # Tensor("conv2d: 0",    shape=(?,28,28,32), dtype=float32)
@@ -128,11 +131,11 @@ cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
 train = optimizer.minimize(cost)
 
-sess = tf.Session()
-sess.run(tf.global_variables_initializer())
 
 """ train model """
-print('... Learning get started ...')
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
+print('\n\n... Learning get started ...')
 
 for epoch in range(training_epoches):
     average_cost = 0
@@ -145,13 +148,13 @@ for epoch in range(training_epoches):
         cost_val, _ = sess.run(fetches=[cost, train], feed_dict=feed_dict)
         average_cost += cost_val / total_batch
 
-    print("Epoch.{:4d} __ Cost:{:.9f}".format(epoch+1, average_cost))
-print('... Learning is finished! ...')
+    print("Epoch.{:2d} __ Cost: {:.7f}".format(epoch+1, average_cost))
+print('... Learning is finished! ...\n\n')
 
 """ Test model & check accuracy """
 correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(
-    x=correct_prediction, DstT=tf.float32, name='accuracy'))
+    x=correct_prediction, dtype=tf.float32, name='accuracy'))
 
 
 print("accuracy : {}".format(
@@ -162,5 +165,5 @@ print("accuracy : {}".format(
 r = random.randint(0, mnist.test.num_examples-1)
 print("Label : {}".format(sess.run(tf.argmax(mnist.test.labels[r:r+1], 1))))
 print("Prediction : {}".format(
-    tf.argmax(logits,1),
-    feed_dict={X:mnist.test.images[r:r+1], keep_prob: 1}))
+    sess.run(tf.argmax(logits,1),
+    feed_dict={X:mnist.test.images[r:r+1], keep_prob: 1})))

@@ -14,6 +14,7 @@ import numpy as np
 # f.write(xmldata)
 # f.close()
 
+
 def findfaces(full_url_to_image):
     f = urllib.request.urlopen(full_url_to_image)
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface.xml')
@@ -30,12 +31,13 @@ def findfaces(full_url_to_image):
     print("------> Found {0} faces! <------ ").format(len(faces))
 
     for (x, y, w, h) in faces:
-        cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 5)
+        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 5)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     plt.imshow(image, extent=[300, 500, 0, 1], aspect='auto')
     plt.grid(False)
     plt.axis('off')
     plt.show()
 
-IMG_URL="http://i.telegraph.co.uk/multimedia/archive/03385/putin-berlusconi-s_3385218k.jpg"
+
+IMG_URL = "http://i.telegraph.co.uk/multimedia/archive/03385/putin-berlusconi-s_3385218k.jpg"
 findfaces(IMG_URL)
