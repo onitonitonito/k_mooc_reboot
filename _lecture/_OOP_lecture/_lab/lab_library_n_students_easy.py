@@ -1,37 +1,29 @@
-"""
-# class function definition
-# Library class = show available / lend book / restore book
-# Customer class = borrow book / return book /
-# : https://www.udemy.com/python-oops-beginners/learn/v4/t/lecture/7359328
-
- (1) pickle = write directly into a file as data-format
- (2) read =
- (3) write =
- (4) os.exists & os.remove
- """
-import os
-import sys
 import pickle
 
 BOOK_LIST_FILE = 'book_list_v00.pdb'
-BOOK_LIST = ['도라에몽', '나루토', '진격의거인', '공각기동대', '페트레이버',
-             '포켓몬스터', '케모노프렌즈']
-WORK_DIR = os.path.dirname(__file__)
-ROOT_WORD = 'k_mooc_reboot'                 # root directory
-ROOT_DIR = WORK_DIR.partition(ROOT_WORD)[0] + WORK_DIR.partition(ROOT_WORD)[1]
-PICKLE_WITH_DIR = ROOT_DIR + '\\_static\\_log\\' + BOOK_LIST_FILE
+BOOK_LIST = [
+    '진격의거인',
+    '공각기동대',
+    '페트레이버',
+    '포켓몬스터',
+    '케모노프렌즈']
 
-"""
-PICKLE_WITH_DIR = 북리스트(피클)화일을 저장 할 위치(DIR)
-C:\\Users\nitt0\Documents\Github\k_mooc_reboot\_static\_log\book_list_v00.pdb
+WORK_DIR = './_pickle/'
+PICKLE_WITH_DIR = WORK_DIR + BOOK_LIST_FILE
+# ./_pickle/book_list_v00.pdb
 
-WORK_DIR = 현재 작성하고 있는 화일이 있는 위치 : 워킹디렉토리(DIR)
-C:\\Users\nitt0\Documents\Github\k_mooc_reboot\01_lecture\making_things
-"""
 
-sys.path.append(ROOT_DIR)
-import _script_run_utf8
-_script_run_utf8.main()
+
+
+
+
+
+
+
+
+
+
+
 
 class Library(object):
     def __init__(self, available_book_list):
