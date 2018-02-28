@@ -5,34 +5,37 @@
 import _script_run_utf8
 _script_run_utf8.main()
 
-SEPARATOR = '\n--------------------- %s ---'
+SEPARATOR = '\n----- %s ---------'
 
 def udemy4_7_class_n_instance_attribute():
-    """ 인스턴스 속성 --> 클래스 속성 순서로 체크한다.
-      - 인스턴스 속성으로 신규작성
-      - 클래스 속성은 수정 가능
+    """ 인스턴스 속성 --> 클래스 속성 순서로 체크 한다.
+      - 인스턴스 속성으로 신규작성 (인스턴스로 생성가능 = 용접공)
+      - 클래스 속성은 수정 가능 (인스턴스로 수정가능 = 개인 정보만 수정)
     """
     class Employee(object):
-        working_hour = 40               # 전역변수(class)
+        working_hour = 40               # 전역변수(클래스 변수)
 
         def __init__(self, name):
-            self.name = name            # 전역변수(self)
+            self.name = name            # 전역변수(인스턴스 변수)
 
-    kay = Employee('케이 수팍스')
-    mark = Employee('마크 맥거번')
+    kay = Employee('케이수팍스')         # 작업시간(클)/ 이름(매=인스턴스 속성)
+
+    mark = Employee('마크맥고완')
     mark.working_hour = 45              # 기존정보 수정 (클래스 속성)
     mark.work_line = '용접공'            # 신규정보 추가 (인스턴스 속성)
 
     print(SEPARATOR% '고용자1 정보')
-    print('고용자1(%s) 근무시간 (%s)Hr'% (kay.name, kay.working_hour))
+    print("'%s' 근무시간= %s Hr"% (kay.name, kay.working_hour))
 
     print(SEPARATOR% '고용자2 정보')
-    print("'%s' 근무시간 (%s)Hr"% (mark.name, mark.working_hour))
+    print("'%s' 근무시간= %s Hr"% (mark.name, mark.working_hour))
     print("'%s' 의 전문분야 : %s" %(mark.name, mark.work_line))
-udemy4_7_class_n_instance_attribute()
+# udemy4_7_class_n_instance_attribute()
 
 def udemy4_8_understangind_self():
-    """ self 파라미터의 이해
+    """ self 파라미터의 이해 (인스턴스 전역변수 / 지역변수)
+     - 매서드(함수) 내부 변수는 인스턴스로 호출 불가능 (self가 아닌 경우)
+     - 매서드 내부에서만 사용할 수 있다 (당연한 이야기)
     """
     class Employee(object):
         def employee_details(self):
@@ -51,31 +54,37 @@ def udemy4_8_understangind_self():
             # AttributeError: 'Employee' object has no attribute 'age'
             # print('AGE(forced self)  :', self.age)    # ERROR!
 
-    kay = Employee()
-    kay.employee_details()
-    kay.show_employee_details()
+    # kay = Employee()
+    # kay.employee_details()
+    # kay.show_employee_details()
 # udemy4_8_understangind_self()
 
 def udemy4_9_staticmethod():
+    """ """
     class Employee(object):
         def __init__(self):
             self.name = '마이클 오브라이언'
 
         def employee_details(self):
-            print(SEPARATOR% '고용자 상세정보')
+            print(SEPARATOR % '고용자 상세정보')
             print(' 1.이름(self) :', self.name)
 
         @staticmethod
         def welcome_message():
-            print(SEPARATOR% '스태틱 매소드')
-            print('''"우리회사에 오신 것을 환영합니다!"''')
+            """ '스태틱 매스드'는 딱히, 객체와 상관없다(self를 사용하지 않음)
+             - 객체의 기능과 상관없지만, 구조(편의)상 클래스객체에 포함시킬 경우
+             - '스태틱 매서드'를 호출 할 때는 인스턴스로 호출 할수 있다.
+            """
+            print(SEPARATOR % '스태틱 매소드(@staticmethod)')
+            print("우리회사에 오신것을 환영합니다. -- 클래스객체와 무관합니다.")
 
+            # self 를 정의하지 않았으므로, self로 혼용해서 쓸 수 없다.
             # NameError: name 'self' is not defined
             # print(" %s, 우리회사에 오신 것을 환영합니다!"% self.name)
 
     kay = Employee()
-
     kay.employee_details()
+
     # this is @staticmethod - decorator
     kay.welcome_message()
 # udemy4_9_staticmethod()

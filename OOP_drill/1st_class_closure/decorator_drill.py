@@ -9,11 +9,11 @@ def outer_function(message):
         print(message)
     return inner_function
 
-# hi_func = outer_function('Hi~!!')
-# bye_func = outer_function('Bye~!')
-#
-# hi_func()
-# bye_func()
+hi_func = outer_function('Hi~!!')
+bye_func = outer_function('Bye~!')
+
+hi_func()
+bye_func()
 
 """--------------------------------------- SESSION 02--to make decorator_function
 
