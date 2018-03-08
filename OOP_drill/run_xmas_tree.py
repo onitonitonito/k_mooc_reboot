@@ -1,5 +1,12 @@
-from package_i.xmas_tree import *
 import os
+import sys
+from os.path import dirname, join
+
+WORK_DIR = join(dirname(dirname(__file__)), 'package_i', '')
+print(WORK_DIR)
+sys.path.append(dirname(dirname(__file__)))
+
+from package_i.xmas_tree import *
 
 # order_leaf = [10, 20, 30, 40, 50, 60, 70, 80, 90,]
 # order_trunk = [1, 2, 3, 4, 5, 6, 7, 8, 9,]
