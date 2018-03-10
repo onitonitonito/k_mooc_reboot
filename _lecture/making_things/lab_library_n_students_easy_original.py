@@ -36,10 +36,6 @@ print(PICKLE_WITH_DIR)
 # C:\\Users\nitt0\Documents\Github\k_mooc_reboot\01_lecture\making_things
 # """
 #
-# sys.path.append(ROOT_DIR)
-# import _script_run_utf8
-# _script_run_utf8.main()
-#
 # class Library(object):
 #     def __init__(self, available_book_list):
 #         self.available_book_list = available_book_list

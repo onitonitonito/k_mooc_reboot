@@ -2,7 +2,7 @@
         - function in function (double wrapped function)
         - return function itself as a value
 '''
-num_list = [1,3,5,7,9]
+num_list = [1, 3, 5, 7, 9]
 
 def square (x):
     return x*x

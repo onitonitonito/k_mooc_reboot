@@ -2,9 +2,6 @@
  (1) U4-8 = 객체중의 self 파라메터 이해하기
  (2) U4-9 = 스태틱과 인스턴스 메쏘드
 """
-import _script_run_utf8
-_script_run_utf8.main()
-
 SEPARATOR = '\n----- %s ---------'
 
 def udemy4_7_class_n_instance_attribute():

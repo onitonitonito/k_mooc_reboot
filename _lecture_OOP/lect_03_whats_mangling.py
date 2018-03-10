@@ -2,9 +2,6 @@
 # - '파이썬' 은 퍼블릭 매서드만 존재함 = '양식' 있는 다 큰 어른
 # - '맹글링' mangling 은 같은 '매서드'명의 중복방지.. 사용 '프라이빗' 아님
 
-import _script_run_utf8
-_script_run_utf8.main()
-
 
 class ManOne(object):
     def __init__(self, kind):

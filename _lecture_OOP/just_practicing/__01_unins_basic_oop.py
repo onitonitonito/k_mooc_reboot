@@ -13,10 +13,6 @@
    * 상속 (Inherit) = 부모(Parent) - 자식(Child)
    * 중복 (Override) = 덮어쓰기 / 겹쳐쓰기
  """
-import _script_run_utf8
-_script_run_utf8.main()
-
-
 class ManOne(object):
     icon = '성격이 나쁨'
 

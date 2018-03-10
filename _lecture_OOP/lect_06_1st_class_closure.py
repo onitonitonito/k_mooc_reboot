@@ -10,8 +10,6 @@
   - refer : http://jonnung.blogspot.kr/2014/09/python-easy-closure.html
   - refer to : SchoolOfWeb = https://goo.gl/CmMaqo : 파이썬 '클로저'
 """
-import _script_run_utf8
-_script_run_utf8.main()
 
 """ 1급 클래스 함수()와 클로저(): (1급 시민이란? 함수와 객체클래스를 모두 받음)
 x,y 를 받아서 내부함수로 전달

@@ -2,9 +2,6 @@
 # - 클래스 변수를, 클래스로 접근하여 바꾼다 = '붕어빵 틀'을 바꿔버림
 # - 인스턴스 변수를, 인스턴스로 접근해서 바꾼다 = '개인 성격'만 바꿈.
 
-import _script_run_utf8
-_script_run_utf8.main()
-
 
 class TestClass(object):     # 클래스명은 파스칼 타입 = 기본 '오브젝트'를 상속한다.
     class_string = '클래스변수 - 원본: 실험적 테스트 스트링'

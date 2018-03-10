@@ -16,10 +16,6 @@ sys.path.append(HOME_DIR)
 
 FILE_NAME = 'data_for_pickle.pdb'
 
-import _script_run_utf8
-_script_run_utf8.main()
-
-
 def test1_make_comprehensive_list_dict():
     _a = '가나다라마바사아자차카타파하'               # 14 letters
     _b = 'ga-na-da-ra-ma-ba-sa-ah-ja-cha-ka-ta-pa-ha'.strip().split('-')  # 14

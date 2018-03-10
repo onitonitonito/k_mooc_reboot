@@ -5,8 +5,6 @@ def attribute(self):
 @attribute.setter
 def attribute(self,value):
 """
-import _script_run_utf8
-_script_run_utf8.main()
 
 """ @프로퍼티 데코레이터를 사용하는 이유(!)
  - 변수처럼 변경이 가능 함: ins1.name = 'Alex'

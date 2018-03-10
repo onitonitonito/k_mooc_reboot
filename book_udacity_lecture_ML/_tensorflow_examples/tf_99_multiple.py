@@ -3,7 +3,28 @@
 # 예제2 : 구구단
 # 출처: [파이쿵] http://pythonkim.tistory.com/68?category=574914
 """
+import os
+import sys
+
+ROOT_DIR = "k_mooc_reboot"
+CURRENT_DIR = os.path.dirname(__file__)
+
+""" 공통 스크립트를 패치하기 위한 사전작업 """
+dirs = CURRENT_DIR.partition(ROOT_DIR)
+sys.path.append(dirs[0]+dirs[1])
+
+""" '스크립트런' 한글 인코딩 패치 """
+import _script_run_utf8 as sr
+sr.main()
+
+""" 화일, DIR 관련 패치 """
+import _files_dirs_run as fd
+# fd.main() --- ROOT_DIR 의 화일리스트가 '장식자'로 표시된다.
+
+
 import tensorflow as tf
+LOG_DIR = os.path.join(fd.get_dir(), '_static', '_logdir')
+
 
 def one2three_1():
     """
@@ -72,10 +93,14 @@ def table99_2(which):
             print('{} x {} = {:2}'.format(left, right, result))
         print()
 
-def table99_3(which):
-    left = tf.placeholder(tf.int32)
-    right = tf.placeholder(tf.int32)
-    update = tf.multiply(left, right)
+def table99_3(which, log_dir=LOG_DIR):
+    with tf.name_scope('Placeholders_multifly'):
+        left = tf.placeholder(tf.int32)
+        right = tf.placeholder(tf.int32)
+        update = tf.multiply(left, right)
+
+    # op to write logs to Tensorboard
+    summary_writer = tf.summary.FileWriter(log_dir, graph=tf.get_default_graph())
 
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
@@ -88,10 +113,10 @@ def table99_3(which):
 
 
 if __name__ == '__main__':
-    one2three_1()
+    # one2three_1()
     # one2three_2()
     #
     # table99_1(7)
     # table99_2(7)
-    # table99_3(7)
+    table99_3(7)
     pass

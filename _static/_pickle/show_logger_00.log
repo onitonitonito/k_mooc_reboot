@@ -1,0 +1,30 @@
+INFO:root:[2018-03-09 23:43:33]실행결과-args=('제이콥',), kwargs={'age': 24}
+INFO:root:[2018-03-09 23:43:34]실행결과-args=('안녕 세상!!',), kwargs={}
+INFO:root:[2018-03-09 23:43:36]실행결과-args=('잘가, 바이바이~',), kwargs={}
+INFO:root:[2018-03-09 23:43:38]실행결과-args=(), kwargs={'name': 'Kay', 'age': 24}
+INFO:root:[2018-03-09 23:43:39]실행결과-args=(), kwargs={'message': 'HELLO WORLD!!'}
+INFO:root:[2018-03-09 23:43:41]실행결과-args=(), kwargs={'message': 'SEE-YOU, ByeBye~'}
+INFO:root:[2018-03-09 23:44:34]실행결과-args=('제이콥',), kwargs={'age': 24}
+INFO:root:[2018-03-09 23:44:35]실행결과-args=('안녕 세상!!',), kwargs={}
+INFO:root:[2018-03-09 23:44:37]실행결과-args=('잘가, 바이바이~',), kwargs={}
+INFO:root:[2018-03-09 23:44:39]실행결과-args=(), kwargs={'name': 'Kay', 'age': 24}
+INFO:root:[2018-03-09 23:44:40]실행결과-args=(), kwargs={'message': 'HELLO WORLD!!'}
+INFO:root:[2018-03-09 23:44:42]실행결과-args=(), kwargs={'message': 'SEE-YOU, ByeBye~'}
+INFO:root:[2018-03-09 23:45:06]실행결과-args=('제이콥',), kwargs={'age': 24}
+INFO:root:[2018-03-09 23:45:07]실행결과-args=('안녕 세상!!',), kwargs={}
+INFO:root:[2018-03-09 23:45:09]실행결과-args=('잘가, 바이바이~',), kwargs={}
+INFO:root:[2018-03-09 23:45:11]실행결과-args=(), kwargs={'name': 'Kay', 'age': 24}
+INFO:root:[2018-03-09 23:45:12]실행결과-args=(), kwargs={'message': 'HELLO WORLD!!'}
+INFO:root:[2018-03-09 23:45:14]실행결과-args=(), kwargs={'message': 'SEE-YOU, ByeBye~'}
+INFO:root:[2018-03-09 23:45:58]-args=('제이콥',), kwargs={'age': 24}
+INFO:root:[2018-03-09 23:45:59]-args=('안녕 세상!!',), kwargs={}
+INFO:root:[2018-03-09 23:46:01]-args=('잘가, 바이바이~',), kwargs={}
+INFO:root:[2018-03-09 23:46:03]-args=(), kwargs={'name': 'Kay', 'age': 24}
+INFO:root:[2018-03-09 23:46:04]-args=(), kwargs={'message': 'HELLO WORLD!!'}
+INFO:root:[2018-03-09 23:46:06]-args=(), kwargs={'message': 'SEE-YOU, ByeBye~'}
+INFO:root:[2018-03-09 23:46:40]-args=('제이콥',), kwargs={'age': 24}
+INFO:root:[2018-03-09 23:46:41]-args=('안녕 세상!!',), kwargs={}
+INFO:root:[2018-03-09 23:46:43]-args=('잘가, 바이바이~',), kwargs={}
+INFO:root:[2018-03-09 23:46:45]-args=(), kwargs={'name': 'Kay', 'age': 24}
+INFO:root:[2018-03-09 23:46:46]-args=(), kwargs={'message': 'HELLO WORLD!!'}
+INFO:root:[2018-03-09 23:46:48]-args=(), kwargs={'message': 'SEE-YOU, ByeBye~'}

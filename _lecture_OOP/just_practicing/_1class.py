@@ -1,6 +1,3 @@
-import _script_run_utf8
-_script_run_utf8.main()
-
 class TestObject(object):
     """ 클래스 변수(v1, v2) = self (전역변수)로 접근한다
     """

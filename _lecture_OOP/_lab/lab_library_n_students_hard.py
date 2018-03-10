@@ -5,9 +5,6 @@
 import os
 import time
 
-import _script_run_utf8
-_script_run_utf8.main()
-
 DECORATOR = "=+" * 10
 FORMAT_LIST_3 = DECORATOR +\
         "\n %s" +\
