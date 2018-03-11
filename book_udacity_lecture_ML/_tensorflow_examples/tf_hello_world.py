@@ -11,10 +11,6 @@ CURRENT_DIR = os.path.dirname(__file__)
 dirs = CURRENT_DIR.partition(ROOT_DIR)
 sys.path.append(dirs[0]+dirs[1])
 
-""" '스크립트런' 한글 인코딩 패치 """
-import _script_run_utf8 as sr
-sr.main()
-
 """ 화일, DIR 관련 패치 """
 import _files_dirs_run as fd
 # fd.main() --- ROOT_DIR 의 화일리스트가 '장식자'로 표시된다.

@@ -6,13 +6,12 @@ __pycache__/
 *.xml
 *.sqlite3
 
+#2 TensorBoard log data = _logdir/*.YOGA-0KPGT19P_
+#*.YOGA-0KPGT19P
+
 #2 PyInstaller Distribution __________
 dist/
 
 #3 Temporary exec files for TEST _____
 _.html
 _.pdb
-
-#4 Temporary python DB files _________
-MNIST_data/
-pdb_temp/

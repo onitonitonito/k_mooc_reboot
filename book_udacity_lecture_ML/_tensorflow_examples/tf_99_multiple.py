@@ -10,12 +10,9 @@ ROOT_DIR = "k_mooc_reboot"
 CURRENT_DIR = os.path.dirname(__file__)
 
 """ 공통 스크립트를 패치하기 위한 사전작업 """
-dirs = CURRENT_DIR.partition(ROOT_DIR)
-sys.path.append(dirs[0]+dirs[1])
-
-""" '스크립트런' 한글 인코딩 패치 """
-import _script_run_utf8 as sr
-sr.main()
+_dirs = CURRENT_DIR.partition(ROOT_DIR)
+ROOT_DIR = _dirs[0] + _dirs[1]
+sys.path.append(ROOT_DIR)           # 'ROOT_DIR'을 시스템PATH에 등록한다.
 
 """ 화일, DIR 관련 패치 """
 import _files_dirs_run as fd

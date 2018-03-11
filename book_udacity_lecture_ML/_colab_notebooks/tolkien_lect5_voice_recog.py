@@ -4,11 +4,25 @@
 # reference : https://www.kaggle.com/primaryobjects/voicegender
 """
 import os
+import sys
+
+ROOT_DIR = "k_mooc_reboot"
+CURRENT_DIR = os.path.dirname(__file__)
+
+""" 공통 스크립트를 패치하기 위한 사전작업 """
+dirs = CURRENT_DIR.partition(ROOT_DIR)
+sys.path.append(dirs[0]+dirs[1])
+
+""" 화일, DIR 관련 패치 """
+import _files_dirs_run as fd
+# fd.main() --- ROOT_DIR 의 화일리스트가 '장식자'로 표시된다.
+
+CSV_DIR = os.path.join(fd.get_dir(), '_static', '_csv_hunkim', '')
+
 import numpy as np
 import urllib.request
 import tensorflow as tf
 
-CSV_DIR = os.path.join(os.path.dirname(__file__), '_csv_hunkim\\')
 
 r = urllib.request.urlopen(
     'https://raw.githubusercontent.com/primaryobjects/voice-gender/master/voice.csv')
