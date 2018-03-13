@@ -193,5 +193,5 @@ if __name__ == '__main__':
     # matplot_test01()
     # matplot_test02()
     # bar_chart_with_value()
-    # text_equation_cloud()
+    text_equation_cloud()
     pass
