@@ -84,3 +84,31 @@ class Cart(Car):
         }
         print('NEW CAR has come..........!!?? Crazy??')
         print(self.__str__())
+
+
+if __name__ == '__main__':
+    a = Car('ACCENT')
+    b = Car('ODYSSAY')
+
+    a.speed_up()
+    a.speed_up()
+    a.speed_up()
+    a.speed_up()
+    a.speed_up()
+    a.speed_up()
+    a.speed_up()
+
+
+    b.speed_up()
+    b.speed_up()
+    b.speed_up()
+
+    print()
+    b.speed_down()
+    b.speed_down()
+    b.speed_down()
+    b.speed_down()
+
+    c = SportCar('Porsche')
+    d = Truck('Scannia')
+    e = Cart('SuperMarket')
