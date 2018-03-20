@@ -25,12 +25,12 @@ WORK_DIR = os.path.dirname(__file__)
 ROOT_WORD = 'k_mooc_reboot'                 # root directory
 
 ROOT_DIR = WORK_DIR.partition(ROOT_WORD)[0] + WORK_DIR.partition(ROOT_WORD)[1]
-PICKLE_WITH_DIR = ROOT_DIR + '\\_static\\_log\\' + BOOK_LIST_FILE
+PICKLE_WITH_DIR = ROOT_DIR + '\\_static\\_pickle\\' + BOOK_LIST_FILE
 print(PICKLE_WITH_DIR)
 
 """
 PICKLE_WITH_DIR = 북리스트(피클)화일을 저장 할 위치(DIR)
-C:\\Users\nitt0\Documents\Github\k_mooc_reboot\_static\_log\book_list_v00.pdb
+C:\\Users\nitt0\Documents\Github\k_mooc_reboot\_static\_pickle\book_list_v00.pdb
 
 WORK_DIR = 현재 작성하고 있는 화일이 있는 위치 : 워킹디렉토리(DIR)
 C:\\Users\nitt0\Documents\Github\k_mooc_reboot\01_lecture\making_things

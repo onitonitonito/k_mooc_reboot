@@ -1,4 +1,5 @@
 """ Face Recognition by OpenCV-Python """
+import os
 import urllib
 import matplotlib.pyplot as plt
 import cv2
@@ -6,13 +7,21 @@ import numpy as np
 
 # File "D:\My Documents\GitHub\k_mooc_reboot\_1.py", line 11, in <module>
 # f.write(xmldata) - TypeError: write() argument must be str, not bytes
-# ---------------------
-# xmldata = urllib.request.urlopen(
-#     'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml'
-#     ).read()
-# f = open('haarcascade_frontalface.xml','w')
-# f.write(xmldata)
-# f.close()
+
+DIRS = os.path.dirname(__file__).partition('k_mooc_reboot\\')
+ROOT = DIRS[0] + DIRS[1]
+
+filename = 'haarcascade_frontalface.xml'
+filename_with_dir = os.path.join(ROOT, '_static', filename)
+# print(filename_with_dir); quit()
+
+xmldata = urllib.request.urlopen(
+    'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml'
+    ).read()
+
+with open(filename_with_dir,'wb') as f:
+    f.write(xmldata)
+    print("O.K.")
 
 
 def findfaces(full_url_to_image):

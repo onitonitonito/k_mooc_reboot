@@ -22,7 +22,7 @@ HEADER='''\n
 MY_MEMO = 'memo.pdb'
 DESTIN_DIR = os.path.join(
         os.path.dirname(os.path.dirname(__file__)),
-        '_static', '_log', '' )
+        '_static', '_pickle', '' )
 
 if len(sys.argv) < 2:
     print('\n**** ERR: YOU NEED MORE THAN 1 Argv(option)! ****')
