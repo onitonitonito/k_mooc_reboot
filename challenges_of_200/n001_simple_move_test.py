@@ -1,5 +1,10 @@
-import os, sys, pygame
-DESTIN_DIR = os.path.dirname(__file__)+'/sprites/'
+import os
+import sys
+import pygame
+
+DIRS = os.path.dirname(__file__).partition("challenges_of_200\\")
+ROOT = DIRS[0] + DIRS[1]
+WORK_DIR = os.path.join(ROOT, 'sprites', '')
 
 POS_X = (480-50)/2
 POS_Y = (640-(53+20))
@@ -9,7 +14,7 @@ Y_MOVE = 0
 
 pygame.init()
 
-fighter = pygame.image.load(DESTIN_DIR+'galaga_fighter.png')
+fighter = pygame.image.load(WORK_DIR + 'galaga_fighter.png')
 fighter = pygame.transform.scale(fighter,(50,53))
 
 DISPLAYSURF = pygame.display.set_mode((480, 640))

@@ -1,4 +1,6 @@
-import pygame, sys, os
+import os
+import sys
+import pygame
 # from pygame.locals import *
 DESTIN_DIR = os.path.dirname(__file__)+'/sprites/'
 

@@ -1,4 +1,6 @@
-import os, sys, pygame
+import os
+import sys
+import pygame
 ''' further development
         - encounter enemy and cross fire.
 '''
