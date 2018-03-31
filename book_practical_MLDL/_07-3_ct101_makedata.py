@@ -73,6 +73,7 @@ Y = np.array(Y)
 # 학습 전용데이터 와 테스트 전용데이터를 구분한다  ...  (*7)
 X_train, X_test, y_train, y_test = train_test_split(X, Y)
 xy = (X_train, X_test, y_train, y_test)
+
 np.save(WORK_DIR + "image\\object_5.npy", xy)
 
 print("O.K. ___ total data :  %s 개 완료!"% len(Y))
