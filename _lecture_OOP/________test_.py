@@ -1,12 +1,14 @@
-
 def price():
-    # doc = "The [object Object] property."
-    _obj_object = 4000
+    doc = "The [price object] property."
     def fget(self):
-        return self._obj_object
+        return self._object
     def fset(self, value):
-        self._obj_object = value
+        self._object = value
     def fdel(self):
-        del self._obj_object
+        del self._object
     return locals()
+
+for key, value in price().items():
+    print("%s = %s"%(key,value))
+
 price = property(**price())

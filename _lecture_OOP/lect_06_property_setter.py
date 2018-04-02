@@ -25,6 +25,8 @@ class Person(object):
     def name(self, value):
         self.__name = value
 
+
+
 ps = Person('Alex')
 ps.name = 'Lisa'                # set self.__name = 'Lisa'
 _= """1. @property / @func.setter 이용 """
@@ -42,6 +44,8 @@ _="""3. 인스턴스 변수는 한 객체에만 영향을 준다 (빵틀은 안 
 print(_)
 print("  ps = %s"% ps.name)
 print("  ps1= %s"% ps1.name)
+
+
 
 
 class SetColor(object):
