@@ -17,7 +17,7 @@ soup = BeautifulSoup(file_html, 'html.parser')
 print(soup.select_one('li:nth-of-type(8)').string)              # AVOCADO
 print(soup.select_one('#ve-list > li:nth-of-type(4)').string)   # AVOCADO
 
-print(soup.select("#ve-list > li[data-lo='us']")[1].string)   # AVOCADO
+print(soup.select("#ve-list > li[data-lo='us']")[1].string)     # AVOCADO
 print(soup.select('#ve-list > li.black')[1].string)             # AVOCADO
 
 
