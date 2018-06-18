@@ -1,25 +1,18 @@
-import os
 import sys
 import pygame
+import _parent_path                     # SET FOR ASSET
 
-DIRS = os.path.dirname(__file__).partition("challenges_of_200\\")
-ROOT = DIRS[0] + DIRS[1]
-WORK_DIR = os.path.join(ROOT, 'sprites', '')
-
-POS_X = (480-50)/2
-POS_Y = (640-(53+20))
-
-X_MOVE = 0
-Y_MOVE = 0
+from asset.init import *
+from asset.sprite import *
 
 pygame.init()
 
-fighter = pygame.image.load(WORK_DIR + 'galaga_fighter.png')
-fighter = pygame.transform.scale(fighter,(50,53))
+FIGHTER = set_sprite(FILE_IMG_01, 50, 53)
 
-DISPLAYSURF = pygame.display.set_mode((480, 640))
-pygame.display.set_caption('MOVE TEST SCREEN')
+DISPLAYSURF = pygame.display.set_mode((SCREEN_SIZE[0], SCREEN_SIZE[1]))
+pygame.display.set_caption('MOVE TEST SCREEN (%sx%s)' % (SCREEN_SIZE[0],SCREEN_SIZE[1]))
 FPS_CLK = pygame.time.Clock()
+
 
 while True:
     for event in pygame.event.get():
@@ -46,11 +39,8 @@ while True:
         POS_X += X_MOVE
         POS_Y += Y_MOVE
 
-        DISPLAYSURF.fill((0,0,0))
-        DISPLAYSURF.blit(fighter,(POS_X, POS_Y))
+        DISPLAYSURF.fill(BLACK)
+        DISPLAYSURF.blit(FIGHTER,(POS_X, POS_Y))
 
         pygame.display.update()
-        FPS_CLK.tick(30)
-
-pygame.quit()
-sys.exit()
+        FPS_CLK.tick(FPS)

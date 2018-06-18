@@ -1,13 +1,13 @@
-import pygame
 ''' Just show black pad screen
         - the first preparation of shooting gamepad.
         - only gamepad, caption, main_loop were suggested.
 '''
+import sys
+import pygame
+import _parent_path                     # SET FOR ASSET
 
-# Global vari.
-BLACK = (0, 0, 0)
-PAD_WIDTH = 480
-PAD_HEIGHT = 640
+from asset.init import *
+from asset.sprite import *
 
 # main function
 def run_game():
