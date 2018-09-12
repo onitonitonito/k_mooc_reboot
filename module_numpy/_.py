@@ -16,4 +16,4 @@ print(len(columns))
 print(np_a.shape)
 
 df = pd.DataFrame(np_a, columns=columns)
-# print (df)
+print (df.head(n=5))
