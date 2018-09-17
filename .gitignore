@@ -6,6 +6,8 @@ __pycache__/
 *.pyc
 *.log
 *.sqlite3
+*.xls
+*.xlsx
 
 #___________________________________
 #  2. PyInstaller Distribution
