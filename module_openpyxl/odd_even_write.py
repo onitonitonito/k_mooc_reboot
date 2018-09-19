@@ -10,10 +10,12 @@
 import pandas as pd
 import openpyxl as opx
 
-TARGET_XLS = "./_static/_total_example.xls"
+# 같은 내용 다른 포맷
+TARGET_XLSX = "./_static/_new_example.xlsx"
+TARGET_XLS = "./_static/_new_example.xls"
+
 OUTPUT_01 = "./_static/_u_even.xls"
 OUTPUT_02 = "./_static/_u_odd.xls"
-TARGET_XLSX = "./_static/_new_example.xlsx"
 
 WB = opx.load_workbook(TARGET_XLSX)
 SHEET = WB["Sheet1"]
