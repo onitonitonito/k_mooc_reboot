@@ -5,6 +5,7 @@
 #
 # plt.close() will close the figure window entirely, where plt.clf() will
 # just clear the figure - you can still paint another plot onto it.
+#
 # https://stackoverflow.com/questions/16661790/difference-between-plt-
 # close-and-plt-clf
 #
