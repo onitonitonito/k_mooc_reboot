@@ -56,6 +56,9 @@ def test03_setter():
     print(point.x, point.y)      # 3 5.196152422706632 ... 역산(y) = 5.1961..
 
 
-test01_dateformat()           # 2015-06-12
-test02_reduce()               # 24
-test03_setter()               # 3 5.196152422706632
+
+
+if __name__ == '__main__':
+    test01_dateformat()           # 2015-06-12
+    test02_reduce()               # 24
+    test03_setter()               # 3 5.196152422706632
