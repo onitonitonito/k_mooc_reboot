@@ -1,6 +1,6 @@
 """
-* Cython Simple Example by Time to Share
-* site: http://mataeoh.egloos.com/7066025
+# Cython Simple Example by Time to Share
+# site: http://mataeoh.egloos.com/7066025
 """
 
 from distutils.core import setup

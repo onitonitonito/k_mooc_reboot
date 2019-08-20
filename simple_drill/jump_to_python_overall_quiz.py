@@ -1,18 +1,18 @@
 """
-# 08장 종합문제 - Jump to Python
+# 08장 종합문제 - Jump to Python - https://wikidocs.net/17114
 #
-# https://wikidocs.net/17114
 # 파이썬은 웹, GUI, 네트워크, 딥러닝 등 상당히 많은 일을 할 수 있는 언어이다.
-  - 여러분이 지금까지 배운 내용을 충분히 숙지했다면 이제 이들을 향해 첫발을 내디딜
-  - 준비를 마친 것이다. 하지만 그전에 여기에 준비한 문제들을 풀어 보면서 여러분이
-  - 얼마나 파이썬에 익숙해졌는지 점검해 보도록 하자.
-
+# - 여러분이 지금까지 배운 내용을 충분히 숙지했다면 이제 이들을 향해 첫발을 내디딜
+# - 준비를 마친 것이다. 하지만 그전에 여기에 준비한 문제들을 풀어 보면서 여러분이
+# - 얼마나 파이썬에 익숙해졌는지 점검해 보도록 하자.
+#
 # (종합문제 풀이 : https://wikidocs.net/12769#08)
 \n\n\n"""
-# print(__doc__)
+
 
 class ExamFinal(object):
     """ 점프 투 파이썬 최종 종합문제 """
+
     def q01(self):
         """ Q1 문자열 바꾸기 - split와 join 함수사용 다음과 같이 고치시오.
         a:b:c:d --> a#b#c#d
@@ -21,7 +21,6 @@ class ExamFinal(object):
         _a_splits = _a.split(":")        # [,,,,]
         _a_join = "#".join(_a_splits)
         return _a, _a_join
-
 
     def q02(self, key):
         """ Q2 딕셔너리 값 추출하기
@@ -35,8 +34,7 @@ class ExamFinal(object):
         except:
             return "70 --> ** exceptional return without dict_key"
 
-
-    def q03(self, ):
+    def q03(self):
         """ Q3 리스트의 더하기와 extend 함수 - 두기능의 차이를 설명하시오
         >>> a = [1, 2, 3]
         >>> a = a + [4,5]
@@ -52,8 +50,7 @@ class ExamFinal(object):
         # extend() 는 None을 반환하며, a 자체를 수정한다.
         return _a, _a_plus, _a_ext
 
-
-    def q04(self, ):
+    def q04(self):
         """ Q4 리스트 총합 구하기
         A학급 학생점수 리스트. 50점 이상 점수 총합을 구하시오.
         A = [20, 55, 67, 82, 45, 33, 90, 87, 100, 25]
@@ -67,7 +64,6 @@ class ExamFinal(object):
                 total_over_50 += score
 
         return total_every, total_over_50
-
 
     def q05(self, n):
         """ Q5 피보나치 함수
@@ -89,7 +85,6 @@ class ExamFinal(object):
 
         return n, fibonacci
 
-
     def q06(self, array_str_input):
         """ Q6 숫자의 총합 구하기
         사용자로부터 다음과 같은 숫자를 입력받아 입력받은 숫자의 총합을 구하는
@@ -106,7 +101,6 @@ class ExamFinal(object):
 
         return array_int, total
 
-
     def q07(self, number_str):
         """ Q7 한 줄 구구단
         사용자로부터 2~9의 숫자 중 하나를 입력받아 해당 숫자의 구구단을 한 줄로 출력
@@ -116,7 +110,6 @@ class ExamFinal(object):
         # number_str = input('구구단을 출력할 숫자를 입력하세요(2~9): ')
         # 해도 됨, 입력 귀찮아서 함수의 인자로 처리 함
         return [i * int(number_str) for i in range(1, 10)]
-
 
     def q08(self, file_with_dir):
         """ Q8 역순 저장
@@ -136,7 +129,6 @@ class ExamFinal(object):
 
         # array_reversed = array_a_txt.reverse()   # return None
         return array_a_txt, array_reversed
-
 
     def q09(self, keys):
         """ Q9 평균값 구하기
@@ -160,11 +152,10 @@ class ExamFinal(object):
         average = np.around(np.average(np_array), decimals=2,)  # float
         num_person = len(np_array)                              # int
 
-        bundle_str = f'{total}/{num_person} = {average:}'
+        bundle_str = f'{total}/{num_person} = {average}'
         io.write_to_file(result_with_dir, bundle_str)
 
         return np_array, total, num_person, average
-
 
     def q10(self):
         """ Q10 사칙연산 계산기 -클래스 Calculator를 작성하시오.
@@ -188,15 +179,14 @@ class ExamFinal(object):
         print(f"summary = {cal2.sum()}")        # 합계 40
         print(f"average = {cal2.avg()}\n")      # 평균 8.0
 
-        position_import = cal1.__class__        # 'assets.calc_class.Calculator'
         name_class = cal1.__class__.__name__    # Calculator
+        position_import = cal1.__class__        # 'assets.calc_class.Calculator'
         funcs_class = [item
                        for item in list(cal1.__class__.__dict__.keys())
                        if not item.startswith("__")
-                       ]                                   # ['sum', 'avg']
+                       ]                        # ['sum', 'avg']
 
         return position_import, funcs_class
-
 
     def q11(self):
         """Q11. 모듈 사용 방법
@@ -211,7 +201,6 @@ class ExamFinal(object):
         from assets import mymod
 
         return True
-
 
     def q12(self):
         """ Q12 오류와 예외 처리
@@ -250,45 +239,76 @@ class ExamFinal(object):
 
         return result
 
-
-    def q13(self):
-        """ Q13 DashInsert 함수
+    def q13(self, number_int):
+        """ Q13 DashInsert 함수를 완성 하시오
         DashInsert 함수는 숫자로 구성된 문자열을 입력받은 뒤 문자열 안에서
-        홀수가 연속되면 두 수 사이에 - 를 추가하고, 짝수가 연속되면 * 를
-        추가하는 기능을 갖고 있다. DashInsert 함수를 완성 하시오.
+        홀수가 연속되면 두 수 사이에 - 를 추가하고,
+        짝수가 연속되면 * 를 추가하는 기능을 갖고 있다.
         입력 예시: 4546793
         출력 예시: 454*67-9-3
         """
-        pass
+        from assets.calc_class import DashInsert
 
-    def q14():
+        di = DashInsert()
+        dash_inserted = di.get_dash_inserted(number_int)
+        return number_int, dash_inserted
+
+    def q14(self, input_str):
         """Q14 문자열 압축하기
-        문자열을 입력받아 같은 문자가 연속 반복되는 경우에 그 반복 횟수를
-        표시해 문자열을 압축하여 표시하시오.
+        문자열을 입력받아 같은 문자가 연속 반복되는 경우
+        그 반복 횟수를 표시해 문자열을 압축하여 표시하시오.
         >>>입력: aaabbcccccca
         >>>출력: a3b2c6a1
         """
-        pass
+        from assets.calc_class import CompressString
+        cs = CompressString()
 
-    def q15():
+        str_compressed = cs.get_str_compressed(input_str)
+        return str_compressed
+
+    def q15(self, array_number_str_space):
         """Q15 Duplicate Numbers
         0~9의 문자로 된 숫자를 입력받았을 때, 이 입력값이 0~9의 모든 숫자를
         각각 한 번씩만 사용한 것인지 확인하는 함수를 작성하시오.
         >>>입력: 0123456789 01234 01234567890 6789012345 012322456789
         >>>출력: true false false true false
         """
-        pass
+        # (1) str 길이는 10 ... True
+        # (2) set 길이는 10 ... True
+        # (3) (1) & (2)     ... True
 
-    def q16():
+        from assets.calc_class import DuplicateNumber
+        dn = DuplicateNumber()
+
+        array_number_str = dn.get_array_splited_space(array_number_str_space)
+
+        array_set_str = [dn.get_set_array(number_str)
+                         for number_str in array_number_str]
+
+        array_pair_length = [dn.get_length_original_vs_set(num_str)
+                             for num_str in array_number_str]
+
+        array_judge_bool = [(len_set is 10) and (len_str is len_set)
+                            for len_str, len_set in array_pair_length]
+
+        return array_number_str, array_judge_bool
+
+    def q16(self, upper_str):
         """Q16 모스 부호 해독
         문자열 형식으로 입력받은 모스 부호(dot:. dash:-)를 해독하여 영어
         문장으로 출력하는 프로그램을 작성하시오.
         글자와 글자 사이는 공백 1개, 단어와 단어 사이는 공백 2개로 구분한다.
         예를 들어 다음 모스 부호는 "HE SLEEPS EARLY"로 해석해야 한다.
         """
-        pass
+        from assets.calc_class import MorseConvert
+        mc = MorseConvert()
 
-    def q17():
+        morse_str = mc.get_morse_from_str(upper_str)
+        char_str = mc.get_str_from_morse(morse_str)
+
+        return char_str, morse_str
+
+    def q17(self, array_re_target):
         """Q17 기초 메타 문자
         다음 중 정규식 a[.]{3,}b과 매치되는 문자열은 무엇일까?
         acccb
@@ -296,9 +316,17 @@ class ExamFinal(object):
         aaab
         a.cccb
         """
-        pass
+        import re
 
-    def q18():
+        # p = re.compile(pattern='a[.]{3,}b', flags=0)
+
+        re_pattern='a[.]{3,}b'
+        array_str_space = ' '.join(array_re_target)
+        matched = re.findall(pattern=re_pattern, string=array_str_space)
+
+        return (array_str_space, matched)
+
+    def q18(self):
         """Q18 문자열 검색
         다음 코드의 결괏값은 무엇일까?
         >>> import re
@@ -306,19 +334,59 @@ class ExamFinal(object):
         >>> m = p.search("5 python")
         >>> m.start() + m.end()
         """
-        pass
+        import re
 
-    def q19():
+        p = re.compile("[a-z]+")        # 패턴  객체
+        # <class '_sre.SRE_Pattern'>
+
+        m = p.search("5 python")        # 매치드 객체
+        # <_sre.SRE_Match object; span=(2, 8), match='python'>
+
+        # print(m.start())              # 2  ... 시작 Index
+        # print(m.end())                # 8  ... 끝+1 index
+        # print(m.start() + m.end())    # 10 ... 2 + 8
+
+        return m.start() , m.end(), m.start() + m.end()
+
+    def q19(self, name_phone_str_space):
         """Q19 그루핑
         다음과 같은 문자열에서 휴대폰 번호 뒷자리인 숫자 4개를 ####로 바꾸는
         프로그램을 정규식을 사용하여 작성하시오.
+
         >>> park 010-9999-9988
         >>> kim 010-9909-7789
         >>> lee 010-8789-7768
         """
-        pass
+        import re
 
-    def q20():
+        re_pattern = '[a-z]* [0-9]*-[0-9]*'
+
+        p = re.compile(re_pattern)
+        m = p.search(name_phone_str_space)
+
+        target_str = m.string
+        index_span = m.span()
+
+        matched = m.string[index_span[0] : index_span[1]]
+
+        array_find_all = p.findall(name_phone_str_space)
+
+        array_find_all_masked = [f"{find}-####"
+                                    for find in array_find_all]
+
+        find_all_masked_str = ' '.join(array_find_all_masked)
+
+        # print(m)
+        # <_sre.SRE_Match object; span=(0, 14), match='park 010-9999-'>
+        # print(matched)
+        # print(array_find_all)
+
+        # print(target_str)
+        # print(find_all_masked_str)
+
+        return target_str, find_all_masked_str
+
+    def q20(self):
         """Q20 전방 탐색
         다음은 이메일 주소를 나타내는 정규식이다 ---> .*[@].*[.].*$
         이 정규식은 park@naver.com, kim@daum.net, lee@myhome.co.kr 등과 매치
@@ -327,15 +395,17 @@ class ExamFinal(object):
         """
         pass
 
+
 def get_question_only():
     test = ExamFinal()
     _keys = test.__class__.__dict__.keys()
     def_questions = [item
-                    for item in _keys
-                    if not item.startswith('__')]   # q1, q2 ....
+                     for item in _keys
+                     if not item.startswith('__')]   # q1, q2 ....
     func_dict = test.__class__.__dict__
-    array_func = [func_dict[key_str] for key_str in def_questions ]
+    array_func = [func_dict[key_str] for key_str in def_questions]
     return [func.__doc__ for func in array_func]
+
 
 def answer(func, key=None):
     if key:
@@ -345,17 +415,14 @@ def answer(func, key=None):
 
 
 if __name__ == '__main__':
-    import assets._script_run_utf8 as script      # 스트립트런 한글문제 해결
-    from os.path import join, dirname
+    from assets import _script_run_utf8
+    from assets.config import *
 
-    script.main()
-    current_dir = dirname(__file__)
-    file_with_dir = join(current_dir, 'static_data', 'q08_abc.txt')
-    sample_with_dir = join(current_dir, 'static_data', 'q09_01_sample.txt')
-    result_with_dir = join(current_dir, 'static_data', 'q09_02_result.txt')
+    _script_run_utf8.main()             # 스트립트런 한글문제 해결
+    print(__doc__)
 
-    questions = get_question_only()
-    [print(que) for que in questions]
+    # questions = get_question_only()
+    # [print(que) for que in questions]
 
     test = ExamFinal()
 
@@ -371,5 +438,12 @@ if __name__ == '__main__':
     # answer(test.q10)
     # answer(test.q11)
     # answer(test.q12)
+    # answer(test.q13, key=4546793)
+    # answer(test.q14, key='aaabbcccccca')
+    # answer(test.q15, key=array_number_str_space)
+    # answer(test.q16, key="HE SLEEPS EARLY")
+    # answer(test.q17, key=array_re_target)
+    # answer(test.q18)
+    answer(test.q19, key=name_phone_str_space)
 
     pass
