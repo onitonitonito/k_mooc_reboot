@@ -11,7 +11,7 @@
 
 
 class ExamFinal(object):
-    """ 점프 투 파이썬 최종 종합문제 """
+    """ 점프 투 파이썬 최종 종합문제 (1~20) """
 
     def q01(self):
         """ Q1 문자열 바꾸기 - split와 join 함수사용 다음과 같이 고치시오.
@@ -56,8 +56,8 @@ class ExamFinal(object):
         A = [20, 55, 67, 82, 45, 33, 90, 87, 100, 25]
         """
         scores = [20, 55, 67, 82, 45, 33, 90, 87, 100, 25]
-
         (total_every, total_over_50) = (0, 0)
+
         for score in scores:
             total_every += score
             if score > 50:
@@ -320,7 +320,7 @@ class ExamFinal(object):
 
         # p = re.compile(pattern='a[.]{3,}b', flags=0)
 
-        re_pattern='a[.]{3,}b'
+        re_pattern = 'a[.]{3,}b'
         array_str_space = ' '.join(array_re_target)
         matched = re.findall(pattern=re_pattern, string=array_str_space)
 
@@ -346,7 +346,7 @@ class ExamFinal(object):
         # print(m.end())                # 8  ... 끝+1 index
         # print(m.start() + m.end())    # 10 ... 2 + 8
 
-        return m.start() , m.end(), m.start() + m.end()
+        return m.start(), m.end(), m.start() + m.end()
 
     def q19(self, name_phone_str_space):
         """Q19 그루핑
@@ -360,19 +360,12 @@ class ExamFinal(object):
         import re
 
         re_pattern = '[a-z]* [0-9]*-[0-9]*'
-
         p = re.compile(re_pattern)
-        m = p.search(name_phone_str_space)
-
-        target_str = m.string
-        index_span = m.span()
-
-        matched = m.string[index_span[0] : index_span[1]]
 
         array_find_all = p.findall(name_phone_str_space)
 
         array_find_all_masked = [f"{find}-####"
-                                    for find in array_find_all]
+                                 for find in array_find_all]
 
         find_all_masked_str = ' '.join(array_find_all_masked)
 
@@ -384,66 +377,94 @@ class ExamFinal(object):
         # print(target_str)
         # print(find_all_masked_str)
 
-        return target_str, find_all_masked_str
+        return name_phone_str_space, find_all_masked_str
 
     def q20(self):
-        """Q20 전방 탐색
+        """Q20 정규표현식 - 긍정형 전방 탐색기법
         다음은 이메일 주소를 나타내는 정규식이다 ---> .*[@].*[.].*$
         이 정규식은 park@naver.com, kim@daum.net, lee@myhome.co.kr 등과 매치
-        긍정형 전방 탐 기법을 사용하여 .com, .net이 아닌 이메일 주소는 제외
+        긍정형 전방탐색 기법을 사용하여 .com, .net이 아닌 이메일 주소는 제외
         시키는 정규식을 작성하시오.
         """
-        pass
+        # https://saelly.tistory.com/633
+        # 전방탐색 / 후방탐색 = 매칭기준 왼쪽(후방)/오른쪽(전방).. 인덱스 높은쪽
+        #   - 긍정탐색 = 매칭되는 정규식을 포함(기본) ... (?=com$|net$)
+        #   - 부정탐색 = 매칭되는 정규식은 제외       ... (?!=bat$|exe$)
+
+        import re
+
+        # re_pattern = r'.*[@].*[.].*$'   # all = normal
+        re_pattern = r".*[@].*[.](?=com$|net$).*$"
+
+        target_str = 'park@naver.com, kim@daum.net, lee@myhome.co.kr'
+        target_str = 'park@naver.com'
+        target_str = 'kim@daum.net'
+        target_str = 'lee@myhome.co.kr'
+
+        p = re.compile(pattern=re_pattern)      # 패턴 객체
+        m = p.match(string=target_str)          # 매치 객체
+        fa = p.findall(string=target_str)       # 모두찾기 = return array
+
+        # print(m)
+        # <_sre.SRE_Match object; span=(0, 46),
+        # match='park@naver.com, kim@daum.net, lee@myhome.co.kr'>
+
+        # print(fa)
+        # ['park@naver.com, kim@daum.net, lee@myhome.co.kr']  # array return
+
+        return m, fa
 
 
-def get_question_only():
+# 별도로 빼놓은 이유 -- q00 펑션만 정의하기 위함.
+def show_questions_only():
+    """ ExamFinal() 클래스 사용하는 외부함수
+    """
     test = ExamFinal()
-    _keys = test.__class__.__dict__.keys()
-    def_questions = [item
-                     for item in _keys
-                     if not item.startswith('__')]   # q1, q2 ....
+
+    test_dict_keys = test.__class__.__dict__.keys()
+    def_questions = [key
+                     for key in test_dict_keys
+                     if not key.startswith('__')]   # q1, q2 ....
     func_dict = test.__class__.__dict__
     array_func = [func_dict[key_str] for key_str in def_questions]
-    return [func.__doc__ for func in array_func]
+    questions = [func.__doc__ for func in array_func]
+    [print(f"{' '*3}{que}") for que in questions]
+
+
+def show_questions_answers(question_num_start=1, question_num_end=20):
+    """ ExamFinal() 클래스 사용하는 외부함수
+    """
+    test = ExamFinal()
+
+    array_q_func = [test.q01, test.q02, test.q03, test.q04, test.q05,
+                    test.q06, test.q07, test.q08, test.q09, test.q10,
+                    test.q11, test.q12, test.q13, test.q14, test.q15,
+                    test.q16, test.q17, test.q18, test.q19, test.q20, ]
+
+    [answer(array_q_func[i],
+            key=list(dict_arg_answer.values())[i],
+            ) for i in range(
+        question_num_start - 1,
+        question_num_end,
+    )
+    ]
 
 
 def answer(func, key=None):
+    """ 문제 + 답을 출력하기 위한 함수
+    """
     if key:
-        [print(item, flush=True) for item in [func.__doc__, func(key)]]
+        [print(item) for item in [func.__doc__, func(key)]]
     else:
-        [print(item, flush=True) for item in [func.__doc__, func()]]
+        [print(item) for item in [func.__doc__, func()]]
 
 
 if __name__ == '__main__':
-    from assets import _script_run_utf8
-    from assets.config import *
+    from assets import _script_run_utf8         # 스트립트런 한글문제 해결
+    from assets.config import *                 # 초기 변수 별도저장
 
-    _script_run_utf8.main()             # 스트립트런 한글문제 해결
+    _script_run_utf8.main()
     print(__doc__)
 
-    # questions = get_question_only()
-    # [print(que) for que in questions]
-
-    test = ExamFinal()
-
-    # answer(test.q01)
-    # answer(test.q02, key='C')
-    # answer(test.q03)
-    # answer(test.q04)
-    # answer(test.q05, key=15)
-    # answer(test.q06, key='1,2,3,4,5')
-    # answer(test.q07, key=2)
-    # answer(test.q08, key=file_with_dir)
-    # answer(test.q09, key=(sample_with_dir, result_with_dir))
-    # answer(test.q10)
-    # answer(test.q11)
-    # answer(test.q12)
-    # answer(test.q13, key=4546793)
-    # answer(test.q14, key='aaabbcccccca')
-    # answer(test.q15, key=array_number_str_space)
-    # answer(test.q16, key="HE SLEEPS EARLY")
-    # answer(test.q17, key=array_re_target)
-    # answer(test.q18)
-    answer(test.q19, key=name_phone_str_space)
-
-    pass
+    # show_questions_only()         # 문제만 보여줌
+    show_questions_answers(15, 20)

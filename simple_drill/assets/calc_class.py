@@ -176,28 +176,28 @@ class MorseConvert(object):
         '_':    ' ',
         }
 
-        def get_morse_from_str(self, upper_str):
-            array_upper_str = [char for char in upper_str]
+    def get_morse_from_str(self, upper_str):
+        array_upper_str = [char for char in upper_str]
 
-            array_morse = [
-            self.dict_morse[key]
-            if key is not ' ' else self.dict_morse['_']
-            for key in array_upper_str]
+        array_morse = [
+        self.dict_morse[key]
+        if key is not ' ' else self.dict_morse['_']
+        for key in array_upper_str]
 
-            return ' '.join(array_morse)
+        return ' '.join(array_morse)
 
-            def get_str_from_morse(self, morse_str):
-                array_morse_str = morse_str.split(' ')
+    def get_str_from_morse(self, morse_str):
+        array_morse_str = morse_str.split(' ')
 
-                _d_keys = list(self.dict_morse.keys())
-                _d_vals = list(self.dict_morse.values())
+        _d_keys = list(self.dict_morse.keys())
+        _d_vals = list(self.dict_morse.values())
 
-                array_char_str = [_d_keys[_d_vals.index(char)]
-                if char is not '' else '_'
-                for char in array_morse_str]
+        array_char_str = [_d_keys[_d_vals.index(char)]
+        if char is not '' else '_'
+        for char in array_morse_str]
 
-                char_str = ''.join(array_char_str).replace('__', ' ')
-                return char_str
+        char_str = ''.join(array_char_str).replace('__', ' ')
+        return char_str
 
 
 class RegularExprssion(object):
@@ -206,8 +206,14 @@ class RegularExprssion(object):
     - 타켓스트링 매치객체(m)울 생성한다
     """
 
-    def get_re_pattern(self):
-        pass
+    def get_single_match_index(self):
+        """
+        """
+        m = p.search(name_phone_str_space)
+        target_str = m.string
+        index_span = m.span()
+        matched = m.string[index_span[0] : index_span[1]]
+        return index_span, matched
 
 
 
