@@ -1,6 +1,16 @@
-# # THIS IS FOR test1_searching_speed
-# big_list = [str(n) for n in range(10**7)]
-# big_set = set(big_list) # [Finished in 10.182s]
+"""
+#
+#
+#
+#
+"""
+print(__doc__)
+
+# THIS IS FOR test1_searching_speed
+big_list = [str(n) for n in range(10**7)]
+big_set = set(big_list) # [Finished in 10.182s]
+
+
 
 def test1_check_speed():
     """ set is faster than list, see what happen """
