@@ -49,11 +49,33 @@ class RunEnumerate(object):
 
         return [(i, name) for i, name in enumerate(names)]
 
-re = RunEnumerate()
+    def show_interal_works(self, arg=None):
+        """ more in-depth testing enumerate
+        Python Enumerate Explained (With Examples)
+        Why It doesn’t Make Sense to Enumerate Dictionaries and Sets
+        https://www.afternerd.com/blog/python-enumerate/
+        """
+        array = ['a', 'b', 'c']
+        runs = [
+            list(enumerate(array)),
+        ]
+
+        [print(run) for run in runs]
+        # return tuple,(i, iter_item) ...
+        # [(0, 'a'), (1, 'b'), (2, 'c')]
+
+
+        for i in enumerate(array):
+            print(i[0], i[1])       # tuple index 0, 1
+
 
 
 
 if __name__ == '__main__':
-    run(func=re.show_how_it_works)
+    re = RunEnumerate()
+
+    # run(func=re.show_how_it_works)
+    run(func=re.show_interal_works)
+
 
     pass
