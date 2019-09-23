@@ -13,13 +13,13 @@ def trace(func):
 
 @trace
 def fibonacci(n):
-    """ return n-th finonacci number """
+    """ return n-th fibonacci number """
     if n in (0, 1):
         return n
     return (fibonacci(n - 2) + fibonacci(n - 1))
 
-# fibonacci(3)
-# help(fibonacci)
+fibonacci(3)
+help(fibonacci)
 
 """ Using Functools.warps
  (1) w/o functools.wraps - help(fibonacci)

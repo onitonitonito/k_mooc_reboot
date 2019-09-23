@@ -1,3 +1,19 @@
+"""
+# _files_dirs_run 스크립트 용도 :
+# -------------------------
+#  - ATOM '아톰' 에디터와 'CMD'에서 './, ../' 인식이 다름!
+#  - 모듈실행 = 현재 모듈위치(dirname(__file__)) 장식자 리스트를 보여줌
+#  - get_dir(upper_step=0)    : 상위스텝의 dir(str)을 반환한다. (0=현재)
+#  - get_files(work_dir)      : 워킹dir(str)의 화일'list'값을 반환한다
+#  - show_file_list(work_dir, file_list)
+#                             : 데코레이트 화일리스트를 보여준다.
+#
+#
+#
+"""
+# print(__doc__)
+
+
 import os
 import sys
 
@@ -44,8 +60,9 @@ def get_files(work_dir):
 @decorator
 def show_file_list(work_dir, file_list):
     file_list.sort(reverse=True)
+
     for i, _file in enumerate(file_list, 1):
-        print(' %2s:  %s ' % (i, _file))
+        print(f" {i:02}:  {_file}")
 
 
 def main():
@@ -58,12 +75,12 @@ def main():
         " - get_files(work_dir)      : 워킹dir(str)의 화일'list'값을 반환한다",
         " - show_file_list(work_dir, file_list)",
         "                            : 데코레이트 화일리스트를 보여준다.",
-        "\n\n\n",
+        "\n\n",
     ]
 
     [print(echo) for echo in echoes]
 
-    work_dir = get_dir()          # 기본값 = -1 = 현재위치
+    work_dir = get_dir(upper_step=0)          # 기본값 = -1 = 현재위치
     show_file_list(work_dir=work_dir, file_list=get_files(work_dir))
 
 
@@ -71,8 +88,6 @@ if __name__ == '__main__':
     main()
 
 
-
-""" if __name__ 로 경계를 치면, 외부 모듈호출 때 자체 실행을 방지한다. """
 """ 코드 리팩터링 : 버리고, 간단히 줄였음.
     if upper_step > 0:
 
