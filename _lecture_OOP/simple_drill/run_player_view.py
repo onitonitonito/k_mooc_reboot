@@ -1,4 +1,4 @@
-from package_i.soccer_data import SoccerPlayer
+from module_custom.soccer_data import SoccerPlayer
 
 
 onito = SoccerPlayer('onito', 'Kay', 18, 'MF')  # Declaor OBJECT

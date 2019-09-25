@@ -8,9 +8,9 @@ from os.path import join, dirname
 
 current_dir = dirname(dirname(__file__))      # 현재보다 상위 = dir(dir(현재))
 
-file_with_dir = join(current_dir, 'static_data', 'q08_abc.txt')
-sample_with_dir = join(current_dir, 'static_data', 'q09_01_sample.txt')
-result_with_dir = join(current_dir, 'static_data', 'q09_02_result.txt')
+file_with_dir = join(current_dir, 'statics', 'q08_abc.txt')
+sample_with_dir = join(current_dir, 'statics', 'q09_01_sample.txt')
+result_with_dir = join(current_dir, 'statics', 'q09_02_result.txt')
 
 array_number_str_space = '0123456789 01234 01234567890 6789012345 012322456789'
 array_re_target = ['acccb', 'a....b', 'aaab', 'a.cccb']

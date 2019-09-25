@@ -2,11 +2,11 @@ import os
 import sys
 from os.path import dirname, join
 
-WORK_DIR = join(dirname(dirname(__file__)), 'package_i', '')
+WORK_DIR = join(dirname(dirname(__file__)), 'module_custom', '')
 print(WORK_DIR)
 sys.path.append(dirname(dirname(__file__)))
 
-from package_i.xmas_tree import *
+from module_custom.xmas_tree import *
 
 # order_leaf = [10, 20, 30, 40, 50, 60, 70, 80, 90,]
 # order_trunk = [1, 2, 3, 4, 5, 6, 7, 8, 9,]
@@ -46,4 +46,4 @@ clear()
 
 xmas_tree()
 
-# Class module should be placed at {package_i} folder.
+# Class module should be placed at {module_custom} folder.

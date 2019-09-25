@@ -5,7 +5,7 @@ from os.path import dirname
 sys_path.append(dirname(dirname(__file__)))
 
 
-from package_i.game_charactors import Warrior, Magician, Begger
+from module_custom.game_charactors import Warrior, Magician, Begger
 from time import sleep
 import os
 

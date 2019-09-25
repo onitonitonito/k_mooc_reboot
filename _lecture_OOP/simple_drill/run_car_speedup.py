@@ -5,7 +5,7 @@ from os.path import dirname
 sys_path.append(dirname(dirname(__file__)))
 
 
-from package_i.model_car import *
+from module_custom.model_car import *
 
 a = Car('ACCENT')
 b = Car('ODYSSAY')

@@ -30,5 +30,5 @@ def set_tree(tree_leaf_end, tree_trunk_height, tree_base_width):   # whole corn 
     trunk(tree_trunk_height, tree_base_width)
     ground(tree_base_width)
 
-# Should be placed at {package_i} folder as package.
+# Should be placed at {module_custom} folder as package.
 # run run_xmastree.py at {ROOT} folder.

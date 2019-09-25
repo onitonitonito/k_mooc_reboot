@@ -8,7 +8,7 @@ sys.path.append(dirname(dirname(__file__)))
 # print(os.path.pardir)
 # print(os.path.realpath(os.path.pardir))
 
-from package_i.calc_area import Area
+from module_custom.calc_area import Area
 
 #python run_calc_area.py 10 20 -- sys.argv
 # 10 characters are given for Format %s
