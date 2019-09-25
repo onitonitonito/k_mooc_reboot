@@ -5,7 +5,6 @@ __pycache__/
 .ipynb_checkpoints/
 *.pyc
 *.log
-*.sqlite3
 *.xls
 *.xlsx
 
@@ -19,3 +18,11 @@ dist/
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _.html
 _.pdb
+
+#___________________________________
+#  4. Chatter-bot Temporary db files
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*.sqlite3
+db.sqlite3-shm
+db.sqlite3-wal
+sentence_tokenizer.pickle
