@@ -1,15 +1,17 @@
-""" GOOGLE = nato phonetic alphabet table python
-  refer to : http://www.101computing.net/nato-phonetic-alphabet/
-  Did You Know?
-
-  The NATO Phonetic Alphabet is the most widely used spelling alphabet.
-  A spelling alphabet (aka radio alphabet, or telephone alphabet) is a set of
-  words used to stand for the letters of an alphabet in oral communication.
-
-  Each word in the spelling alphabet typically replaces the name of the letter
-  with which it starts. It is used to spell out words when speaking to someone
-  not able to see the speaker, or when the audio channel is not clear.
- """
+"""
+# GOOGLE = nato phonetic alphabet table python
+#  refer to : http://www.101computing.net/nato-phonetic-alphabet/
+"""
+# print(__doc__)
+# Did You Know?
+#
+# The NATO Phonetic Alphabet is the most widely used spelling alphabet.
+# A spelling alphabet (aka radio alphabet, or telephone alphabet) is a set of
+# words used to stand for the letters of an alphabet in oral communication.
+#
+# Each word in the spelling alphabet typically replaces the name of the letter
+# with which it starts. It is used to spell out words when speaking to someone
+# not able to see the speaker, or when the audio channel is not clear.
 
 NATO_PHONETIC_ALPH = """
     A	Alfa

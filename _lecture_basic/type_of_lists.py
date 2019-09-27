@@ -1,48 +1,25 @@
 """
-#
-#
-#
+# Simple Test for arrays
 #
 """
 # print(__doc__)
+
 import numpy as np
+
+
+def main():
+    numpy_()
+    range_()
+    tuffle_()
+    enumerate_()
+    dict_()
+    iterate_()
+    # _weird_index()
+    pass
 
 
 def sep(arg="-"):          # make seperator '----------------'
     print("-" * 20 + "%s\n" % arg)
-
-
-def x_weird_indexing():
-    """
-    # trash : 'x' = means temporarily dumped into gabage
-    """
-    global m
-    m = 0
-
-    def diffsum(x1, x2, x3):
-        global m                # declair global.. at in def()
-        # print(m, end=', ')
-        y1 = x1 + x2 + x3
-        y2 = x1 * 2 + x2 * 2 + x3**2
-
-        if ((y2 - y1) > m):
-            m = (y2 - y1)
-        return (x1, x2, x3), m, (y2 - y1), y1, y2
-
-    m_list = []
-
-    for x in range(3):
-        for y in range(3):
-            for z in range(3):
-                _, m_, *_ = diffsum(x, y, z)
-                m_list.append(m_)             # a[1] = value 'm'
-
-    print('\n', m_list)
-
-    # [
-    #   0, 0, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4,
-    #   4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6
-    # ]
 
 
 def numpy_():
@@ -120,12 +97,38 @@ def iterate_():
     sep('comparison')
 
 
+def _weird_index():
+    """
+    # trash : 'x' = means temporarily dumped into gabage
+    # [
+    #   0, 0, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4,
+    #   4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6
+    # ]
+    """
+    global m
+    m = 0
+
+    def diffsum(x1, x2, x3):
+        global m                # declair global.. at in def()
+        # print(m, end=', ')
+        y1 = x1 + x2 + x3
+        y2 = x1 * 2 + x2 * 2 + x3**2
+
+        if ((y2 - y1) > m):
+            m = (y2 - y1)
+        return (x1, x2, x3), m, (y2 - y1), y1, y2
+
+    m_list = []
+
+    for x in range(3):
+        for y in range(3):
+            for z in range(3):
+                _, m_, *_ = diffsum(x, y, z)
+                m_list.append(m_)             # a[1] = value 'm'
+
+    print('\n', m_list)
+
+
+
 if __name__ == '__main__':
-    x_weird_indexing()
-    # numpy_()
-    # range_()
-    # tuffle_()
-    # enumerate_()
-    # dict_()
-    # iterate_()
-    pass
+    main()
