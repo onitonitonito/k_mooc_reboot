@@ -1,8 +1,6 @@
 """
 # BUILDING A CHATBOT IN PYTHON USING FLASK – TUTORIAL
 # SEPTEMBER 22, 2019 - http://bit.ly/2mtKcuv
-#
-#
 """
 # PROJECT AND LIBRARIES SETUP
 # I will be using PyCharm to develop this simple chatbot.
@@ -19,13 +17,13 @@ from flask import Flask, render_template, request
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
-app = Flask(__name__)
 #create chatbot
-
+app = Flask(__name__)
 englishBot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
+
+#train the chatter bot for english
 trainer = ChatterBotCorpusTrainer(englishBot)
 trainer.train("chatterbot.corpus.english")
-#train the chatter bot for english
 
 
 #define app routes

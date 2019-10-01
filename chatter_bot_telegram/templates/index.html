@@ -1,0 +1,38 @@
+{% extends './_base.html' %}
+
+{% block title %}Flask index
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+
+{% block content %}
+<br>
+<br>
+<div id="menu" class="fix_h1"> &nbsp
+  [<a href="/main">main</a>]&nbsp
+  [<a href="/login_form">log-in</a>]&nbsp
+  [<a href="/logging">logging</a>]&nbsp
+  [<a href="/get_test">get test</a>]&nbsp
+  [<a href="/logout">log out</a>]&nbsp
+  [<a href="/template">template</a>]&nbsp
+  [<a href="/user">user</a>]&nbsp
+  [<a href="/post/1">post[1]</a>]&nbsp
+</div>
+
+  <div id="header">
+    Yeaaah~!!
+  </div>
+    <br>
+
+  <div style="width: 480px; text-align: center;">
+    <img src="{{ url_for('static',filename='./imgs/logo_flask_python.jpg') }}" width="350">
+  </div>
+  <br>
+
+  <div id="footer">
+    O.K!
+  </div>
+
+{% endblock  %}

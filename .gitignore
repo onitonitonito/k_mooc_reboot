@@ -5,8 +5,6 @@ __pycache__/
 .ipynb_checkpoints/
 *.pyc
 *.log
-*.xls
-*.xlsx
 
 #___________________________________
 #  2. PyInstaller Distribution

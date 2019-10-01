@@ -1,7 +1,28 @@
+def main():
+    import _test_some
+
+    function_names = [func
+                        for func in _test_some.__dir__()
+                        if not func.startswith("_")
+                        ]
+
+    function_names.remove('main')
+    print(function_names)
+
+    # ['test01_dateformat', 'test02_reduce', 'test03_setter']
+    # test01_dateformat()           # 2015-06-12
+    # test02_reduce()               # 24
+    # test03_setter()               # 3 5.196152422706632
+
+    for i, name in enumerate(function_names, 1):
+        print(f"{i}. {name:20}: ", end='')
+        func = getattr(_test_some, name)
+        func()
+        print(func.__doc__)
+
 
 def test01_dateformat():
-    """
-    # [python] 날짜, 시간관련 모듈 = https://goo.gl/SQuimv
+    """[python] 날짜, 시간관련 모듈 = https://goo.gl/SQuimv
     # import datetime
     # d = datetime.date(2015, 4, 15)
     # t = datetime.time(12, 23, 38)
@@ -16,7 +37,7 @@ def test01_dateformat():
 
 
 def test02_reduce():
-    """34.2 람다와 map, filter, reduce = https://goo.gl/223gH1
+    """람다와 map, filter, reduce = https://goo.gl/223gH1
     # >>> a = [1, 2, 3, 4, 5]
     # >>> from functools import reduce
     # >>> reduce(lambda x, y: x + y, a)
@@ -54,11 +75,8 @@ def test03_setter():
 
     point.hypotenuse = 6         # 리턴값(set) = 정해진값(x)를 놔두고 (y역산)
     print(point.x, point.y)      # 3 5.196152422706632 ... 역산(y) = 5.1961..
-
-
+    print()
 
 
 if __name__ == '__main__':
-    test01_dateformat()           # 2015-06-12
-    test02_reduce()               # 24
-    test03_setter()               # 3 5.196152422706632
+    main()
