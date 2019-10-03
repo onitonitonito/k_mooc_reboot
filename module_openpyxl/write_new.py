@@ -1,43 +1,42 @@
 """
-* 엑셀작업 줄이기 - 엑셀없이 코드로 수정/정리/추출/쓰기
-* 보안 잠금된 화일은 안됨 = 읽기/쓰기(코딩) = 조회(엑셀)
- - 새로운 엑셀형식 화일만들기
+# 엑셀작업 줄이기 - 엑셀없이 코드로 수정/정리/추출/쓰기
+# 보안 잠금된 화일은 안됨 = 읽기/쓰기(코딩) = 조회(엑셀)
+#  - 새로운 엑셀형식 화일만들기
 """
 # script run 에서는 실행이 안됨 = 이것은 '케바케'
+# print(__doc__)
 
-import random as rd
-import openpyxl as opx
+import random
+import _assets.script_run
 
-from pprint import pprint
+from _assets.configs import *
+from _assets.classes import *
+
+
+filename = "_write.xlsx"
+filename_with_dir = join_dir(
+                get_dir(dir_top, dir_dict, "_statics"),
+                filename,
+                )
+
 
 # 자료만들기 4행5열 데이터
-names = ['PARK', 'LEE', 'KIM', 'CHOI', 'LIM', 'YU', 'CHEONG', 'SEO']
 title = ['NAME', 'KOR', 'ENG', 'MATH', 'REMARK', ]
+names = ['PARK', 'LEE', 'KIM', 'CHOI', 'LIM', 'YU', 'CHEONG', 'SEO']
+
 rows = []
-
-for i, name in enumerate(names):
+for name in names:
     scores = []
-    for j in range(len(title) - 2):
-        score = rd.randrange(40, 100, 5)
-        scores.append(score)
+    for i in range(3):
+        score_random = random.randrange(40, 100, 5)
+        scores.append(score_random)
 
-    rows.append([name, scores[0], scores[1], scores[2], '-', ])
+    rows.append([name, *scores, '-', ])
 
-# 만들어진 LIST 자료확인
-pprint(rows)
+# 만들어진 LIST 자료확인  --- 횡방향 순서대로 rows를 기록한다.
+# print(rows)     # for test
 
-OUT_XLSX = "./_static/_write.xlsx"
-WB = opx.Workbook()
-WS = WB.active
-
-# 타이틀기록
-WS.append(title)
-
-# 데이터 기록
-for row in rows:
-    WS.append(row)
+echos = rows.insert(0, title)
 
 
-# 엑셀 파일 저장
-WB.save(OUT_XLSX)
-WB.close()
+write_excel(rows, filename_with_dir)

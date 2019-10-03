@@ -5,40 +5,59 @@
 # script run 에서는 실행이 안됨.
 
 import openpyxl as opx
+import _assets.script_run
 
-IN_XLSX = "./_static/_write.xlsx"
-OUT_XLSX = "./_static/_result.xlsx"
+
+from _assets.configs import *
+from _assets.classes import *
+
+filename_read = join_dir(
+                get_dir(dir_top, dir_dict, "_statics"),
+                '_write.xlsx',
+                )
+filename_write = join_dir(
+                get_dir(dir_top, dir_dict, "_statics"),
+                '_result.xlsx',
+                )
 
 # 엑셀파일 열기 (WB = Working Book)
-WB = opx.load_workbook(IN_XLSX)
+WB = opx.load_workbook(filename_read)
 WS = WB.active
 
 # 국영수 점수를 읽기
-for i, r in enumerate(WS.rows, 1):
-    row_index = r[0].row   # 행 인덱스
-    kor = r[1].value
-    eng = r[2].value
-    math = r[3].value
+for i, row in enumerate(WS.rows, 1):
+    row_index = row[0].row   # 현재 행 인덱스
+    name = row[0].value
+    kor = row[1].value
+    eng = row[2].value
+    math = row[3].value
 
-    if isinstance(kor, int):
-        sum = "=SUM(B{0}:D{0})".format(i)
-        average = "=ROUND(AVERAGE(B{0}:D{0}), 0)".format(i)
-    elif isinstance(kor, str):
-        sum, average = "SUM", "AVERAGE"
+    # kor 위치의 값을 기준으로, 판단하여 sum, average 변경
+    if isinstance(kor, str):
+        (sum, average) = "SUM", "AVERAGE"
+
+    elif isinstance(kor, int):
+        sum = f"=SUM(B{i}:D{i})"
+        average = f"=ROUND(AVERAGE(B{i}:D{i}), 0)"
+
     else:
         sum = average = "... NoneType!!"
 
-    # 합계 쓰기
+    # 셀에 합계 쓰기 ... row_index (현재행)
     WS.cell(row=row_index, column=5).value = sum
     WS.cell(row=row_index, column=6).value = average
 
-    print(kor, eng, math, sum, average)
+    print(f"row_num = {row_index} ... {name}, {kor}, {eng}, {math}, {sum}, {average}")
 
+# 마지막 라인, 최종 합계란 생성
 WS.append(['TOTAL SUM',
-           '=SUM(B2:B9)', '=SUM(C2:C9)', '=SUM(D2:D9)',
+           '=SUM(B2:B9)',
+           '=SUM(C2:C9)',
+           '=SUM(D2:D9)',
            '=ROUND(AVERAGE(E2:E9), 0)',
-           '=ROUND(AVERAGE(F2:F9), 0)', ])
+           '=ROUND(AVERAGE(F2:F9), 0)',
+           ])
 
 # 엑셀 파일 저장
-WB.save(OUT_XLSX)
+WB.save(filename_write)
 WB.close()

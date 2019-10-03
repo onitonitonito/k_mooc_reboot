@@ -6,31 +6,37 @@
 
 import datetime
 import openpyxl as opx
+import _assets.script_run
 
-wb = opx.Workbook()
+from _assets.configs import *
+from _assets.classes import *
 
-# sheet = wb["Sheet1"]      # or
-# grab the active worksheet
-sheet = wb.active
+filename_write = join_dir(
+                get_dir(dir_top, dir_dict, "_results"),
+                '_sample.xlsx',
+                )
+
+WB = opx.Workbook()
+WS = WB.active
 
 # Data can be assigned directly to cells
 # Python types will automatically be converted
-sheet['A1'] = 'Python OpenPyXL module test'
-sheet['F1'] = datetime.datetime.now()
+WS['A1'] = 'Python OpenPyXL module test'
+WS['F1'] = datetime.datetime.now()
 
 # Rows can also be appended
-sheet.append([1, 2, 3, 4, 5])
-sheet.append(['Hello!', 'This', 'is the', 'OpenPyXL', 'World!'])
+WS.append([1, 2, 3, 4, 5])
+WS.append(['Hello!', 'This', 'is the', 'OpenPyXL', 'World!'])
 
-command_list = sheet['A1'].__dir__()
+command_list = WS['A1'].__dir__()
 for content in command_list:
     if content[:1] is "_":
         pass
     else:
         print(content)
 
-print(sheet['A1'].value)       # Python OpenPyXL module TEST
-print(sheet['F1'].value)       # datetime.now()
+print(WS['A1'].value)       # Python OpenPyXL module TEST
+print(WS['F1'].value)       # datetime.now()
 
 # Save the file
-wb.save("./_static/_sample.xlsx")
+WB.save(filename_write)
