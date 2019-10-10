@@ -1,8 +1,12 @@
-import time, os
-import datetime
-""" Refer : DATETIME module Documentation
-  - format here : https://docs.python.org/2/library/datetime.html
 """
+# Refer : DATETIME module Documentation
+# - format here : https://docs.python.org/2/library/datetime.html
+"""
+
+import os
+import time
+import datetime
+# print(__doc__)
 
 
 while True:
@@ -16,12 +20,13 @@ while True:
 
     _combined_format = a.strftime('%p %I:%M:%S - %B %d, %A')
 
-    print('%s  --> %s' %(a, _combined_format), end='\n\n')
-    print('ampm =',type(ampm))
-    print('hour =',type(hour))
-    print('minute =',type(minute))
-    print('second =',type(second))
-    print('\n\n\n',"%s %s : %s : %s - %s" %(ampm, hour, minute, second, weekday))
+    print('%s  --> %s' % (a, _combined_format), end='\n\n')
+    print('ampm =', type(ampm))
+    print('hour =', type(hour))
+    print('minute =', type(minute))
+    print('second =', type(second))
+    print('\n\n\n', "%s %s : %s : %s - %s" %
+          (ampm, hour, minute, second, weekday))
     print()
 
     time.sleep(1)

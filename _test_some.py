@@ -1,18 +1,24 @@
+"""
+# 여러가지 지능, 모듈, 함수관련 잡다한 테스트~
+#   01.날짜, 시간관련 모듈 = https://goo.gl/SQuimv
+#   02.람다와 map, filter, reduce = https://goo.gl/223gH1
+"""
+import script_run
+import _test_some
+
 def main():
-    import _test_some
 
     function_names = [func
                         for func in _test_some.__dir__()
-                        if not func.startswith("_")
+                        if func.startswith("run")
                         ]
 
-    function_names.remove('main')
-    print(function_names)
 
-    # ['test01_dateformat', 'test02_reduce', 'test03_setter']
-    # test01_dateformat()           # 2015-06-12
-    # test02_reduce()               # 24
-    # test03_setter()               # 3 5.196152422706632
+    print(function_names)
+    # ['run_01_dateformat', 'run_02_reduce', 'test03_setter']
+    # run_01_dateformat()           # 2015-06-12
+    # run_02_reduce()               # 24
+
 
     for i, name in enumerate(function_names, 1):
         print(f"{i}. {name:20}: ", end='')
@@ -20,8 +26,11 @@ def main():
         func()
         print(func.__doc__)
 
+    this_filename = __file__.split("\\")[-1]
+    print(this_filename)
 
-def test01_dateformat():
+
+def run_01_dateformat():
     """[python] 날짜, 시간관련 모듈 = https://goo.gl/SQuimv
     # import datetime
     # d = datetime.date(2015, 4, 15)
@@ -36,7 +45,7 @@ def test01_dateformat():
     print(date)
 
 
-def test02_reduce():
+def run_02_reduce():
     """람다와 map, filter, reduce = https://goo.gl/223gH1
     # >>> a = [1, 2, 3, 4, 5]
     # >>> from functools import reduce
@@ -52,31 +61,7 @@ def test02_reduce():
     print(product(1, 2, 3, 4))
 
 
-def test03_setter():
-    from math import sqrt
-
-    class SmartPoint(object):
-        def __init__(self, x, y):
-            self.x = x
-            self.y = y
-
-        @property
-        def hypotenuse(self):
-            return sqrt(self.x ** 2 + self.y ** 2)
-
-        @hypotenuse.setter
-        def hypotenuse(self, z):
-            # Sily setter example .. 값을 정(set)해주면 self.y를 변경
-            self.y = sqrt(z ** 2 - self.x ** 2)
-
-    point = SmartPoint(3, 4)
-    # Callable 함수는 없다. 속성 값만 있다.
-    # print(point.hypotenuse)     # 5.0  ... sqrt(3**2 + 4**2) = sqrt(25)
-
-    point.hypotenuse = 6         # 리턴값(set) = 정해진값(x)를 놔두고 (y역산)
-    print(point.x, point.y)      # 3 5.196152422706632 ... 역산(y) = 5.1961..
-    print()
-
 
 if __name__ == '__main__':
+    print(__doc__)
     main()

@@ -9,8 +9,8 @@
 #     - '다중상속' 의 우선순위
 #     - '다이아몬드' 상속에서 참조 순위 확인
 """
-# import _script_run_utf8
-# _script_run_utf8.main()
+# import script_run
+# script_run.main()
 
 class FishBread(object):
     """ 속없는 붕어빵 '민짜 붕어빵' """

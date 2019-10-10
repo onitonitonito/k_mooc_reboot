@@ -458,10 +458,10 @@ def answer(func, key=None):
 
 
 if __name__ == '__main__':
-    from assets import _script_run_utf8         # 스트립트런 한글문제 해결
+    from assets import script_run         # 스트립트런 한글문제 해결
     from assets.config import *                 # 초기 변수 별도저장
 
-    _script_run_utf8.main()
+
     print(__doc__)
 
     # show_questions_only()         # 문제만 보여줌

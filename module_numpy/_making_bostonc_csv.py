@@ -34,8 +34,8 @@ ROOT = DIRS[0] + DIRS[1]
 sys.path.append(ROOT)
 
 # 스크립트런 '한글' 표시를 위한 커스텀 모듈 실행
-import _script_run_utf8
-_script_run_utf8.main()
+import script_run
+script_run.main()
 
 # -------------------------------------------------------------
 WORK_DIR = os.path.join(ROOT, "_static", "_made_static", "")

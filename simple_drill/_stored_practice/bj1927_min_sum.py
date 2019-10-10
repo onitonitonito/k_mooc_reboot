@@ -22,8 +22,8 @@ ROOT = DIRS[0] + DIRS[1]
 sys.path.append(ROOT)
 
 # script_run 한글 출력을 위한 문장 / IDE터미널을 쓰면 한글 문제 O.K
-import _script_run_utf8
-_script_run_utf8.main()
+import script_run
+script_run.main()
 
 os.system('cls')
 

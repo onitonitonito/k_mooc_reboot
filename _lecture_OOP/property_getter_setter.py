@@ -5,6 +5,48 @@
 # print(__doc__)
 
 
+def main():
+    # age_getter_setter = property(**age_getter_setter())
+    # print(age_getter_setter)      # <property object>
+    # print(age_getter_setter.fget) # <function age_getter_setter.<locals>.fget>
+
+    movie_setter_run()
+    geeks_for_geeks_run()
+    geeks_run()
+    sample_class_run()
+    fianl_class_run()
+    c_run()
+    test03_setter()
+    pass
+
+
+def test03_setter():
+    from math import sqrt
+
+    class SmartPoint(object):
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+
+        @property
+        def hypotenuse(self):
+            return sqrt(self.x ** 2 + self.y ** 2)
+
+        @hypotenuse.setter
+        def hypotenuse(self, z):
+            # Sily setter example .. 값을 정(set)해주면 self.y를 변경
+            self.y = sqrt(z ** 2 - self.x ** 2)
+
+    point = SmartPoint(3, 4)
+    # Callable 함수는 없다. 속성 값만 있다.
+    # print(point.hypotenuse)     # 5.0  ... sqrt(3**2 + 4**2) = sqrt(25)
+
+    point.hypotenuse = 6         # 리턴값(set) = 정해진값(x)를 놔두고 (y역산)
+
+    # 3 5.196152422706632 ... 역산(y) = 5.1961..
+    print(f"point.x, point.y = ({point.x}, {point.y})")
+    print()
+
 def movie_setter_run():
     # Call class with init variables
     mv = Movie('Super Man')
@@ -125,6 +167,7 @@ def age_getter_setter():
         del self._age_getter_setter
 
     return locals()
+
 
 
 class Movie(object):
@@ -311,15 +354,6 @@ class C(object):
         print("deleter of x called!")
         del self._x
 
+
 if __name__ == '__main__':
-    # age_getter_setter = property(**age_getter_setter())
-    # print(age_getter_setter)      # <property object>
-    # print(age_getter_setter.fget) # <function age_getter_setter.<locals>.fget>
-    #
-    # movie_setter_run()
-    # geeks_for_geeks_run()
-    # geeks_run()
-    # sample_class_run()
-    # fianl_class_run()
-    # c_run()
-    pass
+    main()
