@@ -1,10 +1,10 @@
 import os
 import time
 """ What's the -- 'os.path.dirname'..?
- DESTIN_DIR ='../_static/_pickle/'  --- ONLY!!! kick in 'console' screen..
+ DESTIN_DIR ='../_statics/_pickle/'  --- ONLY!!! kick in 'console' screen..
  os.path.dirhame(__file__) = D:\My Documents\GitHub\k_mooc_reboot\simple_drill
  os.path.dirhame(__file__)*2 = D:\My Documents\GitHub\k_mooc_reboot
- DESTIN_DIR = D:\My Documents\GitHub\k_mooc_reboot\_static\_pickle\
+ DESTIN_DIR = D:\My Documents\GitHub\k_mooc_reboot\_statics\_pickle\
  """
 
 MY_FILE ='i_have_a_dream.pdb'    # Address of minister, Martin Luter King
@@ -12,7 +12,7 @@ LOGFILE ='count_file_log.pdb'
 
 DESTIN_DIR =os.path.join(
             os.path.dirname(os.path.dirname(__file__)),
-            '_static', '_pickle', '')
+            '_statics', '_pickle', '')
 
 def test1_read_splitlines_wo_LF():
     """ WAY 2-1 ... read().splitlines 'list' w/o 'LF-line feed'

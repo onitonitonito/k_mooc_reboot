@@ -32,8 +32,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D  # remain for scatter3D
 
 # TODO: getcwd() results're different @ script_run / terminal = [to be solved]
-filename_target = join(getcwd(), "_static", "txt_plan_xyz.txt")
-filename_result = join(getcwd(), "_static", "conv_plan_xyz.csv")
+filename_target = join(getcwd(), "_statics", "txt_plan_xyz.txt")
+filename_result = join(getcwd(), "_statics", "conv_plan_xyz.csv")
 
 def get_array_xyz_float(array_lines):
     """ read text file contains x,y,z data seperated by space"""

@@ -1,22 +1,26 @@
+""" file doc-string : Pici-Fermi-Beagles game
+# comp. gives clues, 10 times.... like below
+# ------------
+# (1) Pico : correct but wrong position
+# (2) Fermi : correct and right position
+# (3) Beagles : neither correct nor right postion
+"""
+
 import random
 import os
-""" file doc-string : Pici-Fermi-Beagles game
- comp. gives clues, 10 times.... like below
- ------------
- (1) Pico : correct but wrong position
- (2) Fermi : correct and right position
- (3) Beagles : neither correct nor right postion
- """
+
 HINT_FRAME = """
  _%s_ : MY NUMBER
  _________________________________________________
  MY HINT= ....... %s
  chaces left (%s) %s
  .................................................\n\n\n"""
+
 LOOSER_FRAME = """
  _%s_ : MY NUMBER
  MY HINT= ....... %s (WHAT?..OMG! BEAGLES?!!!)
  chaces left (%s) %s\n\n\n"""
+
 CONGRATES_FRAME = """
  \n\n\n\n
  \t~*~*~*~*~*~*~*~*~*~*~*~*~*~*~
@@ -34,7 +38,7 @@ RAND_ARR = [n for n in range(10)]  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 GLOBAL_DIGIT = 4
 CHANCE = 10
 
-def get_rand_num_from(RAND_ARR):  #IN='list/ OUT='str' num
+def get_rand_num_from(RAND_ARR):  # IN='list/ OUT='str' num
     """ get GLOBAL_DIGIT-number, not repeated.
  pick from RAND_ARR=[0, 1, ... 9] = 10 int_arr
  In = int_arr / Out = GLOBAL_DIGITs-num_str """

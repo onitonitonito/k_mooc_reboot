@@ -16,7 +16,7 @@ def my_logger(func):
     # 2차함수() 내용은 항상 맨위에 실행 됨 (공통으로 가장 먼저 반복 실행 됨)
     # 중복 데코레이터의 경우 역순으로 실행 됨 / 제일 먼저, 한꺼번에 실행 됨
     filename_with_dir = os.path.join(
-        ROOT_DIR, '_static', '_pickle', '%s.log'% func.__name__)
+        ROOT_DIR, '_statics', '_pickle', '%s.log'% func.__name__)
 
     logging.basicConfig(            # filename=display_info.log, level=INFO
         filename= filename_with_dir,

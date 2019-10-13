@@ -5,10 +5,10 @@ DIRS = os.path.dirname(__file__).partition("k_mooc_reboot")
 ROOT = DIRS[0] + DIRS[1] + '\\'
 
 # FILE IMG /W DIR.
-FILE_IMG_LOGO = ROOT + '_static/pygame_sprites/mobygames_logo.png'
-FILE_IMG_01 = ROOT + '_static/pygame_sprites/galaga_fighter.png'
-FILE_IMG_02 = ROOT + '_static/pygame_sprites/galaga_pheo.png'
-FILE_IMG_03 = ROOT + '_static/pygame_sprites/galaga_enter.png'
+FILE_IMG_LOGO = ROOT + '_statics/pygame_sprites/mobygames_logo.png'
+FILE_IMG_01 = ROOT + '_statics/pygame_sprites/galaga_fighter.png'
+FILE_IMG_02 = ROOT + '_statics/pygame_sprites/galaga_pheo.png'
+FILE_IMG_03 = ROOT + '_statics/pygame_sprites/galaga_enter.png'
 
 # SET INITIAL VARI.
 SCREEN_SIZE = (480, 640)            # screen size = 480 x 640 default

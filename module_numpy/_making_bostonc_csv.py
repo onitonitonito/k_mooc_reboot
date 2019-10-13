@@ -38,7 +38,7 @@ import script_run
 script_run.main()
 
 # -------------------------------------------------------------
-WORK_DIR = os.path.join(ROOT, "_static", "_made_static", "")
+WORK_DIR = os.path.join(ROOT, "_statics", "_made_statics", "")
 
 # boston.csv 화일에서 읽어서 data 리스트 화일에 담는다.
 with open(WORK_DIR + "bostonc_wrong.csv", mode='r') as f:

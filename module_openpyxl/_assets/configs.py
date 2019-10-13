@@ -29,7 +29,7 @@ dir_top = get_dir_by_name(name_top)
 dir_dict = {
     '_assets' : ['module_openpyxl', '_assets',],
     '_results' : ['module_openpyxl', '_results',],
-    '_statics' : ['module_openpyxl', '_statics',],
+    '_staticss' : ['module_openpyxl', '_staticss',],
     '_tests' : ['module_openpyxl', '_tests',],
 }
 

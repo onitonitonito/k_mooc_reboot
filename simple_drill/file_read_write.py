@@ -3,7 +3,7 @@ import os
 F_NAME = 'new_file.pdb'
 DESTIN_DIR = os.path.join(
             os.path.dirname(os.path.dirname(__file__)),
-            '_static', '_pickle', '')
+            '_statics', '_pickle', '')
 
 def compose_data():
     global dict_list

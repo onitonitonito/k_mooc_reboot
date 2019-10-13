@@ -15,7 +15,7 @@ from _assets.classes import *
 
 filename = "_write.xlsx"
 filename_with_dir = join_dir(
-                get_dir(dir_top, dir_dict, "_statics"),
+                get_dir(dir_top, dir_dict, "_staticss"),
                 filename,
                 )
 

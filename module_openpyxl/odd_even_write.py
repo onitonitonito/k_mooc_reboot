@@ -17,7 +17,7 @@ from _assets.classes import *
 
 # 같은 내용 다른 포맷
 TARGET_READ = join_dir(
-    get_dir(dir_top, dir_dict, "_statics"),
+    get_dir(dir_top, dir_dict, "_staticss"),
     '_result.xlsx',
 )
 OUTPUT_01 = join_dir(

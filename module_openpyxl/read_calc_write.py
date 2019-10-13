@@ -12,11 +12,11 @@ from _assets.configs import *
 from _assets.classes import *
 
 filename_read = join_dir(
-                get_dir(dir_top, dir_dict, "_statics"),
+                get_dir(dir_top, dir_dict, "_staticss"),
                 '_write.xlsx',
                 )
 filename_write = join_dir(
-                get_dir(dir_top, dir_dict, "_statics"),
+                get_dir(dir_top, dir_dict, "_staticss"),
                 '_result.xlsx',
                 )
 

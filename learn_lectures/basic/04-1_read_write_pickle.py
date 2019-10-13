@@ -101,13 +101,13 @@ def waiting_delete(file_name_with_dir, second=3):
 
 
 write_file_to_pickle(
-    HOME_DIR + '\\_static\\_pickle\\' +
+    HOME_DIR + '\\_statics\\_pickle\\' +
     FILE_NAME,
     _d_dict)
 
 try:
     _new_dict = get_read_file_from_pickle(
-        HOME_DIR + '\\_static\\_pickle\\' +
+        HOME_DIR + '\\_statics\\_pickle\\' +
         FILE_NAME)
 
     for _key in _new_dict:
@@ -117,7 +117,7 @@ try:
     version = 0
     for n in range(20):
         if os.path.exists(
-            HOME_DIR + '\\_static\\_pickle\\' +
+            HOME_DIR + '\\_statics\\_pickle\\' +
             FILE_NAME.strip().split('.')[0] +
             '_v' + '{:0>2}.'.format(version) +
                 FILE_NAME.strip().split('.')[1]):
@@ -127,13 +127,13 @@ try:
             break
 
     write_file_to_pickle(
-        HOME_DIR + '\\_static\\_pickle\\' +
+        HOME_DIR + '\\_statics\\_pickle\\' +
         FILE_NAME.strip().split('.')[0] +
         '_v' + '{:0>2}.'.format(version) +
         FILE_NAME.strip().split('.')[1],
         _new_dict)
 
-    waiting_delete(HOME_DIR + '\\_static\\_pickle\\' + FILE_NAME, 6)
+    waiting_delete(HOME_DIR + '\\_statics\\_pickle\\' + FILE_NAME, 6)
 
 except TypeError as e:
     print('(!) Message : {}'.format(e))

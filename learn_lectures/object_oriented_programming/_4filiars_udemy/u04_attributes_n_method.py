@@ -56,7 +56,7 @@ def udemy4_8_understangind_self():
     # kay.show_employee_details()
 # udemy4_8_understangind_self()
 
-def udemy4_9_staticmethod():
+def udemy4_9_staticsmethod():
     """ """
     class Employee(object):
         def __init__(self):
@@ -84,7 +84,7 @@ def udemy4_9_staticmethod():
 
     # this is @staticmethod - decorator
     kay.welcome_message()
-# udemy4_9_staticmethod()
+# udemy4_9_staticsmethod()
 
 def udemy4_10_init_method_start():
     """ Create fully initialized Object
