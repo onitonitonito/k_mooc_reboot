@@ -1,9 +1,9 @@
 import sys
 import pygame
-import _parent_path                     # SET FOR ASSET
+import _parent_path                     # SET FOR assets
 
-from asset.init import *
-from asset.sprite import *
+from assets.init import *
+from assets.sprite import *
 
 pygame.init()
 

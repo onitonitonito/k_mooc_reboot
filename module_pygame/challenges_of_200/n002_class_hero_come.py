@@ -1,10 +1,10 @@
 
 import pygame
-import _parent_path                     # SET FOR ASSET
+import _parent_path                     # SET FOR assets
 
-from asset.init import *
-from asset.sprite import *
-from asset.class_hero import *
+from assets.init import *
+from assets.sprite import *
+from assets.class_hero import *
 
 
 fpsClock = pygame.time.Clock()

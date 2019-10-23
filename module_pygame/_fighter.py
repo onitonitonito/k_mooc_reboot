@@ -1,5 +1,5 @@
-from asset.init import *
-from asset.sprite import *
+from assets.init import *
+from assets.sprite import *
 
 
 FPSCLOCK = pygame.time.Clock()

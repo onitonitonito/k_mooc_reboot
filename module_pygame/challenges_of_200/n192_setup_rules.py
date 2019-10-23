@@ -14,7 +14,7 @@ WORK_DIR = os.path.dirname(__file__)
 ROOT_WORD = 'k_mooc_reboot'                 # root directory
 ROOT_DIR = WORK_DIR.partition(ROOT_WORD)[0] + WORK_DIR.partition(ROOT_WORD)[1]
 
-DESTIN_DIR = os.path.join(ROOT_DIR, '_statics' ,'pygame_sprites', 'Galaga\\')
+DESTIN_DIR = os.path.join(ROOT_DIR, 'statics' ,'pygame_sprites', 'Galaga\\')
 print(DESTIN_DIR)
 
 """ # COLOR TABLE """
