@@ -5,11 +5,11 @@
 # script run 에서는 실행이 안됨.
 
 import openpyxl as opx
-import _assets.script_run
+import assets.script_run
 
 
-from _assets.configs import *
-from _assets.classes import *
+from assets.configs import *
+from assets.classes import *
 
 filename_read = join_dir(
                 get_dir(dir_top, dir_dict, "_staticss"),

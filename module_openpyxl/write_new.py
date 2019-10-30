@@ -7,10 +7,10 @@
 # print(__doc__)
 
 import random
-import _assets.script_run
+import assets.script_run
 
-from _assets.configs import *
-from _assets.classes import *
+from assets.configs import *
+from assets.classes import *
 
 
 filename = "_write.xlsx"

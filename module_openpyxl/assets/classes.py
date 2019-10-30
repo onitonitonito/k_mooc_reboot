@@ -1,5 +1,5 @@
 """
-# _assets/classes.py - 공동으로 사용하는 함수 모음
+# assets/classes.py - 공동으로 사용하는 함수 모음
 """
 print(__doc__)
 

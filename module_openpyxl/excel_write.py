@@ -6,15 +6,12 @@
 
 import datetime
 import openpyxl as opx
-import _assets.script_run
+import assets.script_run
 
-from _assets.configs import *
-from _assets.classes import *
+from assets.configs import *
+from assets.classes import *
 
-filename_write = join_dir(
-                get_dir(dir_top, dir_dict, "_results"),
-                '_sample.xlsx',
-                )
+filename_write = dir_home_works + '_sample.xlsx'
 
 WB = opx.Workbook()
 WS = WB.active
@@ -28,15 +25,27 @@ WS['F1'] = datetime.datetime.now()
 WS.append([1, 2, 3, 4, 5])
 WS.append(['Hello!', 'This', 'is the', 'OpenPyXL', 'World!'])
 
-command_list = WS['A1'].__dir__()
-for content in command_list:
-    if content[:1] is "_":
-        pass
-    else:
-        print(content)
 
 print(WS['A1'].value)       # Python OpenPyXL module TEST
 print(WS['F1'].value)       # datetime.now()
 
 # Save the file
 WB.save(filename_write)
+
+
+def main():
+    show_commands(WS['A1'])
+
+def show_commands(obj):
+    print(f"\n\nCOMMANDS LIST for {obj}")
+    print('--------' * 5)
+    command_list = obj.__dir__()
+    for i, item in enumerate(command_list):
+        if not item.startswith("_"):
+            print(f" {i+1:02}.", item)
+    print('--------' * 5)
+
+
+
+if __name__ == '__main__':
+    main()

@@ -27,8 +27,8 @@ sys.path.insert(0, dir_work)   # insert at the top
 # [print(path) for path in sys.path]  # for test
 
 
-import _assets.script_run
-from _assets import configs
+import assets.script_run
+from assets import configs
 
 
 

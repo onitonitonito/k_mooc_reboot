@@ -37,16 +37,16 @@ sys.path.insert(0, dir_work)   # insert at the top
 
 import pandas as pd
 import openpyxl as opx
-import _assets.script_run
+import assets.script_run
 
 import matplotlib.pyplot as plt
 
-# TARGET_XLS = "./_statics/_total_example.xls"
-# OUTPUT_01 = "./_statics/_u_even.xls"
-# OUTPUT_02 = "./_statics/_u_odd.xls"
+# TARGET_XLS = "./statics/_total_example.xls"
+# OUTPUT_01 = "./statics/_u_even.xls"
+# OUTPUT_02 = "./statics/_u_odd.xls"
 
-# TARGET_XLSX = "./_statics/hydrauric_sheet.xlsx"  # security locked-impossible
-TARGET_XLSX = "./_statics/_sample.xlsx"          # not
+# TARGET_XLSX = "./statics/hydrauric_sheet.xlsx"  # security locked-impossible
+TARGET_XLSX = "./statics/_sample.xlsx"          # not
 
 WB = opx.load_workbook(TARGET_XLSX)
 SHEET = WB['Sheet']
