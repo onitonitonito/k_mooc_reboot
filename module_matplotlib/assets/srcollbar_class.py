@@ -10,12 +10,14 @@
 print(__doc__)
 
 import matplotlib
-# Make sure that we are using QT5
-matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
-from PyQt5 import QtWidgets
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+
+# Make sure that we are using QT5
+matplotlib.use('Qt5Agg')
+
+from PyQt5 import QtWidgets
 
 
 class ScrollableWindow(QtWidgets.QMainWindow):
@@ -43,10 +45,14 @@ class ScrollableWindow(QtWidgets.QMainWindow):
         exit(self.qapp.exec_())
 
 
-# create a figure and some subplots
-fig, axes = plt.subplots(ncols=4, nrows=5, figsize=(16,16))
-for ax in axes.flatten():
-    ax.plot([2,3,5,1])
+if __name__ == '__main__':
+    import random
+    # create a figure and some subplots
 
-# pass the figure to the custom window
-a = ScrollableWindow(fig)
+    fig, axes = plt.subplots(ncols=4, nrows=5, figsize=(16,16))
+    for ax in axes.flatten():
+        rand_array = [random.randint(1,random.randint(100, 100)) for x in range(10)]
+        random.shuffle(rand_array)
+        ax.plot(rand_array)
+
+    a = ScrollableWindow(fig)

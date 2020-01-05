@@ -2,13 +2,16 @@
 # 워드클라우드 깃허브에 예제로 잘 올라와 있다
 # https://amueller.github.io/word_cloud/auto_examples/masked.html
 """
+from assets import script_run
+from assets.configs import dir_home_statics
+
 # %matplotlib inline
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-from PIL import Image
 from os import path
+from PIL import Image
 from wordcloud import WordCloud
 from wordcloud import STOPWORDS
 
@@ -18,9 +21,8 @@ filename = "i_have_a_dream.txt"
 image_file = 'mask_alice.png'
 image_result = 'wcloud_result_image.png'
 
-destin_dir = '_statics/_made_static/'
-mask_array = np.array(Image.open(destin_dir + image_file))
-f = open(destin_dir + filename).read()
+mask_array = np.array(Image.open(dir_home_statics + image_file))
+f = open(dir_home_statics + filename).read()
 
 def main():
     wcb = get_wordcloud_basic(f)
@@ -30,7 +32,7 @@ def main():
     show_wc(mask_array)
     show_wc(wcm)
 
-    save_wc_image(wcm, destin_dir+image_result)
+    save_wc_image(wcm, dir_home_statics+image_result)
 
 def show_wc(image_array, figsize=(8, 4)):
     """show wordcloud obj. or img_array using imshow()"""
@@ -44,9 +46,7 @@ def get_wordcloud_basic(f):
     # If you lower the maximum font size, you will get more words
     # wc = WordCloud(max_font_size=30).generate(f) .... Line.10
     """
-    global destin_dir, filename
-    wc = WordCloud(max_font_size=60) \
-                .generate(f)
+    wc = WordCloud(max_font_size=60).generate(f)
     wc.words_
     return wc
 

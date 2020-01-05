@@ -4,7 +4,7 @@
 """
 import pandas as pd
 import openpyxl as ox
-import assets.script_run    
+import assets.script_run
 
 from assets.configs import *
 
@@ -20,21 +20,30 @@ WSI_02 = WBI["TEST"]
 
 # Sheet 이름은 존재하는 탭 이름을 써야 함.
 WBO = ox.load_workbook(OUT_DESIGNATED)
-WSO_01 = WBO["Sheet1"]
-WSO_02 = WBO["Sheet2"]
+# WSO_01 = WBO["Sheet1"]
+# WSO_02 = WBO["Sheet2"]
 WSO_03 = WBO["Sheet3"]
 
 
 
 def main():
+    show_overview(WSI_01)
+    print()
+
+    show_all(WSO_03); quit()
+
     # [print(row) for row in get_WS_array(WSI_01)]  # ... for TEST!
     ws_array = get_WS_array(WSI_01)
     df = pd.DataFrame(data=ws_array)
 
     print(df)
 
-    # show_overview(WSI_01)
-    # show_all()
+    df.to_excel(excel_writer=OUT_DESIGNATED, index=False, header=False, )
+
+    # TODO: 추가 탭 쓰기가 되지 않고, 탭 하나에 덮어쓴다 (추가탭 쓰기 필요)
+    # df.to_excel(excel_writer=OUT_DESIGNATED, sheet_name="Sheet2")
+    # df.to_excel(excel_writer=OUT_DESIGNATED, sheet_name="Sheet3")
+
 
     # # WSI_01 입력내용을 array 를 만든다.
     # WSI_01_array = get_WS_array(WSI_01)
@@ -90,7 +99,7 @@ def get_WS_array(worksheet):
         ws_array.append([col.value for col in row])
     return ws_array
 
-def show_all():
+def show_all(worksheet):
     # ALL THE SAME! ... 1-line coding!.. apprehansive repeat!
     # [print(f"{col.value}, ", end="\n")
     #     if i%4 == 3
@@ -105,7 +114,7 @@ def show_all():
     #     print()
 
     # 1 row(tuple) 가져오기
-    for row in WSI_01.rows:
+    for row in worksheet.rows:
         for i, col in enumerate(row):
             if i % 4 == 3:
                 print(f"{col.value}")       # 마지막 4칼럼에서 줄바꿈

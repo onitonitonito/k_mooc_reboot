@@ -8,8 +8,8 @@ import datetime
 import openpyxl as opx
 import assets.script_run
 
-from assets.configs import *
-from assets.classes import *
+from assets.configs import dir_home_works
+from assets.classes import show_commands
 
 filename_write = dir_home_works + '_sample.xlsx'
 
@@ -35,15 +35,6 @@ WB.save(filename_write)
 
 def main():
     show_commands(WS['A1'])
-
-def show_commands(obj):
-    print(f"\n\nCOMMANDS LIST for {obj}")
-    print('--------' * 5)
-    command_list = obj.__dir__()
-    for i, item in enumerate(command_list):
-        if not item.startswith("_"):
-            print(f" {i+1:02}.", item)
-    print('--------' * 5)
 
 
 

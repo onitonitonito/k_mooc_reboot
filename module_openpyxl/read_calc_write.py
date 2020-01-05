@@ -7,26 +7,18 @@
 import openpyxl as opx
 import assets.script_run
 
+from assets.configs import dir_home_statics
 
-from assets.configs import *
-from assets.classes import *
-
-filename_read = join_dir(
-                get_dir(dir_top, dir_dict, "_staticss"),
-                '_write.xlsx',
-                )
-filename_write = join_dir(
-                get_dir(dir_top, dir_dict, "_staticss"),
-                '_result.xlsx',
-                )
+filename_read = dir_home_statics + '_write.xlsx'
+filename_write = dir_home_statics + '_result.xlsx'
 
 # 엑셀파일 열기 (WB = Working Book)
 WB = opx.load_workbook(filename_read)
 WS = WB.active
 
 # 국영수 점수를 읽기
-for i, row in enumerate(WS.rows, 1):
-    row_index = row[0].row   # 현재 행 인덱스
+for row in WS.rows:
+    row_index = row[0].row   # 현재 행 인덱스 1~
     name = row[0].value
     kor = row[1].value
     eng = row[2].value
@@ -37,8 +29,8 @@ for i, row in enumerate(WS.rows, 1):
         (sum, average) = "SUM", "AVERAGE"
 
     elif isinstance(kor, int):
-        sum = f"=SUM(B{i}:D{i})"
-        average = f"=ROUND(AVERAGE(B{i}:D{i}), 0)"
+        sum = f"=SUM(B{row_index}:D{row_index})"
+        average = f"=ROUND(AVERAGE(B{row_index}:D{row_index}), 0)"
 
     else:
         sum = average = "... NoneType!!"

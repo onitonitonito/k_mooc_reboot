@@ -6,19 +6,19 @@ __pycache__/
 *.pyc
 *.log
 
-#___________________________________
-#  2. PyInstaller Distribution
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-dist/
 
 #___________________________________
-#  3. Temporary exec files for TEST
+#  2. Temporary exec files for TEST
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _.html
 _.pdb
+module_openpyxl/statics/*.xlsx
+module_openpyxl/tests/*.xlsx
+module_openpyxl/works/*.xlsx
+
 
 #___________________________________
-#  4. Chatter-bot Temporary db files
+#  3. Chatter-bot Temporary db files
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 *.sqlite3
 db.sqlite3-shm

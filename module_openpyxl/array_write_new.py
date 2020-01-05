@@ -9,16 +9,12 @@
 import random
 import assets.script_run
 
-from assets.configs import *
-from assets.classes import *
+from pyprnt import prnt
+from assets.configs import dir_home_statics
+from assets.classes import write_excel
 
 
-filename = "_write.xlsx"
-filename_with_dir = join_dir(
-                get_dir(dir_top, dir_dict, "_staticss"),
-                filename,
-                )
-
+filename_with_dir = dir_home_statics + "_write.xlsx"
 
 # 자료만들기 4행5열 데이터
 title = ['NAME', 'KOR', 'ENG', 'MATH', 'REMARK', ]
@@ -26,17 +22,10 @@ names = ['PARK', 'LEE', 'KIM', 'CHOI', 'LIM', 'YU', 'CHEONG', 'SEO']
 
 rows = []
 for name in names:
-    scores = []
-    for i in range(3):
-        score_random = random.randrange(40, 100, 5)
-        scores.append(score_random)
-
+    scores = [random.randrange(40, 100, 5) for i in range(3)]
     rows.append([name, *scores, '-', ])
 
 # 만들어진 LIST 자료확인  --- 횡방향 순서대로 rows를 기록한다.
-# print(rows)     # for test
-
-echos = rows.insert(0, title)
-
+rows.insert(0, title)  # Header를 끼워 넣는다.
 
 write_excel(rows, filename_with_dir)
