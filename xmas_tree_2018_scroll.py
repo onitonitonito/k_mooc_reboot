@@ -7,79 +7,13 @@
 import os
 import time
 
+from array_letters import digits, digit_h, digit_w
+
 # print(__doc__)
 
 screen = 70
-time_lag_blinking = 0.2
+time_lag_blinking = 0.1
 
-digits = {
-    # size of letter - 14x11 digits
-        'x' : [
-            "     A     ",
-            "    < >    ",
-            "     V     ",
-            "    ***    ",
-            "   *****   ",
-            "  *******  ",
-            "    ***    ",
-            "   *****   ",
-            " ********* ",
-            "***********",
-            "     H     ",
-            "     H     ",
-            "  ^^^^^^^  ",
-            "MERRY XMAS!",
-        ],
-        '2' : [
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "   ******* ",
-            "  ***   ***",
-            "        ***",
-            "   ******* ",
-            "  ***      ",
-            "  ***     *",
-            "  *********",
-        ],
-        '0' : [
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "   ******* ",
-            "  ***   ***",
-            "  ***   ***",
-            "  ***   ***",
-            "  ***   ***",
-            "  ***   ***",
-            "   ******* ",
-        ],
-        '!' : [
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "           ",
-            "    ***    ",
-            "    ***    ",
-            "   ***     ",
-            "   ***     ",
-            "           ",
-            "  ***      ",
-            "  ***      ",
-        ],
-    }
-(digit_h, digit_w) = (14, 11)
 show_width = digit_w * 6
 blanks = [ " " * int((screen-show_width)/2) for i in range(digit_h)]
 signs = [blanks[i] +

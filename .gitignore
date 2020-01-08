@@ -15,6 +15,7 @@ _.pdb
 module_openpyxl/statics/*.xlsx
 module_openpyxl/tests/*.xlsx
 module_openpyxl/works/*.xlsx
+module_pandas/*.csv
 
 
 #___________________________________
