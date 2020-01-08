@@ -1,5 +1,5 @@
 """
-# Ex 3.2-set icon
+# Ex 3.02-set icon
 # http://codetorial.net/pyqt5/basics/icon.html
 """
 
@@ -23,7 +23,7 @@ class MyApp(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.title = 'Ex3.2 - set Icon'
+        self.title = 'Ex3.02 - set Icon'
         self.posXY = (100, 100)
         self.windowSize = (400, 300)
         self.imageName = dir_icon + 'icon_web.png'

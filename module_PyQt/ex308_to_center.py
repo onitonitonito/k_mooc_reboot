@@ -1,5 +1,5 @@
 """
-# Ex 3.8 set Window to the center of screen
+# Ex 3.08 set Window to the center of screen
 # http://codetorial.net/pyqt5/basics/centering.html
 """
 
@@ -28,7 +28,7 @@ class MyApp(QWidget):
         super().__init__()
 
         self.flag = flag
-        self.title = f'Ex 3.8-center /w (flag={self.flag})'
+        self.title = f'Ex 3.08-center /w (flag={self.flag})'
         self.windowSize = (400, 300)
 
         self.initUI()

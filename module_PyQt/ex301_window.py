@@ -1,5 +1,5 @@
 """
-# Ex 3.1-pop up window
+# Ex 3.01-pop up window
 # http://codetorial.net/pyqt5/basics/opening.html
 """
 
@@ -25,7 +25,7 @@ class MyApp(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('Ex3.1- My First Application')
+        self.setWindowTitle('Ex3.01- My First Application')
         self.move(100, 100)       # based on POS_XY [NW]
         self.resize(400, 300)
         self.show()

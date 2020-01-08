@@ -1,5 +1,5 @@
 """
-# Ex 39 display date & time
+# Ex 3.09 display date & time
 http://codetorial.net/pyqt5/basics/datetime.html
 """
 # 날짜와 시간 표시하기
@@ -97,7 +97,7 @@ class MyApp(QMainWindow):
         # self.time = QTime.currentTime()
         # self.dateTime = QDateTime.currentDateTime()
 
-        self.title = 'Ex3.9-Show Date in statusBar!'
+        self.title = 'Ex3.09-Show Date in statusBar!'
         self.posXY = (300, 300)
         self.windowSize = (400, 200)
 

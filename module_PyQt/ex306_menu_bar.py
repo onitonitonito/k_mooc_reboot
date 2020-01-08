@@ -1,5 +1,5 @@
 """
-# Ex 3.6-set menu bar
+# Ex 3.06-set menu bar
 # http://codetorial.net/pyqt5/basics/menubar.html
 """
 
@@ -27,7 +27,7 @@ class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.title = 'Ex 3.6-set menu bar'
+        self.title = 'Ex 3.06-set menu bar'
         self.imageName = dir_img + 'img_exit.png'
         self.posXY = (100, 100)
         self.windowSize = (400, 200)

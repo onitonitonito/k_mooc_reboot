@@ -1,5 +1,5 @@
 """
-# Ex 3.7 - set tool bar.py
+# Ex 3.07 - set tool bar.py
 # http://codetorial.net/pyqt5/basics/toolbar.html
 """
 
@@ -27,7 +27,7 @@ class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.title = 'Ex 3.7-set tool bar'
+        self.title = 'Ex 3.07-set tool bar'
         self.posXY = (100, 100)
         self.windowSize = (400, 200)
         self.imageName = dir_img +  'img_exit.png'
