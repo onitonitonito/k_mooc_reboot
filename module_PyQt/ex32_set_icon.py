@@ -25,7 +25,7 @@ class MyApp(QWidget):
     def initUI(self):
         self.setWindowTitle('Ex3.2 - set Icon')
         self.setGeometry(100, 100, 400, 300)
-        self.setWindowIcon(QIcon('web.png'))
+        self.setWindowIcon(QIcon('img_web.png'))
         self.show()
 
 
