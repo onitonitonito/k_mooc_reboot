@@ -24,9 +24,9 @@ def main():
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_UI()
 
-    def initUI(self):
+    def init_UI(self):
         QToolTip.setFont(QFont('SanSerif', 10))
         self.setToolTip('This is a <b>Qwidget</b> widget')
 

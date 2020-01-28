@@ -20,9 +20,9 @@ def main():
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_UI()
 
-    def initUI(self):
+    def init_UI(self):
         self.setWindowTitle('Ex3.2 - set Icon')
         self.setGeometry(100, 100, 400, 300)
         self.setWindowIcon(QIcon('img_web.png'))

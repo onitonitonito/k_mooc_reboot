@@ -19,9 +19,9 @@ def main():
 class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_UI()
 
-    def initUI(self):
+    def init_UI(self):
         self.statusBar().showMessage('Ready')
 
         self.setWindowTitle('Ex3.5 - set status bar')
