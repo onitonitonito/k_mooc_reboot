@@ -25,6 +25,12 @@ window_height = 150
 Dir = 'C:/'
 Dir = "C:/Users"
 
+def main():
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    sys.exit(app.exec())
+
+
 class MainWindow(QWidget):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -88,6 +94,4 @@ class Thread(QThread):
 
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    sys.exit(app.exec())
+    main()

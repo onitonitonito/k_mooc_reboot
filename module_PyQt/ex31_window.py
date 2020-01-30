@@ -13,7 +13,7 @@ print(__doc__)
 
 def main():
     app = QApplication(sys.argv)
-    ex = MyApp()
+    window = MyApp()
     sys.exit(app.exec_())
 
 
@@ -22,9 +22,9 @@ class MyApp(QWidget):
     """
     def __init__(self):
         super().__init__()
-        self.init_UI()
+        self.initUI()
 
-    def init_UI(self):
+    def initUI(self):
         self.setWindowTitle('Ex3.1- My First Application')
         self.move(100, 100)       # POS_XY [NW]
         self.resize(400, 300)

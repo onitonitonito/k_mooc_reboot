@@ -7,20 +7,27 @@ import ctypes
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWidgets import QStackedWidget
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import QVBoxLayout
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import (
+                        QApplication,
+                        QWidget,
+                        QLabel,
+                        QMainWindow,
+                        QStackedWidget,
+                        QVBoxLayout,
+                    )
 
 from assets.config import dir_img
 
 print(__doc__)
 
 user32 = ctypes.windll.user32
-screen_width = user32.GetSystemMetrics(0)
-screen_height = user32.GetSystemMetrics(1)
+screen_width, screen_height = (user32.GetSystemMetrics(i) for i in range(2))
+
+def main():
+    app = QApplication([])
+    window = MyApp()
+    sys.exit(app.exec_())
+
 
 class MainWidget(QWidget):
     def __init__(self, window, title, left, top, width, height):
@@ -58,7 +65,7 @@ class MainWidget(QWidget):
         self.setLayout(mainLayout)
         self.setFixedSize(width, height)
 
-class App(QMainWindow):
+class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.title = 'SET! Window Title Here!'
@@ -83,6 +90,4 @@ class App(QMainWindow):
 
 
 if __name__ == '__main__':
-    app = QApplication([])
-    window = App()
-    sys.exit(app.exec_())
+    main()

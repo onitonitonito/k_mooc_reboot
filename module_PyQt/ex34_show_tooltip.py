@@ -5,11 +5,14 @@
 
 import sys
 
-
-from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QWidget, QPushButton, QToolTip
 from PyQt5.QtGui import QFont
+from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import (
+                        QApplication,
+                        QWidget,
+                        QPushButton,
+                        QToolTip,
+                    )
 
 
 print(__doc__)
@@ -17,16 +20,16 @@ print(__doc__)
 
 def main():
     app = QApplication(sys.argv)
-    ex = MyApp()
+    window = MyApp()
     sys.exit(app.exec_())
 
 
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.init_UI()
+        self.initUI()
 
-    def init_UI(self):
+    def initUI(self):
         QToolTip.setFont(QFont('SanSerif', 10))
         self.setToolTip('This is a <b>Qwidget</b> widget')
 
