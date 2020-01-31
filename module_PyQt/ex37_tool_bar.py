@@ -47,7 +47,7 @@ class MyApp(QMainWindow):
         self.tooBar = self.addToolBar('Exit')
         self.tooBar.addAction(exitAction)
 
-        self.setWindowTitle('Ex 3.6-set menu bar')
+        self.setWindowTitle('Ex 3.7-set tool bar')
         self.setGeometry(100, 100, 400, 200)
         self.show()
 

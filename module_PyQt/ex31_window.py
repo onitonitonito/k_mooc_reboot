@@ -26,7 +26,7 @@ class MyApp(QWidget):
 
     def initUI(self):
         self.setWindowTitle('Ex3.1- My First Application')
-        self.move(100, 100)       # POS_XY [NW]
+        self.move(100, 100)       # based on POS_XY [NW]
         self.resize(400, 300)
         self.show()
 
