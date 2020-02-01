@@ -1,5 +1,8 @@
 """
 # PyQt5 test - main / sub window event test
+#     - main = pop push button window
+#     - sub  = pop progressbar window
+#     - sub  = pop explorer w/ destination dir.
 """
 print(__doc__)
 
@@ -17,8 +20,8 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 
 user32 = ctypes.windll.user32
-screen_width = user32.GetSystemMetrics(0)
-screen_height = user32.GetSystemMetrics(1)
+screen_width, screen_height = (user32.GetSystemMetrics(i) for i in range(2))
+
 window_width = 450
 window_height = 150
 

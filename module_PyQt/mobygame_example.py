@@ -16,8 +16,8 @@ from PyQt5.QtWidgets import QLabel, QWidget, QVBoxLayout, QApplication
 print(__doc__)
 
 user32 = ctypes.windll.user32
-screen_width = user32.GetSystemMetrics(0)
-screen_height = user32.GetSystemMetrics(1)
+screen_width, screen_height = (user32.GetSystemMetrics(i) for i in range(2))
+
 win_width = 640
 win_height = 480
 start_xy = ((screen_width-win_width)*0.5, (screen_height-win_height)*0.5)
