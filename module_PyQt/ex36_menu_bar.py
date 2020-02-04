@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import (
                         QAction,
                         qApp,
                     )
+from assets.config import dir_img
 
 print(__doc__)
 
@@ -25,10 +26,16 @@ def main():
 class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.title = 'Ex 3.6-set menu bar'
+        self.imageName = dir_img + 'img_exit.png'
+        self.posXY = (100, 100)
+        self.windowSize = (400, 200)
+
         self.initUI()
 
     def initUI(self):
-        exit_action = QAction(QIcon('img_exit.png'), 'Exit', self)
+        exit_action = QAction(QIcon(self.imageName), 'Exit', self)
         exit_action.setShortcut('Ctrl+Q')
         exit_action.setStatusTip('Exit QApplication')
         exit_action.triggered.connect(qApp.quit)
@@ -41,8 +48,8 @@ class MyApp(QMainWindow):
         filemenu = menubar.addMenu('&File')
         filemenu.addAction(exit_action)
 
-        self.setWindowTitle('Ex 3.6-set menu bar')
-        self.setGeometry(100, 100, 400, 200)
+        self.setWindowTitle(self.title)
+        self.setGeometry(*self.posXY, *self.windowSize)
         self.show()
 
 

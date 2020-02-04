@@ -13,6 +13,7 @@ dir_root = "".join(dir_array[:2]) + "\\"
 dir_assets = dir_root + "assets\\"
 dir_statics = dir_root + "statics\\"
 
+dir_icon = dir_statics + "icons\\"
 dir_img = dir_statics + "images\\"
 
 

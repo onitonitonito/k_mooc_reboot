@@ -25,6 +25,11 @@ def main():
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
+
+        self.title = 'Ex3.3 - Quit Button Set'
+        self.posXY = (100, 100)
+        self.windowSize = (400, 200)
+
         self.initUI()
 
     def initUI(self):
@@ -33,8 +38,8 @@ class MyApp(QWidget):
         button.resize(button.sizeHint())
         button.clicked.connect(QCoreApplication.instance().quit)
 
-        self.setWindowTitle('Ex3.3 - Quit Button Set')
-        self.setGeometry(100, 100, 400, 200)
+        self.setWindowTitle(self.title)
+        self.setGeometry(*self.posXY, *self.windowSize)
         self.show()
 
 

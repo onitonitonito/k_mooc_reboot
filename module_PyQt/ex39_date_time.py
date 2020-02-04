@@ -98,8 +98,8 @@ class MyApp(QMainWindow):
         # self.dateTime = QDateTime.currentDateTime()
 
         self.title = 'Ex3.9-Show Date in statusBar!'
-        self.pos_xy = (300, 300)
-        self.window_size = (400, 200)
+        self.posXY = (300, 300)
+        self.windowSize = (400, 200)
 
         string_format = Qt.DefaultLocaleLongDate
         # self.message = QDate.currentDate().toString(string_format)
@@ -111,7 +111,7 @@ class MyApp(QMainWindow):
     def initUI(self):
         self.statusBar().showMessage(self.message)
         self.setWindowTitle(self.title)
-        self.setGeometry(*self.pos_xy, *self.window_size)
+        self.setGeometry(*self.posXY, *self.windowSize)
         self.show()
 
 

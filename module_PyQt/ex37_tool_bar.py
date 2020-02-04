@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import (
                         QAction,
                         qApp,
                     )
+from assets.config import dir_img
 
 print(__doc__)
 
@@ -25,10 +26,16 @@ def main():
 class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.title = 'Ex 3.7-set tool bar'
+        self.posXY = (100, 100)
+        self.windowSize = (400, 200)
+        self.imageName = dir_img +  'img_exit.png'
+
         self.initUI()
 
     def initUI(self):
-        exitAction = QAction(QIcon('img_exit.png'), 'Exit', self)
+        exitAction = QAction(QIcon(self.imageName), 'Exit!', self)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit QApplication')
         exitAction.triggered.connect(qApp.quit)
@@ -47,8 +54,8 @@ class MyApp(QMainWindow):
         self.tooBar = self.addToolBar('Exit')
         self.tooBar.addAction(exitAction)
 
-        self.setWindowTitle('Ex 3.7-set tool bar')
-        self.setGeometry(100, 100, 400, 200)
+        self.setWindowTitle(self.title)
+        self.setGeometry(*self.posXY, *self.windowSize)
         self.show()
 
 

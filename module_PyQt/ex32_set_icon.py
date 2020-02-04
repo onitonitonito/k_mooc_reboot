@@ -8,6 +8,8 @@ import sys
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QWidget
 
+from assets.config import dir_icon
+
 print(__doc__)
 
 
@@ -20,12 +22,18 @@ def main():
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
+
+        self.title = 'Ex3.2 - set Icon'
+        self.posXY = (100, 100)
+        self.windowSize = (400, 300)
+        self.imageName = dir_icon + 'icon_web.png'
+
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('Ex3.2 - set Icon')
-        self.setGeometry(100, 100, 400, 300)
-        self.setWindowIcon(QIcon('img_web.png'))
+        self.setWindowTitle(self.title)
+        self.setGeometry(*self.posXY, *self.windowSize)
+        self.setWindowIcon(QIcon(self.imageName))
         self.show()
 
 
