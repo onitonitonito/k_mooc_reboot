@@ -28,7 +28,7 @@ http://codetorial.net/pyqt5/widget/index.html
 
 print(__doc__)
 
-import sys
+import sys; import _add_syspath_root
 from PyQt5.QtWidgets import (
                         QApplication,
                         QWidget,

@@ -1,14 +1,14 @@
 """
-# Ex 3.02-set icon
-# http://codetorial.net/pyqt5/basics/icon.html
+# Ex 3.05-set status bar
+# http://codetorial.net/pyqt5/basics/statusbar.html
 """
 
-import sys
+import sys; import _add_syspath_root
+from PyQt5.QtWidgets import (
+                        QApplication,
+                        QMainWindow,
+                    )
 
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QWidget
-
-from assets.config import dir_icon
 
 print(__doc__)
 
@@ -19,22 +19,23 @@ def main():
     sys.exit(app.exec_())
 
 
-class MyApp(QWidget):
+class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.title = 'Ex3.02 - set Icon'
+        self.title = 'Ex3.05 - set status bar'
         self.posXY = (100, 100)
-        self.windowSize = (400, 300)
-        self.imageName = dir_icon + 'icon_web.png'
+        self.windowSize = (400, 200)
 
         self.initUI()
 
     def initUI(self):
+        self.statusBar().showMessage('Ready')
+
         self.setWindowTitle(self.title)
         self.setGeometry(*self.posXY, *self.windowSize)
-        self.setWindowIcon(QIcon(self.imageName))
         self.show()
+
 
 
 if __name__ == '__main__':

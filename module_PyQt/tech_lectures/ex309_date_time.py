@@ -11,7 +11,7 @@ http://codetorial.net/pyqt5/basics/datetime.html
 
 print(__doc__)
 
-import sys
+import sys; import _add_syspath_root
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow)
 from PyQt5.QtCore import (QDateTime, QDate, QTime, Qt)

@@ -3,7 +3,7 @@
 # http://codetorial.net/pyqt5/basics/closing.html
 """
 
-import sys
+import sys; import _add_syspath_root
 
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import (

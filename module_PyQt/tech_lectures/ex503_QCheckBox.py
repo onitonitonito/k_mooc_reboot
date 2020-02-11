@@ -28,7 +28,7 @@ http://codetorial.net/pyqt5/widget/qcheckbox.html
 
 print(__doc__)
 
-import sys
+import sys; import _add_syspath_root
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
                         QApplication,

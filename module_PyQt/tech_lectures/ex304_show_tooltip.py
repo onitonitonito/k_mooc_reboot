@@ -3,7 +3,7 @@
 # http://codetorial.net/pyqt5/basics/tooltip.html
 """
 
-import sys
+import sys; import _add_syspath_root
 
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QCoreApplication

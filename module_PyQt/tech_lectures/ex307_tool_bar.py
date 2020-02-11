@@ -3,7 +3,7 @@
 # http://codetorial.net/pyqt5/basics/toolbar.html
 """
 
-import sys
+import sys; import _add_syspath_root
 
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (

@@ -4,7 +4,7 @@ http://codetorial.net/pyqt5/basics/stylesheet.html
 """
 print(__doc__)
 
-import sys
+import sys; import _add_syspath_root
 
 from PyQt5.QtWidgets import (
                         QApplication,
@@ -25,7 +25,7 @@ class MyApp(QWidget):
         super().__init__()
         self.title = 'Ex3.10-decarate the stylesheet'
         self.posXY = (300, 300)
-        self.windowSize = (400, 200)
+        self.windowSize = (400, 300)
 
         self.initUI()
 
