@@ -9,46 +9,72 @@
 
 print(__doc__)
 
+import sys
+import random
 import matplotlib
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+
+from PyQt5.QtWidgets import (
+                        QWidget,
+                        QApplication,
+                        QMainWindow,
+                        QVBoxLayout,
+                        QScrollArea,
+                    )
+
+from matplotlib.backends.backend_qt5agg import (
+                        FigureCanvasQTAgg as FigCanvas,
+                        NavigationToolbar2QT as NabToolbar,
+                    )
 
 # Make sure that we are using QT5
 matplotlib.use('Qt5Agg')
 
-from PyQt5 import QtWidgets
-
-
-class ScrollableWindow(QtWidgets.QMainWindow):
-    def __init__(self, fig):
-        self.qapp = QtWidgets.QApplication([])
-
-        QtWidgets.QMainWindow.__init__(self)
-        self.widget = QtWidgets.QWidget()
-        self.setCentralWidget(self.widget)
-        self.widget.setLayout(QtWidgets.QVBoxLayout())
-        self.widget.layout().setContentsMargins(0,0,0,0)
-        self.widget.layout().setSpacing(0)
-
-        self.fig = fig
-        self.canvas = FigureCanvas(self.fig)
-        self.canvas.draw()
-        self.scroll = QtWidgets.QScrollArea(self.widget)
-        self.scroll.setWidget(self.canvas)
-
-        self.nav = NavigationToolbar(self.canvas, self.widget)
-        self.widget.layout().addWidget(self.nav)
-        self.widget.layout().addWidget(self.scroll)
-
-        self.show()
-        exit(self.qapp.exec_())
-
-
 # create a figure and some subplots
-fig, axes = plt.subplots(ncols=4, nrows=5, figsize=(16,16))
-for ax in axes.flatten():
-    ax.plot([2,3,5,1])
+FIG, AXES = plt.subplots(ncols=4, nrows=5, figsize=(16,16))
 
-# pass the figure to the custom window
-a = ScrollableWindow(fig)
+for AX in AXES.flatten():
+    random_array = [random.randint(1, 30) for i in range(10)]
+    AX.plot(random_array)
+
+def main():
+    app = QApplication(sys.argv)
+    window = MyApp(FIG)
+    sys.exit(app.exec_())
+
+class MyApp(QWidget):
+    def __init__(self, fig):
+        super().__init__()
+        self.title = 'VERTICAL, HORIZONTAL SCROLLABLE WINDOW : HERE!'
+        self.posXY = (700, 40)
+        self.windowSize = (1200, 800)
+        self.fig = fig
+        self.initUI()
+
+    def initUI(self):
+        QMainWindow().setCentralWidget(QWidget())
+
+        self.setLayout(QVBoxLayout())
+        self.layout().setContentsMargins(0, 0, 0, 0)
+        self.layout().setSpacing(0)
+
+        canvas = FigCanvas(self.fig)
+        canvas.draw()
+
+        scroll = QScrollArea(self)
+        scroll.setWidget(canvas)
+
+        nav = NabToolbar(canvas, self)
+        self.layout().addWidget(nav)
+        self.layout().addWidget(scroll)
+
+        self.show_basic()
+
+    def show_basic(self):
+        self.setWindowTitle(self.title)
+        self.setGeometry(*self.posXY, *self.windowSize)
+        self.show()
+
+
+if __name__ == '__main__':
+    main()

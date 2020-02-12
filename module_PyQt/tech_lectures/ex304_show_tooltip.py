@@ -3,7 +3,8 @@
 # http://codetorial.net/pyqt5/basics/tooltip.html
 """
 
-import sys; import _add_syspath_root
+import sys
+import _add_syspath_root
 
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QCoreApplication
@@ -43,6 +44,10 @@ class MyApp(QWidget):
         button.move(50, 50)
         button.resize(button.sizeHint())
 
+        self.show_basic()
+
+
+    def show_basic(self):
         self.setWindowTitle(self.title)
         self.setGeometry(*self.posXY, *self.windowSize)
         self.show()
