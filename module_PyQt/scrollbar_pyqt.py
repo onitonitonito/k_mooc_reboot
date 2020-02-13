@@ -1,6 +1,7 @@
 """
 # Scrollbar on Matplotlib showing page - StackOverFlow.com
-# https://stackoverflow.com/questions/42622146/scrollbar-on-matplotlib-showing-page
+# https://stackoverflow.com/
+  questions/42622146/scrollbar-on-matplotlib-showing-page
 """
 #  - I want to know if there is a manner to put a scrollbar (horz. or vert.)
 #  - on a matplotlib showing page (plt.show) that contains several sublots

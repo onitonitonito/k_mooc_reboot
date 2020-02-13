@@ -2,29 +2,13 @@
 # Ex 5.01 - PyQt5 Widgets
 http://codetorial.net/pyqt5/widget/index.html
 """
+# https://doc.qt.io/qt-5/qradiobutton.html
 #  - QPushButton *
 #  - QLabel
 #  - QCheckBox
 #  - QRadioButton
 #  - QComboBox
-#  - QLineEdit
-#  - QLineEdit (Advanced)
-#  - QProgressBar
-#  - QSlider & QDial
-#  - QSplitter
-#  - QGroupBox
-#  - QTabWidget
-#  - QTabWidget (Advanced)
-#  - QPixmap
-#  - QCalendarWidget
-#  - QSpinBox
-#  - QDoubleSpinBox
-#  - QDateEdit
-#  - QTimeEdit
-#  - QDateTimeEdit
-#  - QTextBrowser
-#  - QTextBrowser (Advanced)
-#  - QTextEdit
+# ...
 
 print(__doc__)
 
