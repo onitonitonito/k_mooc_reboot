@@ -37,16 +37,16 @@ class MyApp(QWidget):
         QRadioButton('FIRST BUTTON', self).move(50, 30)
 
         # w/ claiming an instance
-        radioBTN1 = QRadioButton('SECOND BUTTON', self).move(50, 60)
+        rb1 = QRadioButton('SECOND BUTTON', self).move(50, 60)
 
         # stack function on an instance
-        radioBTN2 = QRadioButton('THIRD BUTTON', self)
-        radioBTN2.move(50, 90)
+        rb2 = QRadioButton('THIRD BUTTON', self)
+        rb2.move(50, 90)
 
         # stack over & over
-        radioBTN3 = QRadioButton(self)
-        radioBTN3.move(50, 120)
-        radioBTN3.setText('FOURTH BUTTON')
+        rb3 = QRadioButton(self)
+        rb3.move(50, 120)
+        rb3.setText('FOURTH BUTTON')
 
         self.show_basic()
 
