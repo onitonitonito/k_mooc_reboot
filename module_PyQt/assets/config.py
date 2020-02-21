@@ -1,6 +1,5 @@
 """
-# config.py - 변수를 입력합니다.
-#
+# config.py - DEFINE & REGISTER FOLDER STRUCTURE of APP
 """
 import os, sys
 
@@ -22,4 +21,3 @@ if __name__ == '__main__':
     print(dir_root)
     print(dir_assets)
     print(dir_statics)
-    print(dir_logging)

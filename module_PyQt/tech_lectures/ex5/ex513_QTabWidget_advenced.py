@@ -62,8 +62,10 @@ class FirstTab(QWidget):
     def initUI(self):
         name = QLabel('Name:')
         nameedit = QLineEdit()
+
         age = QLabel('Age:')
         ageedit = QLineEdit()
+
         nation = QLabel('Nation:')
         nationedit = QLineEdit()
 
