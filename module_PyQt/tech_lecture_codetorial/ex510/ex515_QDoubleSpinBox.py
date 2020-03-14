@@ -1,5 +1,5 @@
 """
-# Ex 5.17_QDoubleSpinBox.py - Deal real_number floating Point
+# Ex 5.15_QDoubleSpinBox.py - Deal real_number floating Point
 http://codetorial.net/pyqt5/widget/qdoublespinbox.html
 """
 # https://doc.qt.io/qt-5/qdoublespinbox.html
@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import (
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.17_QDoubleSpinBox'
+        self.title = 'Ex5.15_QDoubleSpinBox'
         self.posXY = (600, 45)
         self.windowSize = (430, 300)
         self.initUI()

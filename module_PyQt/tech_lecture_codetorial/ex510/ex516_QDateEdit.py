@@ -1,5 +1,5 @@
 """
-# Ex 5.18_QDateEdit.py
+# Ex 5.16_QDateEdit.py - SpinBox to Edit Date
 http://codetorial.net/pyqt5/widget/qdateedit.html
 """
 # https://doc.qt.io/qt-5/qdateedit.html
@@ -30,9 +30,9 @@ from PyQt5.QtWidgets import (
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.18_QDateEdit'
+        self.title = 'Ex5.16_QDateEdit - SpinBox to Edit Date'
         self.posXY = (600, 45)
-        self.windowSize = (430, 300)
+        self.windowSize = (300, 100)
         self.initUI()
 
     def initUI(self):

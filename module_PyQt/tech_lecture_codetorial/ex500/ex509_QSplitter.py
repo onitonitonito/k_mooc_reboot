@@ -1,5 +1,5 @@
 """
-# Ex 5.09_QSlider_Qdial.py
+# Ex 5.09_QSplitter.py
 http://codetorial.net/pyqt5/widget/qsplitter.html
 """
 # https://wikidocs.net/35495
@@ -32,7 +32,7 @@ from PyQt5.QtWidgets import (
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.10_QSlider_Qdial'
+        self.title = 'Ex5.09_QSplitter'
         self.posXY = (1200, 50)
         self.windowSize = (500, 500)
         self.initUI()

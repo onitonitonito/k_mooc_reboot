@@ -1,5 +1,5 @@
 """
-# Ex 5.09_QSlider_Qdial.py
+# Ex 5.08-1a-Extra_QSlider_Qdial.py
 http://codetorial.net/pyqt5/widget/qprogressbar.html
 """
 # https://wikidocs.net/35495

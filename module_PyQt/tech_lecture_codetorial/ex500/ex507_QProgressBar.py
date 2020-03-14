@@ -1,5 +1,5 @@
 """
-# Ex 5.08_QProgressBar.py
+# Ex 5.07_QProgressBar.py
 http://codetorial.net/pyqt5/widget/qprogressbar.html
 """
 # https://doc.qt.io/qt-5/qprogressbar.html
@@ -36,7 +36,7 @@ def main():
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.8_QProgressBar'
+        self.title = 'Ex5.7_QProgressBar'
         self.posXY = (300, 40)
         self.windowSize = (400, 300)
         self.initUI()

@@ -1,5 +1,5 @@
 """
-# Ex 5.13_QTabWidget_advenced.py
+# Ex 5.11a_QTabWidget_advenced.py
 http://codetorial.net/pyqt5/widget/qtabwidget_advanced.html
 """
 # ...
@@ -24,7 +24,7 @@ from PyQt5.QtWidgets import *
 class MyApp(QDialog):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.13_QTabWidget_advenced'
+        self.title = 'Ex5.11a_QTabWidget_advenced'
         self.posXY = (500, 50)
         self.windowSize = (350, 300)
         self.initUI()

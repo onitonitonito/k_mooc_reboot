@@ -1,5 +1,5 @@
 """
-# Ex 5.07 - QLineEdit.py - Advanced Option
+# Ex 5.06-1a - QLineEdit.py - Advanced Option
 http://codetorial.net/pyqt5/widget/qlineedit_advanced.html
 """
 # http://doc.qt.io/qt-5/qlineedit.html
@@ -32,7 +32,7 @@ def main():
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.07 QLineEdit-Advanced Option'
+        self.title = 'Ex5.06-1a QLineEdit-Advanced Option'
         self.posXY = (300, 40)
         self.windowSize = (400, 300)
         self.initUI()

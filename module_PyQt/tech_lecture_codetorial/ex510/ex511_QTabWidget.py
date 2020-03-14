@@ -1,5 +1,5 @@
 """
-# Ex 5.12_QTabWidget.py
+# Ex 5.11_QTabWidget.py
 http://codetorial.net/pyqt5/widget/qtabwidget.html
 """
 # ...
@@ -28,7 +28,7 @@ from PyQt5.QtWidgets import (
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.11_QGroupBox'
+        self.title = 'Ex5.11_QTabWidget'
         self.posXY = (500, 50)
         self.windowSize = (500, 400)
         self.initUI()

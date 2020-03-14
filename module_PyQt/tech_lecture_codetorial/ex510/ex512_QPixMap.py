@@ -1,5 +1,5 @@
 """
-# Ex 5.14_QPixMap.py
+# Ex 5.12_QPixMap.py
 http://codetorial.net/pyqt5/widget/qpixmap.html
 """
 # ...
@@ -32,7 +32,7 @@ from PyQt5.QtWidgets import (
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.14_QPixMap - Free Landscape image'
+        self.title = 'Ex5.12_QPixMap - Free Landscape image'
         self.posXY = (5, 45)
         self.windowSize = (640, 480)
         self.initUI()

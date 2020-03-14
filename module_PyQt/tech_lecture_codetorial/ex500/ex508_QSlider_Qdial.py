@@ -1,5 +1,5 @@
 """
-# Ex 5.09_QSlider_Qdial.py
+# Ex 5.08_QSlider_Qdial.py
 http://codetorial.net/pyqt5/widget/qprogressbar.html
 """
 # https://wikidocs.net/35495
@@ -38,7 +38,7 @@ def main():
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.9_QSlider_Qdial'
+        self.title = 'Ex5.8_QSlider_Qdial'
         self.posXY = (1200, 50)
         self.windowSize = (370, 250)
         self.initUI()

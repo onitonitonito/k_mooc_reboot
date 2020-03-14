@@ -1,5 +1,5 @@
 """
-# Ex 5.11_QGroupBox.py
+# Ex 5.10_QGroupBox.py
 http://codetorial.net/pyqt5/widget/qgroupbox.html
 """
 # https://doc.qt.io/qt-5/qgroupbox.html#details
@@ -35,7 +35,7 @@ from PyQt5.QtWidgets import (
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.11_QGroupBox'
+        self.title = 'Ex5.10_QGroupBox'
         self.posXY = (500, 50)
         self.windowSize = (500, 400)
         self.initUI()

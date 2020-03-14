@@ -1,5 +1,5 @@
 """
-# Ex 5.15_QCalendarWidget.py
+# Ex 5.13_QCalendarWidget.py
 http://codetorial.net/pyqt5/widget/qpixmap.html
 """
 # https://doc.qt.io/qt-5/qcalendarwidget.html
@@ -30,7 +30,7 @@ from PyQt5.QtWidgets import (
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
-        self.title = 'Ex5.15_QCalendarWidget'
+        self.title = 'Ex5.13_QCalendarWidget'
         self.posXY = (600, 45)
         self.windowSize = (430, 300)
         self.initUI()
