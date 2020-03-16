@@ -5,6 +5,8 @@
 print(__doc__)
 
 import random
+import _add_syspath_root
+
 from assets.config import dir_statics
 from string import ascii_letters
 

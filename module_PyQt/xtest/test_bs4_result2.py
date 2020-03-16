@@ -3,6 +3,7 @@
 """
 print(__doc__)
 
+import _add_syspath_root
 from assets import script_run
 
 import requests
@@ -38,7 +39,7 @@ def main():
                             replace('\n', '').\
                             replace('  ','').\
                             replace(date_text, '')
-        line = f"{i:02}-{when} {title_text[:32]}.."                    
+        line = f"{i:02}-{when} {title_text[:32]}.."
         print(line)
 
 

@@ -1,5 +1,5 @@
 """
-# Ex 5.19_QTextBrowser.py
+# Ex 5.19_QTextBrowser.py - Keyword News Search by Scrapping
 http://codetorial.net/pyqt5/widget/qdatetimeedit.html
 """
 # ...
@@ -86,7 +86,8 @@ class MyApp(QWidget):
         URL_TARGET = f"{URL}?{urlencode(QUERIES)}"
 
         if KEYWORD:
-            self.lb2.setText(f"'DONGA' Search Results for '{KEYWORD}'")
+            self.lb2.setText(
+                f"'DONGA-ILBO KEYWORD NEWS SEARCH RESULTS for '{KEYWORD}'")
             self.tb.clear()
 
             html = requests.get(URL_TARGET)
@@ -107,7 +108,7 @@ class MyApp(QWidget):
                 line = f"{i:02}-{when} <a href='{link}'>{title_text}</a>"
 
                 self.tb.append(line)
-        self.le.clear()        
+        self.le.clear()
         self.le.setFocus()
 
 

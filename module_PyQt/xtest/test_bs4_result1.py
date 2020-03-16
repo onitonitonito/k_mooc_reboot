@@ -4,6 +4,7 @@
 print(__doc__)
 
 import requests
+import _add_syspath_root
 
 from assets import script_run
 from bs4 import BeautifulSoup
@@ -35,7 +36,6 @@ def main():
                     f"  (3) O3 (Oz) =  {chemicals[2]}",
                     f"-------------------------------",
                 ]
-
     [print(line) for line in echo_messages]
 
 
