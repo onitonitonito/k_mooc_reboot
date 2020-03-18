@@ -4,14 +4,13 @@
 """
 import assets.script_run
 from assets.config import dir_ini
-from pyprnt import prnt
 
 
 # MAKE ARRAY
 with open(file=dir_ini + 'fb_comments.ini', mode='r', encoding='utf8') as f:
     fb_comments = [item.strip()
-                            for item in f.read().split('\n')
-                            if item is not '']
+                        for item in f.read().split('\n')
+                        if item is not '']
 
 # print(fb_comments.count(''))  # 0
 
@@ -53,19 +52,22 @@ for item in fb_comments:
 
 comment_dic = {}
 temp_dic = {}
-for idx, comment in enumerate(comments_2d):
+for i, comment in enumerate(comments_2d):
     temp_dic['name'] = comment[0]
     temp_dic['comment'] = comment[1].replace(comment[0], '')
     temp_dic['likes'] = comment[2]
-    comment_dic[idx] = temp_dic
+    comment_dic[i] = temp_dic
     temp_dic = {}
 
 
-def check_last_column_likes():
+def check_llkes_shortened_result():          # FOR TEST!
     # 첫번째 = name / 마지막=likes, but comment[2]가 likes 가 아닐수도 있음.
     # WRONG_ARRAY -> CORRECT, & CHECK DICT['LIKES']
     for i in range(len(comment_dic)):
-        print(comment_dic[i]['likes'])
+        print(
+                f"[{i:03}] ",
+                f"{comment_dic[i]['likes']:6}",
+                f"{comment_dic[i]['comment']:30.30}...",
+            )
 
-
-check_last_column_likes()
+check_llkes_shortened_result()
