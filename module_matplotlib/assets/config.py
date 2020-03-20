@@ -5,7 +5,7 @@ import os, sys
 
 print(__doc__)
 
-name_home = "module_PyQt"
+name_home = "module_matplotlib"
 
 dir_array = os.path.dirname(__file__).partition(name_home)
 dir_home = "".join(dir_array[:2]) + "\\"

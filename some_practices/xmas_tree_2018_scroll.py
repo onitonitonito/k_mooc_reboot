@@ -7,7 +7,7 @@
 import os
 import time
 
-from array_letters import digits, digit_h, digit_w
+from _config_letters import digits, digit_h, digit_w
 
 # print(__doc__)
 
@@ -26,19 +26,25 @@ signs = [blanks[i] +
             for i in range(digit_h)]
 
 def main():
+    check_letters(signs, digits)
+
     while 1:
+        # SCROLLING SIGN : DOWN -> UP
         sign_bottom_up(signs)
         clear_after(1)
         sign_blinking(times=5, interval=0.1)
 
+        # SCROLLING SIGN : UP -> DOWN
         sign_up_bottom(signs)
         clear_after(1)
         sign_blinking(5, 0.1)
 
+        # SCROLLING SIGN : LEFT -> RIGHT
         sign_left_right(signs)
         clear_after(1)
         sign_blinking(5, 0.1)
 
+        # SCROLLING SIGN : RIGHT -> LEFT
         sign_right_left(signs)
         clear_after(1)
         sign_blinking(5, 0.1)
@@ -105,8 +111,8 @@ def sign_right_left(signs):
             print(" " * (width_signs - 2 - i) + signs[j][0:i])
         show_tag(i)
 
-
-if __name__ == '__main__':
+def check_letters(signs, digits):
+    """ check_letters and ASK quit() or proceed scrolling """
     from pyprnt import prnt
     print("\nsigns = digits['x'] ..['2'] ..['0'] ..['2'] ..['0'] ..[!]")
     prnt(signs)
@@ -118,5 +124,8 @@ if __name__ == '__main__':
     if input(answer).startswith("!"):
         quit()
 
+
+
+
+if __name__ == '__main__':
     main()
-    pass
