@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+  <class>form</class>
+  <widget class="QWidget" name="form">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>332</width>
+        <height>137</height>
+      </rect>
+    </property>
+    <property name="windowTitle">
+      <string>FORM-UI</string>
+    </property>
+    <property name="windowIcon">
+      <iconset>
+        <normaloff>../icons/icon_web.png</normaloff>../icons/icon_web.png</iconset>
+    </property>
+    <widget class="QPushButton" name="btn1">
+      <property name="geometry">
+        <rect>
+          <x>40</x>
+          <y>50</y>
+          <width>93</width>
+          <height>28</height>
+        </rect>
+      </property>
+      <property name="text">
+        <string>BUTTON-1</string>
+      </property>
+    </widget>
+    <widget class="QPushButton" name="btn2">
+      <property name="geometry">
+        <rect>
+          <x>170</x>
+          <y>50</y>
+          <width>93</width>
+          <height>28</height>
+        </rect>
+      </property>
+      <property name="text">
+        <string>BUTTON-2</string>
+      </property>
+    </widget>
+  </widget>
+  <resources/>
+  <connections/>
+</ui>
