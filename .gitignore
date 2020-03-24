@@ -13,6 +13,7 @@ __pycache__/
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _.html
 _.pdb
+module_matplotlib/statics/train.csv
 module_openpyxl/statics/*.xlsx
 module_openpyxl/tests/*.xlsx
 module_openpyxl/works/*.xlsx
