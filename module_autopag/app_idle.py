@@ -17,7 +17,6 @@ TIME_SLEEP = 3    # 3
 
 def main():
     """입력받기: 1=좌표체크(with 'SPACE') / ENTER=타이머 설정! """
-    global ttime_fire, ttime_prep
 
     print(f"* SCREEN_SIZE   : {pag.size()}")
     print(f"* WINDIW POS_NW : X={WINDOW_START[0]}, Y={WINDOW_START[1]}")

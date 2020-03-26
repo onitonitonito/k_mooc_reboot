@@ -21,6 +21,10 @@ def main():
     """ 좌표체크(with 'SPACE') """
     global ttime_fire, ttime_prep
 
+    # bang2(1) - procedure(1) - finish(1)+1
+    for key in ['bang2', 'procedure', 'finish',]:
+        print("{:10} = ({}, {})".format(key, *POS_XY[key][0]))
+
     set_basic_screen(WINDOW_SIZE,"TAP HERE!")
     display_message("TAP=SPACE!", 45, (10,30), PINK)
     pygame.display.update()

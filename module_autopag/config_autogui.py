@@ -30,6 +30,9 @@ POS_XY = {
     'win'       : [(22 , 1060), 'win-start button'],
     'off'       : [(26 , 1019), 'next, power-off button'],
     'sys-out'   : [(30 , 923), 'next, sys-out button'],
+
+    'procedure' : [(1615, 506), 'proceed button'],
+    'finish'    : [(1608, 580), 'finish check-button'],
 }
 
 # PYGAME WINDOW START! --> POS_XY[nw]
@@ -112,7 +115,8 @@ def event_bang(pos_xy):
     time.sleep(surplus_within_10)
 
     # 메인 트리거 이벤트 - HERE!
-    pag.click(*pos_xy['bang1'][0], clicks=1, duration=0.0)
+    pag.click(*pos_xy['bang2'][0], clicks=1, duration=0.0)
+    pag.click()
 
     # 나머지는 쓸데없는 데코레이션 이벤트
     print()
@@ -122,15 +126,21 @@ def event_bang(pos_xy):
 
     print()
     print(dd.now())
-
+    """
+    ADDITIONAL PROCEDURE ... FINISH BUTTON
+    """
+    print(f"--- ADDITIONAL PROCEDURES! ---")
+    pag.click(*pos_xy['procedure'][0], clicks=1, duration=1)
+    pag.click(*pos_xy['finish'][0], clicks=1, duration=1)
+    pag.click()
 
     """
     IF YOU NEED DOOMS-DAY-PROGRAM, ACTIVATE BELOW!
     """
     print(f"--- DOMSDAY PROGRAM! ---")
-    pag.click(*pos_xy['win'][0], clicks=1, duration=1)
-    pag.click(*pos_xy['off'][0], clicks=1, duration=1)
-    pag.click(*pos_xy['sys-out'][0], clicks=1, duration=1)
+    # pag.click(*pos_xy['win'][0], clicks=1, duration=1)
+    # pag.click(*pos_xy['off'][0], clicks=1, duration=1)
+    # pag.click(*pos_xy['sys-out'][0], clicks=1, duration=1)
 
     # https://stackoverflow.com/questions/34039845/
     # how-to-shutdown-a-computer-using-python
