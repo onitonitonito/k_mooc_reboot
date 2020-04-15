@@ -1,35 +1,62 @@
+"""
+# turtle draws a heart & cards
+"""
+print(__doc__)
+
+
 import turtle as tu
-import random
-import time
 
-tu.speed(0)
+ASK = 0
+
+tu.speed('fastest')
+
+def main():
+    draw_heart()
+    ask_go()
+
+    # tu.home()
+
+    x_arr = [-160, -80, 0, 80, 160]
+    y_arr = [(lambda x: -100 + x * -2)(x) for x in range(5)]
+
+    for i, x in enumerate(x_arr):
+        card_size=200
+        move(x - (card_size * 0.6 * 0.5), y_arr[i] - (card_size * 0.5))
+        draw_card(x, y_arr[i], size=card_size)
+        ask_go()
 
 
-def move(pos_x, pos_y):
+    # tu.mainloop()
+    ask_go(finish=True)
+    pass
+
+def ask_go(finish=False):
+    if finish:
+        input('*** FINISH? : [ENTER]')
+    else:
+        if ASK:
+            if input('*** CONTINUE? : [ENTER]').startswith('?'):
+                quit()
+
+def move(x, y):
     tu.penup()
-    tu.setpos(pos_x, pos_y)
+    tu.setpos(x, y)
     tu.pendown()
 
-
-def card(pos_x, pos_y, size=100):
-    tu.color('black', 'white')
-    move(pos_x - (size * 0.6 * 0.5), pos_y - (size * 0.5))
+def draw_card(x, y, size=100):
+    tu.color('black', 'yellow')
     tu.begin_fill()
-    tu.forward(size * 0.6)
-    tu.left(90)
 
-    tu.forward(size)
-    tu.left(90)
+    for i in range(2):
+        tu.forward(size * 0.6)
+        tu.left(90)
 
-    tu.forward(size * 0.6)
-    tu.left(90)
+        tu.forward(size)
+        tu.left(90)
 
-    tu.forward(size)
-    tu.left(90)
     tu.end_fill()
 
-
-def heart():
+def draw_heart():
     def curvemove():
         for i in range(25):
             tu.right(8)
@@ -37,24 +64,20 @@ def heart():
 
     tu.color('red', 'pink')
     tu.begin_fill()
-    tu.left(140)
-    tu.forward(111.65)
+
+    # tu.left(140)
+    tu.setheading(140)
+    tu.forward(128)
+
     curvemove()
-    tu.left(120)
+    tu.left(122)
+
     curvemove()
     tu.forward(111.65)
+
     tu.end_fill()
 
 
-move(0, 0)
-heart()
 
-tu.home()
-x_arr = [-160, -80, 0, 80, 160]
-y_arr = [(lambda x: x * -20)(x) for x in range(5)]
-
-for i, x in enumerate(x_arr):
-    card(x, y_arr[i], size=200)
-
-
-tu.mainloop()
+if __name__ == '__main__':
+    main()

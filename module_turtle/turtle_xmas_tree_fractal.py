@@ -1,51 +1,78 @@
-#! python
-import turtle as tu
-""" n is the size parameter, the shown tree is for n=50.
-Takes a minute or two to draw. (this is fastest mode of TURTLE)
-refer to SOF(StackOverFlow) Here: https://goo.gl/ZnN7Sh
+""" scale is the size parameter, the shown tree is for scale=50.
+# Takes a minute or two to draw. (this is fastest mode of TURTLE)
+# refer to 'codegolf.stackexchange.com' Here: https://bit.ly/2W7KxRq
 """
+import turtle as tu
 
-# n = int(input('n= : '))*1.0   ... SIZE(SCALE) of TREE
-n = 50
+# scale = int(input('scale= : '))*1.0   ... SIZE(SCALE) of TREE
+
+scale = 50
 
 tu.speed("fastest")
-tu.left(90)
-tu.forward(3*n)
-tu.color("orange", "yellow")
-tu.begin_fill()
-tu.left(126)
-for i in range(5):
-    tu.forward(n/5)
-    tu.right(144)
-    tu.forward(n/5)
-    tu.left(72)
-tu.end_fill()
-tu.right(126)
+
+def main():
+    pass
+
+def ask_go(quit=False):
+    if quit:
+        input('\n'*5 + '*** QUIT to EXIT? : [Enter]=FINISH' + '\n'*20)
+    else:
+        input('*** CONTINUE ? : [Enter]=GO')
+
+def draw_star():
+    tu.setheading(90)
+    tu.color("orange", "yellow")
+
+    tu.forward(3*scale)
+    tu.begin_fill()
+    tu.left(126)
+
+    for i in range(5):
+        tu.forward(scale/5)
+        tu.right(144)
+        tu.forward(scale/5)
+        tu.left(72)
+
+    tu.end_fill()
+    tu.right(126)
+
+def tree(d, scale):
+    """ # TODO: RECURSIVE PRACTAL """
+
+    if d <= 0:
+        return
+
+    tu.forward(scale)
+
+    tree(d-1, scale*0.8)
+    tu.right(120)
+
+    tree(d-3, scale*0.5)
+    tu.right(120)
+
+    tree(d-3, scale*0.5)
+    tu.right(120)
+
+    tu.backward(scale)
+
+    print(f"*** TREE! - {d:02} - ***\n")
+    ask_go()
+
+draw_star()
+ask_go()
 
 tu.color("dark green")
-tu.backward(n*4.8)
+tu.backward(scale*4.8)
+ask_go()
 
-def tree(d, s):
-    if d <= 0: return
-    tu.forward(s)
-    tree(d-1, s*.8)
-    tu.right(120)
-    tree(d-3, s*.5)
-    tu.right(120)
-    tree(d-3, s*.5)
-    tu.right(120)
-    tu.backward(s)
-tree(15, n)
-tu.backward(n/2)
 
-import sys
-import time
+tree(10, scale)
 
-def click_function():
-    tu.onclick(None)
-    print('Say Good bye~!')
-    time.sleep(3)
-    sys.exit()
+tu.backward(scale/2)
+ask_go(quit=True)
 
-tu.onclick(click_function)
-tu.mainloop()
+# tu.mainloop()
+
+
+if __name__ == '__main__':
+    main()
