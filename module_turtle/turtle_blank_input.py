@@ -4,20 +4,20 @@
 print(__doc__)
 
 import turtle
+from typing import Dict, List, Tuple
 
 t = turtle.Turtle()
 
 def main():
     while 1:
-
-        moves = input('move, angle :')
+        moves = input('angle, move :')
 
         if len(moves):
-            move, angle = get_move_angle(moves)
+            angle, move = get_angle_move(moves)
         else:
-            move, angle = temp_moves
+            angle, move = temp_moves
 
-        temp_moves = (move, angle)
+        temp_moves = (angle, move)
 
         t.right(angle) if angle > 0 else t.left(abs(angle))
         t.forward(move)
@@ -26,12 +26,12 @@ def main():
     # app01_test()
     turtle.mainloop()
 
-def get_move_angle(moves, echo=True):
-        _m, _a = moves.split(',')
-        move, angle = _m.strip(), _a.strip()
+def get_angle_move(moves: str, echo:bool=True) -> Tuple:
+        angle, move = moves.split(',')
+        angle, move = angle.strip(), move.strip()
         if echo:
-            print(f"move, angle = {move}, {angle}")
-        return int(move), int(angle)
+            print(f"*** angle, move : {angle}, {move}")
+        return int(angle), int(move)
 
 def app01_test():
     """simple test the way it works"""
@@ -41,6 +41,8 @@ def app01_test():
 
     t.pendown()
     t.forward(100)
+
+
 
 
 if __name__ == '__main__':
