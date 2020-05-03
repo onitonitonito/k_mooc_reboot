@@ -16,6 +16,8 @@ dir_logging = dir_root + "_logging\\"
 
 dir_pickle = dir_statics + "_pickle\\"
 
+sys.path.insert(0, dir_root)   
+
 
 if __name__ == '__main__':
     # for TEST ... dir_root 변수만 필요 함 (가공하기 위한 과정)

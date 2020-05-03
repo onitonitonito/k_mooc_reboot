@@ -24,7 +24,7 @@ class MyApp(QWidget):
     def __init__(self):
         super().__init__()
         self.title = 'Ex5.06-QLineEdit'
-        self.posXY = (400, 50)
+        self.posXY = (1300, 50)
         self.windowSize = (400, 200)
         self.initUI()
 

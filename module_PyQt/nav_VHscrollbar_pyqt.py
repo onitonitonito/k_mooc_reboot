@@ -24,8 +24,8 @@ from PyQt5.QtWidgets import (
                     )
 
 from matplotlib.backends.backend_qt5agg import (
-                        FigureCanvasQTAgg as FigCanvas,
-                        NavigationToolbar2QT as NabToolbar,
+                        FigureCanvasQTAgg,
+                        NavigationToolbar2QT,
                     )
 
 # Make sure that we are using QT5
@@ -59,13 +59,13 @@ class MyApp(QWidget):
         self.layout().setContentsMargins(0, 0, 0, 0)
         self.layout().setSpacing(0)
 
-        canvas = FigCanvas(self.fig)
+        canvas = FigureCanvasQTAgg(self.fig)
         canvas.draw()
 
         scroll = QScrollArea(self)
         scroll.setWidget(canvas)
 
-        nav = NabToolbar(canvas, self)
+        nav = NavigationToolbar2QT(canvas, self)
         self.layout().addWidget(nav)
         self.layout().addWidget(scroll)
 

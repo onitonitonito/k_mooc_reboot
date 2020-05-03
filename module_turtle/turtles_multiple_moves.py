@@ -7,15 +7,27 @@
 
 print(__doc__)
 
+import sys
 import turtle
 
-# w = a = s = d = turtle.Turtle()
-NUM_TURTLES = int(input('*** ENTER NUMBERS OF TURTLES? : '))
-TURTLES = [turtle.Turtle() for i in range(NUM_TURTLES)]
-FILENAME_ECHO = 'turtle_echo.txt'
+from assets._add_syspath_root import root
+from assets.modules_qt import QApplication, MyApp
+
+FILE_DIR = root + 'module_turtle\\'
+FILENAME_ECHO = FILE_DIR + 'turtle_echo.txt'
+
+POSXY = (1300, 900)
+WINDOWSIZE = (400,300)
 
 def main():
-    mode_select = input('*** MODE SELECT - [Enter]=DRAW / [1]=DICT INPUT : ')
+    global MA, NUM_TURTLES, TURTLES
+    MA = MyApp()
+    # w = a = s = d = turtle.Turtle()
+    NUM_TURTLES = int(qt_input('NUMBERS OF TURTLES? : '))
+    TURTLES = [turtle.Turtle() for i in range(NUM_TURTLES)]
+
+    mode_select = qt_input('MODE - [Enter]=DRAW / [1]=DICT INPUT : ')
+
     turtle.speed('fastest')
 
     if mode_select.startswith('1'):
@@ -24,6 +36,12 @@ def main():
         draw_from_dict(TURTLES, dict_moves)
     else:
         draw_from_manual(TURTLES)
+
+def qt_input(captionHead="INPUT :", winTitle="TITLE!"):
+    MA.setGeometry(*POSXY, *WINDOWSIZE)
+    qtInput = MA.getText(winTitle, captionHead)
+    if qtInput: return qtInput
+    return ""
 
 def get_read_echo(filename_echo):
     """ """
@@ -60,7 +78,8 @@ def draw_from_dict(turtles, dict):
         else:
             move_turtles(turtles, moves, start=False)
 
-    input('*** QUIT : [Enter]')
+    qt_input('QUIT : [Enter]')
+    quit()
 
 def draw_from_manual(turtles):
     """ # manual draw """
@@ -69,7 +88,8 @@ def draw_from_manual(turtles):
     while True:
         # CASE-01: correct moves     = Move, Angle
         # CASE_02: Incorrect moves   = Enter (blank), ?
-        moves = input('*** ENTER ANGLE, FORWARD MOVE : ')
+        moves = qt_input('ENTER ANGLE, FORWARD MOVE : ')
+        print(f"*** ENTER ANGLE, FORWARD MOVE : {moves}")
 
         if moves.startswith('?'):
             quit()
@@ -110,4 +130,6 @@ def get_angle_move_from(moves):
 
 
 if __name__ == '__main__':
+    app = QApplication(sys.argv)
     main()
+    sys.exit(app.exec_())
