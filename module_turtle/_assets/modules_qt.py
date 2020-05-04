@@ -19,8 +19,10 @@ class MyApp(QWidget):
         # self.getText()
         self.showBasic()
 
-    def getChoice(self):
-        items = ("Red","Blue","Green")
+    def getChoice(self, winTitle, captionHead, items):
+        """
+        # items = ("Red","Blue","Green")
+        """
         item, okPressed = QInputDialog.getItem(
                                 self,
                                 "Get item",
@@ -32,18 +34,21 @@ class MyApp(QWidget):
         if okPressed and item:
             return item
 
-    def getInteger(self):
-        i, okPressed = QInputDialog.getInt(
+    def getInteger(
+            self, winTitle, captionHead, initValue=28,
+            start=0, end=100, step=1
+        ):
+        integer, okPressed = QInputDialog.getInt(
                                 self,
-                                "Get integer",
-                                "Percentage:",
-                                28,
-                                0,
-                                100,
-                                1,
+                                winTitle,
+                                captionHead,
+                                initValue,
+                                start,
+                                end,
+                                step,
                             )
         if okPressed:
-            print(i)
+            return integer
 
     def getText(self, winTitle, captionHead, initValue=""):
         text, okPressed = QInputDialog.getText(
@@ -79,15 +84,27 @@ class MyApp(QWidget):
 
 
 if __name__ == '__main__':
+    posxy = (400, 700)
+    windowsize = (500, 500)
+
+    # winTitle = "Integer"
+    # captionHead = "INPUT VALUE :"
+    winTitle="TEXT!"
+    captionHead="ANGLE, MOVE :"
+
+    def main():
+        while True:
+            ma.setGeometry(*posxy, *windowsize)
+            _value = get_text(winTitle, captionHead)
+            print(f"value ... {_value}")
+
+    def get_int(winTitle, captionHead):
+        return ma.getInteger(winTitle, captionHead)
+
+    def get_text(winTitle, captionHead):
+        return ma.getText(winTitle, captionHead)
+
     app = QApplication(sys.argv)
-
     ma = MyApp()
-    posxy = (0,0)
-    windowsize = (300,200)
-
-    while True:
-        ma.setGeometry(*posxy, *windowsize)
-        _ = ma.getText("Turtle Moves", "Enter angle, move forward :")
-        print(f"... {_}")
-
+    main()
     sys.exit(app.exec_())

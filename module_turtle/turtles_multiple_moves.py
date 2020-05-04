@@ -10,10 +10,10 @@ print(__doc__)
 import sys
 import turtle
 
-from assets._add_syspath_root import root
-from assets.modules_qt import QApplication, MyApp
+from _assets._add_syspath_root import root
+from _assets.modules_qt import QApplication, MyApp
 
-FILE_DIR = root + 'module_turtle\\'
+FILE_DIR = root + 'module_turtle\\_statics\\'
 FILENAME_ECHO = FILE_DIR + 'turtle_echo.txt'
 
 POSXY = (1300, 900)

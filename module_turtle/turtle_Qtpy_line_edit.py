@@ -20,6 +20,12 @@ t.home()
 t.speed(0)
 
 
+def main():
+    t.setheading(random.randint(0,360))
+    for i in range(6):
+        t.left(56)
+        t.forward(50)
+
 class MyApp(QWidget):
     def __init__(self):
         super().__init__()
@@ -46,21 +52,12 @@ class MyApp(QWidget):
     def onChanged(self, text):
         self.lab.setText(text)
         self.lab.adjustSize()
-        t.setheading(random.randint(0,360))
-        self.main()
-
-    def main(self):
-        for i in range(6):
-            t.left(56)
-            t.forward(50)
-
-
-
+        main()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = MyApp()
-    window.main()
+    ma = MyApp()
+    main()
     turtle.mainloop()
     sys.exit(app.exec_())
