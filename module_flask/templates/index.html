@@ -1,0 +1,17 @@
+{% extends './_base.html' %}
+
+
+{% block style %}
+{% endblock %}
+
+
+
+{% block content %}
+
+  {% for caption, link in links.items() %}
+    <a href='{{ link }}'>[ {{ caption }} ]</a>::
+  {% endfor %}
+
+  <H1>HELLO Flask WORKD!</H1>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      TEST LOGIN
+    </title>
+  </head>
+
+  <body>
+    {% for caption, link in links.items() %}
+      <a href='{{ link }}'>[ {{ caption }} ]</a>::
+    {% endfor %}
+
+    <form method="post" action="/login">
+      <h2>log-in Information</h2>
+      NAME:  <input type="text" name="username" placeholder="Username"><br>
+      PASS : <input type="password" name="password" placeholder="Password"><br>
+      <button type="button" name="SUBMIT">Log-In</button><br>
+    </form>
+  </body>
+
+</html>

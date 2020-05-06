@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>TITLE IS EMPTY!</title>
+  {% endif %}
+
+</head>
+
+
+<body>
+  {% for caption, link in links.items() %}
+    <a href='{{ link }}'>[ {{ caption }} ]</a>::
+  {% endfor %}
+
+  <h1>This page is for Flask tutorial Information!.</h1>
+
+  <!-- # MAIN TITLE IMAGE! = TOTORO -->
+  <img width='300' src= '{{ img }}' />
+
+  <h3>Bind string = {{ home_str }}</h3>
+
+  <p>Bind list value: {{ home_list[2:4] }}</p>
+
+  <!-- # THUMB NAIL IMAGES! = 4 EA -->
+  {% for _, val in thumbs.items() %}
+    <img width='{{ size_thumbnail }}' src='{{ val }}' />::
+  {% endfor %}
+
+  <!-- # THUMB NAIL CATION DESCRIPTION HERE  -->
+    <ol  type="A">
+      {% for key, _ in thumbs.items() %}
+        <li>{{ key }}.</li>
+      {% endfor %}
+    </ol>
+
+  <h2> home_list variables! </h2>
+
+  <!-- SHOW HOME_LIST!  -->
+  <ul>
+    {% for idx in home_list %}
+      <li>{{ idx }}.</li>
+    {% endfor %}
+  </ul>
+
+
+</body>
+
+</html>
