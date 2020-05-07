@@ -21,10 +21,10 @@ LINKS = {
         'home' : 'http://localhost:5000/home',
         'info' : 'http://localhost:5000/info',
         'log-in': 'http://localhost:5000/login_form',
-        'post': 'http://localhost:5000/post/1',
-        'user': 'http://localhost:5000/user/',
-        'test': 'http://localhost:5000/get_test',
         'log-out': 'http://localhost:5000/logout',
+        'user': 'http://localhost:5000/user/',
+        'post': 'http://localhost:5000/post/1',
+        'test': 'http://localhost:5000/get_test',
         'template': 'http://localhost:5000/template/Baseball',
     }
 
@@ -37,9 +37,14 @@ def main():
     @app.route('/')
     @app.route('/home')
     def index():
+        imgs = {
+                'logo_python' : url_for('static', filename='logo_python.jpg'),
+                'logo_flask' : url_for('static', filename='logo_flask.jpg'),
+            }
         render = render_template(
                         'index.html',
                         links=LINKS,
+                        imgs=imgs,
             )
         return render
 
@@ -97,16 +102,16 @@ def main():
                         )
         return render
 
-    # @app.route('/login', methods=['POST'] )
-    # def login():
-    #     if request.method == 'POST':
-    #         if (request.form['username'] == 'Jamie' and request.form['password'] == '1234'):
-    #             session['logged_in'] = True
-    #             session['username'] = request.form['username']
-    #         else:
-    #             return '*** ERROR: Login Information are not valid!'
-    #     else:
-    #         return '*** ERROR: Wrong Acess (Access\'s denied)'
+    @app.route('/login', methods=['POST'] )
+    def login():
+        if request.method == 'POST':
+            if (request.form['username'] == 'Jamie' and request.form['password'] == '1234'):
+                session['logged_in'] = True
+                session['username'] = request.form['username']
+            else:
+                return '*** ERROR: Login Information are not valid!'
+        else:
+            return '*** ERROR: Wrong Acess (Access\'s denied)'
 
 
     @app.route('/get_test', methods=['GET'])
@@ -123,7 +128,7 @@ def main():
     def logout():
         session['logged_in'] = False
         session.pop('username', None)
-        return redirect(url_for('home'))
+        return redirect(url_for('login_form'))
 
     @app.route('/template')
     @app.route('/template/<temp_id>')
@@ -147,6 +152,9 @@ def main():
 
 
 if __name__ == '__main__':
+    # session & request were used.
+    # app.secret_key = 'abc' --> should be added!
     app = Flask(__name__)
+    app.secret_key = 'sample_secret_key'
     main()
     app.run()

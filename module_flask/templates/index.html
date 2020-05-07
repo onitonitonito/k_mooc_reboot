@@ -7,11 +7,32 @@
 
 
 {% block content %}
-
+<div>
   {% for caption, link in links.items() %}
-    <a href='{{ link }}'>[ {{ caption }} ]</a>::
+  <a href='{{ link }}'>[ {{ caption }} ]</a>::
   {% endfor %}
+</div>
+
+  <br />
+  <br />
+  <!--
+  <img width='300' src={{ url_for("static", filename="logo_python.jpg" ) }} />
+  -->
+  <img width='250' src={{ imgs['logo_flask'] }} />
+
+
 
   <H1>HELLO Flask WORKD!</H1>
+
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <h3>Powered by </h3>
+  <!--
+  <img width='300' src={{ url_for("static", filename="logo_flask.jpg" ) }} />
+  -->
+  <img width='200' src={{ imgs['logo_python'] }} />
 
 {% endblock %}

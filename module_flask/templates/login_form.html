@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>
-      TEST LOGIN
-    </title>
-  </head>
+{% extends './_base.html' %}
 
-  <body>
+
+{% block style %}
+{% endblock %}
+
+
+
+
+
+{% block content %}
     {% for caption, link in links.items() %}
       <a href='{{ link }}'>[ {{ caption }} ]</a>::
     {% endfor %}
@@ -17,6 +19,4 @@
       PASS : <input type="password" name="password" placeholder="Password"><br>
       <button type="button" name="SUBMIT">Log-In</button><br>
     </form>
-  </body>
-
-</html>
+{% endblock %}

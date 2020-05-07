@@ -2,6 +2,7 @@
 #  1. cache, build, db sqlite3 files
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 __pycache__/
+sentence_tokenizer.pickle
 .ipynb_checkpoints/
 *.pyc
 *.log
@@ -26,4 +27,4 @@ module_pandas/*.csv
 *.sqlite3
 db.sqlite3-shm
 db.sqlite3-wal
-sentence_tokenizer.pickle
+*.db
