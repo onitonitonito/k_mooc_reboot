@@ -1,15 +1,9 @@
 """
 # some circles and poligons
 """
-import turtle
+print(__doc__)
 
-ts = [turtle.Turtle() for i in range(4)]
-posXYs = [
-    (0,     0),
-    (-200,  0),
-    (200,   0),
-    (0,     200),
-]
+import turtle
 
 def main():
     move_pen(ts[0], *posXYs[0])
@@ -57,4 +51,14 @@ def show_rect(turtle_obj, width, hight):
 
 
 if __name__ == '__main__':
+
+    ts = [turtle.Turtle() for i in range(4)]
+
+    posXYs = [
+        (0,     0),
+        (-200,  0),
+        (200,   0),
+        (0,     200),
+    ]
+
     main()
