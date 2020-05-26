@@ -2,11 +2,17 @@
 # Draw Letters In Turtle
 # https://stackoverflow.com/questions/43689387/draw-letters-in-turtle
 """
-from turtle import Turtle, Screen
+# [IMPORTANT] : CHECK! How to colntol
+#  - stting the window size
+#  - giving a scale to the letters
+
+print(__doc__)
+
+# from turtle import (Turtle, Screen,)
+import turtle
 
 NAME = "IDAN"
-
-BORDER = 1
+BORDER = 2
 BOX_WIDTH, BOX_HEIGHT = 6, 10  # letter bounding box
 WIDTH, HEIGHT = BOX_WIDTH - BORDER * 2, BOX_HEIGHT - BORDER * 2  # letter size
 
@@ -41,16 +47,16 @@ def letter_N(turtle):
 
 LETTERS = {'A': letter_A, 'D': letter_D, 'I': letter_I, 'N': letter_N}
 
-wn = Screen()
-wn.setup(800, 400)  # arbitrary
-wn.title("Turtle writing my name: {}".format(NAME))
-wn.setworldcoordinates(0, 0, BOX_WIDTH * len(NAME), BOX_HEIGHT)
+window = turtle.Screen()
+window.setup(200, 100)  # arbitrarly set the screen size, you can
+window.title("Turtle writing my name: {}".format(NAME))
+window.setworldcoordinates(0, 0, BOX_WIDTH * len(NAME), BOX_HEIGHT)
 
-marker = Turtle()
+marker = turtle.Turtle()
 
-for counter, letter in enumerate(NAME):
+for i, letter in enumerate(NAME):
     marker.penup()
-    marker.goto(counter * BOX_WIDTH + BORDER, BORDER)
+    marker.goto(i * BOX_WIDTH + BORDER, BORDER)
     marker.setheading(90)
 
     if letter in LETTERS:
@@ -59,4 +65,4 @@ for counter, letter in enumerate(NAME):
 
 marker.hideturtle()
 
-wn.mainloop()
+window.mainloop()
