@@ -1,37 +1,34 @@
 """
 # PyQt5 test - main / sub window event test
+"""
 #     - main = pop push button window
 #     - sub  = pop progressbar window
-#     - sub  = pop explorer w/ destination dir.
-"""
+#     - sub  = pop explorer w/ dir_target.
+
 print(__doc__)
 
 import sys
-import cv2
 import openpyxl
-import numpy
 import ctypes
 import subprocess
 
-from openpyxl.styles import Color, PatternFill
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
 
 user32 = ctypes.windll.user32
 screen_width, screen_height = (user32.GetSystemMetrics(i) for i in range(2))
 
-window_width = 450
-window_height = 150
+(window_width, window_height) = 450, 150
 
-Dir = 'C:/'
-Dir = "C:/Users"
+# DIR_TARGET = 'C:/'
+DIR_TARGET = "C:/Users"
 
 def main():
     app = QApplication(sys.argv)
     window = MainWindow()
-    sys.exit(app.exec())
+    sys.exit(app.exec_())
 
 
 class MainWindow(QWidget):
@@ -90,10 +87,11 @@ class Thread(QThread):
             self.msleep(50)
 
         # 두번 째 창 닫기를 추가할 위치
+        # explorer /select, "C:\Users"
+        dir_str = ""r'explorer /select, "%s"'"" % ("\\".join(DIR_TARGET.split("/")))
+        print(dir_str)
+        subprocess.Popen(dir_str)
 
-        Dir_str = ""r'explorer /select, "%s"'"" % ("\\".join(Dir.split("/")))
-        print(Dir_str)
-        subprocess.Popen(Dir_str)
 
 
 if __name__ == '__main__':
