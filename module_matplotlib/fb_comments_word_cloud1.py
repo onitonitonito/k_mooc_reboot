@@ -1,8 +1,9 @@
 """
 # 워드 클라우드 만들기 (주피터노트북 _ 파이썬) = http://bit.ly/391No2P
 """
+print(__doc__)
+
 import nltk
-import matplotlib
 import matplotlib.pyplot as plt
 
 from konlpy.tag import Twitter
@@ -14,14 +15,13 @@ import assets.script_run
 from assets.config import dir_ini, dir_img
 
 # 맷플롯 한글깨짐 방지 - 폰트 = 맑은고딕
+import matplotlib
 from IPython.display import set_matplotlib_formats
 matplotlib.rc('font', family='Malgun Gothic')
-set_matplotlib_formats('retina')
 matplotlib.rc('axes', unicode_minus=False)
+set_matplotlib_formats('retina')
 
-print(__doc__)
-
-FILENAME = "fb_comments_01refine_to_text_commentOnly.txt"
+FILENAME = "fb_comments_01refine_to_text_commentOnly.txt.ini"
 RESULT = 'fb_comments_word_cloud.png'
 IMG_MASK = 'fb_mask_image_black.png'
 

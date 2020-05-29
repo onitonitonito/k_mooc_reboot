@@ -14,7 +14,7 @@ from wordcloud import STOPWORDS
 import assets.script_run
 from assets.config import dir_ini, dir_img
 
-filename = "fb_comments_02refile_noun_adj_adv.txt"
+filename = "fb_comments_02refile_noun_adj_adv.txt.ini"
 result = 'fb_comments_word_cloud_{}.png'
 img_mask = 'fb_mask_image_black.png'
 
