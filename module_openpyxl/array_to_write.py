@@ -20,6 +20,7 @@ WSI_02 = WBI["TEST"]
 
 # Sheet 이름은 존재하는 탭 이름을 써야 함.
 WBO = ox.load_workbook(OUT_DESIGNATED)
+
 # WSO_01 = WBO["Sheet1"]
 # WSO_02 = WBO["Sheet2"]
 WSO_03 = WBO["Sheet3"]

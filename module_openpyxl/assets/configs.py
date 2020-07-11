@@ -3,28 +3,33 @@
 """
 import os
 import sys
+from typing import Dict
 
 print(__doc__)
 
 name_root = "k_mooc_reboot"
 name_home = "module_openpyxl"
 
+
+
+
 def main():
+
     pass
 
-def abspath_by_name(dir_name):
-    """get abspath(absolute path) cut by given 'dir_name'"""
+def abspath_by_name(dir_name:str) -> str:
+    """get abspath(absolute path) cut util given 'dir_name'"""
     dir_current = os.path.dirname(__file__)
-    dir_cuts = dir_current.partition(dir_name)
-    dir_cut = "".join(dir_cuts[:2]) + "\\"
-    return dir_cut
+    dirs = dir_current.partition(dir_name)
+    dir_cut_combined = "".join(dirs[:2]) + "\\"
+    return dir_cut_combined
 
-def set_vars_from_dict(dict_obj):
-    """make global varis. from dict"""
+def set_vars_from_dict(dict_obj: Dict) -> None:
+    """make global vars. from dict"""
     for key, val in dict_obj.items():
         globals()[key] = dict_obj[key]
 
-def show_dict_items(dict_obj):
+def show_dict_items(dict_obj: Dict) -> None:
     print(" "*7 + "KEYS" + " "*15 + "VALUES")
     print("------" * 10)
     for _key, _val in dict_obj.items():
@@ -49,7 +54,7 @@ paths = {
 # 딕셔너리값으로 변수를 셋팅한다
 set_vars_from_dict(paths)
 
-
+show_dict_items(paths)
 
 
 if __name__ == '__main__':
