@@ -1,8 +1,14 @@
+"""
+# cv2 window view : 
+"""
+
 import sys
 import cv2
+from _path import get_cut_dir
 
 # 영상 불러오기
-img = cv2.imread('cat.bmp')
+dir_home = get_cut_dir('openCV_TAcademy')
+img = cv2.imread(dir_home + '/src/cat.bmp')
 
 if img is None:
     print('Image load failed!')
