@@ -1,5 +1,5 @@
 """
-# cv2 window view : 
+# cv2 window view :
 """
 
 import sys
@@ -8,7 +8,14 @@ from _path import get_cut_dir
 
 # 영상 불러오기
 dir_home = get_cut_dir('openCV_TAcademy')
-img = cv2.imread(dir_home + '/src/cat.bmp')
+
+flag = cv2.IMREAD_COLOR        # default
+flag = cv2.IMREAD_UNCHANGED    # default
+# flag = cv2.IMREAD_GRAYSCALE
+# flag = cv2.IMREAD_REDUCED_COLOR_2
+# flag = cv2.IMREAD_REDUCED_COLOR_8
+
+img = cv2.imread(dir_home + '/src/cat.bmp',flags=flag)
 
 if img is None:
     print('Image load failed!')
@@ -16,6 +23,9 @@ if img is None:
 
 # 영상 화면 출력
 cv2.namedWindow('image')
+cv2.moveWindow('image', x=900, y=0)
+cv2.resizeWindow('image', width=100, height=80)  # NOT KIC-IN
+
 cv2.imshow('image', img)
 cv2.waitKey()
 

@@ -1,11 +1,19 @@
+"""
+# simple video writing : '/src/output.avi'
+"""
 import sys
 import cv2
+
+from _path import get_cut_dir
+
+dir_home = get_cut_dir('openCV_TAcademy')
 
 
 # 카메라로부터 cv2.VideoCapture 객체 생성
 cap = cv2.VideoCapture(0)
+video_on = cap.isOpened()
 
-if not cap.isOpened():
+if not video_on:
     print("Camera open failed!")
     sys.exit()
 
@@ -13,8 +21,11 @@ if not cap.isOpened():
 w = round(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 h = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 fps = cap.get(cv2.CAP_PROP_FPS)
-fourcc = cv2.VideoWriter_fourcc(*'DIVX')  # *'DIVX' == 'D','I','V','X'
-out = cv2.VideoWriter('output.avi', fourcc, fps, (w, h))
+
+# *'DIVX' == 'D','I','V','X'
+fourcc = cv2.VideoWriter_fourcc(*'DIVX')
+
+out = cv2.VideoWriter(dir_home + '/src/avi/output.avi', fourcc, fps, (w, h))
 
 # 매 프레임 처리 및 화면 출력
 while True:

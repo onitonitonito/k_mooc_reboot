@@ -1,26 +1,40 @@
+"""
+# simple saved video input test : '/src/vtest.avi'
+"""
+
 import sys
 import cv2
 
+from _path import get_cut_dir
+
+dir_home = get_cut_dir('openCV_TAcademy')
+
 
 # 동영상 파일로부터 cv2.VideoCapture 객체 생성
-cap = cv2.VideoCapture('vtest.avi')
+cap = cv2.VideoCapture(dir_home + '/src/avi/input.avi')
+video_on = cap.isOpened()
 
-if not cap.isOpened():
+if not video_on:
     print("Camera open failed!")
     sys.exit()
 
-# 프레임 해상도, 전체 프레임수, FPS 출력
-print('Frame width:', round(cap.get(cv2.CAP_PROP_FRAME_WIDTH)))
-print('Frame height:', round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))
-print('Frame count:', round(cap.get(cv2.CAP_PROP_FRAME_COUNT)))
+# 프레임 크기
+width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
+fps = cap.get(cv2.CAP_PROP_FPS)
 
-fps = round(cap.get(cv2.CAP_PROP_FPS))
+
+# 프레임 해상도, 전체 프레임수, FPS 출력
+print('Frame width:', width)
+print('Frame height:', height)
+print('Frame count:', count)
 print('FPS:', fps)
 
 delay = round(1000 / fps)
 
 # 매 프레임 처리 및 화면 출력
-while True:
+while video_on:
     ret, frame = cap.read()
 
     if not ret:
