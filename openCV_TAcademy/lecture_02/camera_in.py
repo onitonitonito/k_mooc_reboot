@@ -38,9 +38,9 @@ print(f'width x height = [ {width * video_scale} x {height * video_scale} ]')
 
 # 매 프레임 처리 및 화면 출력
 while video_on:
-    ret, frame = cap.read()
+    retVal, frame = cap.read()
 
-    if not ret:
+    if not retVal:
         break
 
     edge = cv2.Canny(frame, 50, 150)

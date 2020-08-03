@@ -3,7 +3,11 @@ import random
 import numpy as np
 import cv2
 
-src = cv2.imread('namecard1.jpg')
+from _path import get_cut_dir
+dir_home = get_cut_dir('openCV_TAcademy')
+
+
+src = cv2.imread(dir_home + '/src/namecard1.jpg')
 
 if src is None:
     print('Image load failed!')
