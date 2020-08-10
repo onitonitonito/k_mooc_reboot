@@ -3,23 +3,38 @@
 """
 # https://blogs.mathworks.com/steve/2016/10/10/filling-holes-in-outline-text/
 
+import os
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-import imread_image_change as iic       # self for object get
+import imread_image_change as myself         # self for object get
 
 func_names = [func_name
-                for func_name in dir(iic)
-                if func_name.startswith("run")
-                ]
-dir_current = "\\".join(__file__.split('\\')[:-1])
+                for func_name in dir(myself)
+                if func_name.startswith("run")]
+
+dirs = os.path.dirname(__file__).partition('module_matplotlib')
+dir_home = "".join(dirs[:2]) + '\\'
+dir_img = dir_home + 'statics\\'
+
+def main():
+    # execute_with_doc(obj=myself, method_name_str='run_02_2')
+    [execute_with_doc(myself, func_name) for func_name in func_names]
+    pass
+
+
+def get_cut_dir(name_cut:str) -> str:
+    dir_current = os.path.dirname(__file__)
+    dir_cut = "".join(dir_current.partition(name_cut)[:2])
+    return dir_cut
+
 
 def run_01():
     """01.show imread original image from 'url_target'
     # https://blogs.mathworks.com/steve/files/MathWorks-address-binary.png
     """
-    url_target = 'http://bit.ly/2Bp2elu'
-    bw = plt.imread(dir_current + '/statics/MathWorks-address-binary.png')
+    url_target = 'http://bit.ly/2Bp2elu'   # img URL
+    bw = plt.imread(dir_img + 'MathWorks-address-binary.png')
     bw = plt.imread(url_target)
     plt.imshow(bw)
     plt.show()
@@ -30,9 +45,9 @@ def run_02_1():
     # filling in the internal holes? If we just use imfill with the 'holes'
     # option, you can see that it doesn't give us the desired result.
     """
-    # bw = plt.imread(dir_current + '/statics/MathWorks-address-binary.png')
+    # bw = plt.imread(dir_img + 'MathWorks-address-binary.png')
     # bw_filled = plt.imfill(bw,'holes')
-    bw_filled = plt.imread(dir_current + '/statics/MathWorks-address-binary.png')
+    bw_filled = plt.imread(dir_img + 'MathWorks-address-binary.png')
     plt.imshow(bw_filled)
     plt.title('Original with holes filled')
     plt.show()
@@ -65,8 +80,8 @@ def run_03():
     """
 
     im_in = cv2.imread(
-                    dir_current + "/statics/nickel_338x338.png",
-                    # dir_current + '/statics/MathWorks-address-binary.png',
+                    dir_img + "/statics/nickel_338x338.png",
+                    # dir_img + 'MathWorks-address-binary.png',
                     cv2.IMREAD_GRAYSCALE,
                     )
     # Threshold.
@@ -106,10 +121,6 @@ def execute_with_doc(obj, method_name_str):
     print(func.__doc__)
     func()
 
-def main():
-    # execute_with_doc(obj=iic, method_name_str='run_02_2')
-    [execute_with_doc(iic, func_name) for func_name in func_names]
-    pass
 
 
 if __name__ == '__main__':
