@@ -4,6 +4,8 @@
 
 import sys
 import cv2
+
+from skimage import data
 from _path import get_cut_dir
 
 # 영상 불러오기
@@ -15,7 +17,11 @@ flag = cv2.IMREAD_UNCHANGED    # default
 # flag = cv2.IMREAD_REDUCED_COLOR_2
 # flag = cv2.IMREAD_REDUCED_COLOR_8
 
-img = cv2.imread(dir_home + '/src/cat.bmp',flags=flag)
+#CV2 는 BGR값으로 프린트 한다 = 주의!
+# img = cv2.imread(dir_home + '/src/cat.bmp',flags=flag)
+imgRGB = data.chelsea()   # nd.array - cat image
+img = cv2.cvtColor(src=imgRGB, code=cv2.COLOR_RGB2BGR)
+
 
 if img is None:
     print('Image load failed!')

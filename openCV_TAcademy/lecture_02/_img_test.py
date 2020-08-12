@@ -1,7 +1,7 @@
 """
 # simple img type test :
 """
-# https: // docs.opencv.org/master/d4/da8/group__imgcodecs.html  
+# https: // docs.opencv.org/master/d4/da8/group__imgcodecs.html
 # # ga288b8b3da0892bd651fce07b3bbd3a56
 
 print(__doc__)
@@ -19,13 +19,14 @@ print('shape=', img.shape)
 print('dtype=', img.dtype)
 
 # 사진 속성설정
-cv2.imshow(winname='image', mat=img)
-cv2.moveWindow(winname='image',x=0, y=400)
-cv2.resize(src=img, dsize=(200,100), fx=100, fy=50)        # NOT KICK-IN
-cv2.resizeWindow(winname='image', width=200, height=100)
+img_resize = cv2.resize(src=img, dsize=(0,0), fx=0.5, fy=0.5)        # NOT KICK-IN
+cv2.imshow(winname='image', mat=img_resize)
+cv2.moveWindow(winname='image',x=100, y=300)
 
+# cv2.resizeWindow(winname='image', width=200, height=100)
+
+# mil-second = 2000 (2sec), default = 0 : infinire
 while True:
-  # mil-second = 2000 (2sec), default = 0 : infinire
   if cv2.waitKey() == 27:    # 27 = ASC(ESC)
     break
 
