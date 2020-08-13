@@ -1,28 +1,35 @@
+"""
+# contour2 :
+"""
 import sys
 import random
 import numpy as np
 import cv2
 
 from _path import get_cut_dir
-dir_home = get_cut_dir('openCV_TAcademy')
+dir_src = get_cut_dir('openCV_TAcademy') + '/src/'
 
-src = cv2.imread(dir_home + '/src/namecard1.jpg')
+src = cv2.imread(dir_src + 'namecard1.jpg')
 
+# 이미지 로딩 실패 시, 시스템 종료
 if src is None:
     print('Image load failed!')
     sys.exit()
 
-src = cv2.resize(src, (0, 0), fx=0.5, fy=0.5)
+src = cv2.resize(src=src, dsize=(0, 0), fx=0.5, fy=0.5)
 src_gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 
-h, w = src.shape[:2]
+h, w = src.shape[:2] # 405 x 540
+# print(h, w); quit()    # for TEST
+
 dst1 = np.zeros((h, w, 3), np.uint8)
 dst2 = np.zeros((h, w, 3), np.uint8)
 
-# 이진화
+# 이진화 이미지 생성 = 방법은 OTSU 임계치 자동설정 알고리즘
 _, src_bin = cv2.threshold(src_gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
 
-# 외곽선 검출
+# 외곽선 검출 방법 :
+-
 contours, _ = cv2.findContours(src_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
 for i in range(len(contours)):

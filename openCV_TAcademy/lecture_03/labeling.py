@@ -1,16 +1,27 @@
+"""
+# IMAGE LABELLING : COIN-LABELLING -
+"""
+# dst = destination_image
+
 import sys
 import random
 import numpy as np
 import cv2
 
+from _path import get_cut_dir
 
-src = cv2.imread('coins.png', cv2.IMREAD_GRAYSCALE)
+dir_src = get_cut_dir('openCV_TAcademy') + '/src/'
+src = cv2.imread(dir_src + 'coins.png', cv2.IMREAD_GRAYSCALE)
 
+# 이미지 로딩 실패시 시스템 종료!
 if src is None:
     print('Image load failed!')
     sys.exit()
 
+# 원본 이미지의 크기
 h, w = src.shape[:2]
+
+# 같은 사이즈의 빈 이미지 2개 생성
 dst1 = np.zeros((h, w, 3), np.uint8)
 dst2 = np.zeros((h, w, 3), np.uint8)
 
