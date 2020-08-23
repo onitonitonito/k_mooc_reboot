@@ -10,4 +10,4 @@ print(__doc__)
 
 import cv2
 
-print(f'CV Version = {cv2.__version__}')
+print(f'CV Version = {cv2.__version__}')    # CV Version = 4.4.0
