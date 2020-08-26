@@ -49,7 +49,7 @@ im_boxed.show()
 
 # 저장할 파일 Type : JPEG, PNG 등
 # 저장할 때 Quality 수준 : 보통 95 사용
-im_boxed.save(DIR_SRC + 'easyOCR\\' + 'im_boxed', "JPEG", quality=95 )
+im_boxed.save(DIR_SRC + 'easyOCR\\' + 'im_boxed.jpg', "JPEG", quality=95 )
 
 
 probs, recogs = [], []
