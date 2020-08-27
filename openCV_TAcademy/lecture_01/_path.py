@@ -30,7 +30,7 @@ def stop_if_none(object:object, message:str) -> object:
         return object
 
 def echo(echoes:List) -> None:
-    """# _path 화일에 대한 에코 : 필요없을 수 도... """
+    """# _path 화일에 대한 설명 에코 : 필요 없을 수 도... """
     if not echoes:                          # default echo
         echoes = [
             '*** dir_home 이 글로벌 변수로 선언 되었습니다.',
@@ -46,4 +46,5 @@ DIR_HOME = get_cut_dir(NAME_HOME) + '\\'
 sys.path.insert(0, DIR_HOME)
 
 
-DIR_SRC = DIR_HOME + '\\src\\'
+DIR_SRC = DIR_HOME + 'src\\'
+DIR_OCR = DIR_SRC + 'easyOCR\\'

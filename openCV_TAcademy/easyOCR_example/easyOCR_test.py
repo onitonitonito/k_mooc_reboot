@@ -11,14 +11,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from PIL import ImageDraw
-from _path import DIR_SRC, stop_if_none
+from _path import DIR_SRC, DIR_OCR, stop_if_none
 
-# imagefile_dir = DIR_SRC + 'easyOCR\\' + 'namecard_extracted.png'  #  7 recogs
-# imagefile_dir = DIR_SRC + 'easyOCR\\' + 'news_daum.png'           # 41 recogs
-imagefile_dir = DIR_SRC + 'easyOCR\\' + 'AI_compete_2020_KOGAS.jpg' # 72 recogs
+# imagefile_dir = DIR_OCR + 'namecard_extracted.png'  #  7 recogs
+# imagefile_dir = DIR_OCR + 'news_daum.png'           # 41 recogs
+# imagefile_dir = DIR_OCR + 'AI_compete_2020_KOGAS.jpg' # 72 recogs
 
-# imagefile_dir = DIR_SRC + 'korean.jpg'      # 5 recogs
-# imagefile_dir = DIR_SRC + 'english.jpg'     # 11 recogs
+# imagefile_dir = DIR_OCR+ 'korean.png'      # 5 recogs
+imagefile_dir = DIR_OCR + 'english.png'     # 11 recogs
 
 # TO LOAD IMAGE
 im = PIL.Image.open(imagefile_dir)
@@ -49,8 +49,7 @@ im_boxed.show()
 
 # 저장할 파일 Type : JPEG, PNG 등
 # 저장할 때 Quality 수준 : 보통 95 사용
-im_boxed.save(DIR_SRC + 'easyOCR\\' + 'im_boxed.jpg', "JPEG", quality=95 )
-
+im_boxed.save(DIR_OCR + 'im_boxed.png', "png", quality=95 )
 
 probs, recogs = [], []
 
@@ -62,7 +61,6 @@ for idx, line in enumerate(bounds):
     probs.append([idx, probablity])
 
     print(f"{probablity:0.2f} % ... | {recognition:30}")
-
 
 
 # TO ANALYZE STATICS of PROBABLITY

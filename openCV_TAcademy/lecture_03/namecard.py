@@ -17,17 +17,45 @@ from typing import List
 
 import sys
 import cv2
+import PIL
+import easyocr
+# import pytesseract    # ERRON SETUP! -> easyOCR
 import numpy as np
-import pytesseract
 
 
-from _path import get_cut_dir
-dir_src = get_cut_dir('openCV_TAcademy') + '/src/'
+from _path import (DIR_SRC, get_cut_dir, stop_if_none)
 
-def reorderPts(pts: List) -> List:
+# 영상 불러오기 : default = namecard1.jpg
+# filename = sys.argv[1] if len(sys.argv) > 1 else filename = 'namecard1.jpg'
+
+filename = 'namecard1.jpg' if len(sys.argv) <= 1 else sys.argv[1]
+dw, dh = (720, 400)             # 명함 왜곡보정 후 출력 되는 사이즈
+
+
+# 영상 로딩이 안될경우 시스템 종료!
+src_RGB = cv2.imread(DIR_SRC + filename)
+src_RGB = stop_if_none(src_RGB, message="image loading failed!")
+
+im = PIL.Image.open(DIR_SRC + filename)
+im = stop_if_none(im, message="image loading failed!")
+
+# 입력 영상 전처리
+src_gray = cv2.cvtColor(src_RGB, cv2.COLOR_BGR2GRAY)
+_, src_bin = cv2.threshold(src_gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+
+# 출력 영상 설정
+src_quards = np.array([[0, 0], [0, 0], [0, 0], [0, 0]], np.float32)        # empty array
+destin_quards = np.array([[0, 0], [0, dh], [dw, dh], [dw, 0]], np.float32) # C-Clock wise
+destination = np.zeros((dh, dw), np.uint8)
+
+
+def get_reorder_pts(pts:List[int]) -> List[int]:
     """ # re-dorder 4 point of rectangular"""
-    idx = np.lexsort((pts[:, 1], pts[:, 0]))  # 칼럼0 -> 칼럼1 순으로 정렬한 인덱스를 반환
-    pts = pts[idx]  # x좌표로 정렬
+    # 칼럼0 -> 칼럼1 순으로 정렬한 인덱스를 반환
+    idx = np.lexsort((pts[:, 1], pts[:, 0]))
+
+    # x좌표로 정렬
+    pts = pts[idx]
 
     if pts[0, 1] > pts[1, 1]:
         pts[[0, 1]] = pts[[1, 0]]
@@ -37,32 +65,22 @@ def reorderPts(pts: List) -> List:
 
     return pts
 
+def draw_bounds(image, bounds, color='yellow', width=2):
+    """# import PIL needed!"""
+    # Draw bounding boxes
 
-# 영상 불러오기 : default = namecard1.jpg
-# filename = sys.argv[1] if len(sys.argv) > 1 else filename = 'namecard1.jpg'
-filename = 'namecard1.jpg'
+    draw = PIL.ImageDraw.Draw(image)
+    for bound in bounds:
+        p0, p1, p2, p3 = bound[0]
+        draw.line([*p0, *p1, *p2, *p3, *p0], fill=color, width=width)
+    return image
 
-if len(sys.argv) > 1:
-    filename = sys.argv[1]
+# easyOCR command :
+reader = easyocr.Reader(['en', 'ko',])
+bounds = reader.readtext(DIR_SRC + filename)     # READ TEXT RESULTS
 
-
-src_RGB = cv2.imread(dir_src + filename)
-
-# 영상 로딩이 안될경우 시스템 종료!
-if src_RGB is None:
-    print('Image load failed!')
-    sys.exit()
-
-# 출력 영상 설정
-dw, dh = 720, 400
-src_quards = np.array([[0, 0], [0, 0], [0, 0], [0, 0]], np.float32)        # empty array
-destin_quards = np.array([[0, 0], [0, dh], [dw, dh], [dw, 0]], np.float32) # C-Clock wise
-
-dst = np.zeros((dh, dw), np.uint8)
-
-# 입력 영상 전처리
-src_gray = cv2.cvtColor(src_RGB, cv2.COLOR_BGR2GRAY)
-th, src_bin = cv2.threshold(src_gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+im_boxed = draw_bounds(im, bounds)                # PIL needed
+im_boxed.show()
 
 # 바이너리 이미지(src_bin) 에서 외곽선 검출하고 그 중에 명함추출 하는 방법
 contours, _ = cv2.findContours(src_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
@@ -82,14 +100,15 @@ for contour in contours:
         continue
 
     print(f'*** CHECK: {len(approx)} points found!')
+    print('approx :\n', approx)
 
     cv2.polylines(src_RGB, [approx], True, (0, 255, 0), 2, cv2.LINE_AA)
-    src_quards = reorderPts(approx.reshape(4, 2).astype(np.float32))
+    src_quards = get_reorder_pts(approx.reshape(4, 2).astype(np.float32))
 
     pers = cv2.getPerspectiveTransform(src_quards, destin_quards)
-    dst = cv2.warpPerspective(src_RGB, pers, (dw, dh), flags=cv2.INTER_CUBIC)
+    destination = cv2.warpPerspective(src_RGB, pers, (dw, dh), flags=cv2.INTER_CUBIC)
 
-    dst_rgb = cv2.cvtColor(dst, cv2.COLOR_BGR2RGB)
+    dst_rgb = cv2.cvtColor(destination, cv2.COLOR_BGR2RGB)
     src_RGB_resized = cv2.resize(src=src_RGB, dsize=(0,0), fx=0.4, fy=0.4)
 
 
@@ -100,7 +119,19 @@ for contour in contours:
     cv2.imshow('src_RGB_resized', src_RGB_resized)
     # cv2.imshow('src_gray', src_gray)
     # cv2.imshow('src_bin', src_bin)
-    cv2.imshow('destination-extracted namecard', dst)
 
-    cv2.waitKey()
-    cv2.destroyAllWindows()
+
+
+
+
+cv2.imshow('namecard_extracted', destination)
+cv2.imwrite(DIR_SRC + 'namecard_extracted.png', destination)
+
+# READ TEXT RESULTS
+bounds = reader.readtext(DIR_SRC + 'namecard_extracted.png')
+
+for bound in bounds:
+    print(f"{bounnd[-1]*100:0.5f}% | {bounnd[-2]}")
+
+cv2.waitKey()
+cv2.destroyAllWindows()
