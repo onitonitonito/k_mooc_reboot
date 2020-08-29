@@ -1,9 +1,38 @@
+"""
+# DNN - FACE DETECTOR -> GIVES EVERY CAT-EARS on the HEAD!
+"""
+# RUN at CMD-Terminal mode : OK!
+# Not Script-Run mode = WARNING appear
+#   -> [FIX] : Script-Run = NOW OK!
+
+print(__doc__)
+
 import sys
-import numpy as np
 import cv2
+import numpy as np
+
+from _path import DIR_SRC, get_cut_dir, stop_if_none
+
+dir_dnn = get_cut_dir('catcam') + 'src_dnn\\'
+
+model = dir_dnn + 'opencv_face_detector_uint8.pb'
+config = dir_dnn + 'opencv_face_detector.pbtxt'
+
+# IMAGE OBJECT LOAD! : IF OBJECT == NONE -> ERROR!
+cat = cv2.imread(DIR_SRC + 'cat.png', cv2.IMREAD_UNCHANGED)
+cat = stop_if_none(cat, message='Image open failed!')
+
+# CAMERA OBJECT LOAD! : IF OBJECT == NONE -> ERROR!
+cap = cv2.VideoCapture(0)
+cap = stop_if_none(cap, message='Camera open failed!')
+
+# if net.empty():
+net = cv2.dnn.readNet(model, config)
+net = stop_if_none(net, message='Net open failed!')
 
 
-def overlay(frame, cat, pos):
+def overlay(frame, cat, pos) -> None:
+    """# OVER-LAY CAT-EARS ON CAMERA IMAGE REAL-TIME"""
     if pos[0] < 0 or pos[1] < 0:
         return
 
@@ -15,9 +44,9 @@ def overlay(frame, cat, pos):
     sy = pos[1]
     ey = pos[1] + cat.shape[0]
 
-    img1 = frame[sy:ey, sx:ex]  # shape=(h, w, 3)
-    img2 = cat[:, :, 0:3]       # shape=(h, w, 3)
-    alpha = 1. - (cat[:, :, 3] / 255.)  # shape=(h, w)
+    img1 = frame[sy:ey, sx:ex]                  # shape=(h, w, 3)
+    img2 = cat[:, :, 0:3]                       # shape=(h, w, 3)
+    alpha = 1. - (cat[:, :, 3] / 255.)          # shape=(h, w)
     #ww = np.stack((alpha,)*3, axis=-1)
 
     img1[:, :, 0] = (img1[:, :, 0] * alpha + img2[:, :, 0] * (1. - alpha)).astype(np.uint8)
@@ -26,38 +55,15 @@ def overlay(frame, cat, pos):
     #img1 = (img1 * ww + img2 * (1. - ww)).astype(np.uint8)
 
 
-model = 'opencv_face_detector_uint8.pb'
-config = 'opencv_face_detector.pbtxt'
-
-cap = cv2.VideoCapture(0)
-
-if not cap.isOpened():
-    print('Camera open failed!')
-    sys.exit()
-
-net = cv2.dnn.readNet(model, config)
-
-if net.empty():
-    print('Net open failed!')
-    sys.exit()
-
-cat = cv2.imread('cat.png', cv2.IMREAD_UNCHANGED)
-
-if cat is None:
-    print('Image open failed!')
-    sys.exit()
-
 while True:
-    ret, frame = cap.read()
-
-    if not ret:
-        break
+    """# net = cv2.DNN.readNet(model, config)"""
+    _, frame = cap.read()
+    (h, w) = frame.shape[:2]
 
     blob = cv2.dnn.blobFromImage(frame, 1, (300, 300), (104, 177, 123))
     net.setInput(blob)
-    detect = net.forward()
 
-    (h, w) = frame.shape[:2]
+    detect = net.forward()
     detect = detect[0, 0, :, :]
 
     for i in range(detect.shape[0]):

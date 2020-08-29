@@ -1,14 +1,14 @@
 #___________________________________
 #  1. cache, build, db sqlite3 files
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-__pycache__/
-sentence_tokenizer.pickle
 .ipynb_checkpoints/
+__pycache__/
+.vscode
 *.pyc
 *.log
 *.ini
-.vscode
 
+sentence_tokenizer.pickle
 
 #___________________________________
 #  2. Temporary exec files for TEST
@@ -21,11 +21,16 @@ module_openpyxl/tests/*.xlsx
 module_openpyxl/works/*.xlsx
 module_pandas/*.csv
 
-
 #___________________________________
-#  3. Chatter-bot Temporary db files
+#  3. sqlite, db
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-*.sqlite3
+*.db
+db.sqlite3
 db.sqlite3-shm
 db.sqlite3-wal
-*.db
+
+#___________________________________
+#  4. openCV DNN model & Learn value
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*.pb
+*.caffemodel

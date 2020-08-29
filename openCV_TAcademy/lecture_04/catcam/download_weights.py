@@ -1,20 +1,34 @@
-#!/usr/bin/env python
+"""
+# DOWNLOAD model & Learning Value
+"""
+#     * model = 'opencv_face_detector_uint8.pb'
+#     * Learn = 'res10_300x300_ssd_iter_140000_fp16.caffemodel'
+#       - add to .gitIgnore
+
 
 from __future__ import print_function
-import hashlib
-import time
+
 import sys
+import time
+import hashlib
 import xml.etree.ElementTree as ET
-if sys.version_info[0] < 3:
-    from urllib2 import urlopen
-else:
-    from urllib.request import urlopen
+
+from urllib.request import urlopen
+from _path import get_cut_dir
+
+dir_dnn = get_cut_dir('catcam') + 'src_dnn\\'
+
+
+def main():
+    sys.exit(0 if MetalinkDownloader(src_from=dir_dnn).download(dir_dnn + 'weights.meta4') else 1)
+
 
 class HashMismatchException(Exception):
     def __init__(self, expected, actual):
         Exception.__init__(self)
         self.expected = expected
         self.actual = actual
+
     def __str__(self):
         return 'Hash mismatch: {} vs {}'.format(self.expected, self.actual)
 
@@ -22,6 +36,11 @@ class MetalinkDownloader(object):
     BUFSIZE = 10*1024*1024
     NS = {'ml': 'urn:ietf:params:xml:ns:metalink'}
     tick = 0
+
+    def __init__ (self, src_from):
+        """dnn src from certain folder = dir_dnn """
+        self.dir_src = src_from
+
 
     def download(self, metalink_file):
         status = True
@@ -36,7 +55,7 @@ class MetalinkDownloader(object):
                 print('  {}'.format(ex))
                 try:
                     print('  {}'.format(url))
-                    with open(fname, 'wb') as file_stream:
+                    with open(self.dir_src + fname, 'wb') as file_stream:
                         self.buffered_read(urlopen(url), file_stream.write)
                     self.verify(hash_sum, fname)
                 except Exception as ex:
@@ -65,10 +84,13 @@ class MetalinkDownloader(object):
 
     def verify(self, hash_sum, fname):
         sha = hashlib.sha1()
-        with open(fname, 'rb') as file_stream:
+        with open(self.dir_src + fname, 'rb') as file_stream:
             self.buffered_read(file_stream, sha.update)
         if hash_sum != sha.hexdigest():
             raise HashMismatchException(hash_sum, sha.hexdigest())
 
+
+
+
 if __name__ == '__main__':
-    sys.exit(0 if MetalinkDownloader().download('weights.meta4') else 1)
+    main()
