@@ -1,5 +1,6 @@
 """
 # DNN - FACE DETECTOR -> GIVES EVERY CAT-EARS on the HEAD!
+# FACE-DNN = openCV_FACE_DETECTOR
 """
 # RUN at CMD-Terminal mode : OK!
 # Not Script-Run mode = WARNING appear
@@ -11,15 +12,19 @@ import sys
 import cv2
 import numpy as np
 
-from _path import DIR_SRC, get_cut_dir, stop_if_none
+from _path import get_cut_dir, stop_if_none
 
+
+dir_src = get_cut_dir('openCV_TAcademy') + 'src\\'
 dir_dnn = get_cut_dir('catcam') + 'src_dnn\\'
+dir_img = get_cut_dir('catcam') + 'src_img\\'
+
 
 model = dir_dnn + 'opencv_face_detector_uint8.pb'
 config = dir_dnn + 'opencv_face_detector.pbtxt'
 
 # IMAGE OBJECT LOAD! : IF OBJECT == NONE -> ERROR!
-cat = cv2.imread(DIR_SRC + 'cat.png', cv2.IMREAD_UNCHANGED)
+cat = cv2.imread(dir_img + 'ears_cat.png', cv2.IMREAD_UNCHANGED)
 cat = stop_if_none(cat, message='Image open failed!')
 
 # CAMERA OBJECT LOAD! : IF OBJECT == NONE -> ERROR!

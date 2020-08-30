@@ -1,22 +1,33 @@
+"""
+# DNN FACE DETECTOR : CAMERA REAL-TIME
+# FACE-DNN = RES10_300x300_SSD_fp16
+"""
+# learnopencv/res10_300x300_ssd_iter_140000_fp16.caffemodel
+#  https://bit.ly/3b5ZJ8Z
+
+print(__doc__)
+
 import cv2
+from _path import get_cut_dir, stop_if_none
+
+dir_src = get_cut_dir('openCV_TAcademy') + 'src\\'
+dir_dnn = get_cut_dir('classify') + 'src_dnn\\'
+dir_img = get_cut_dir('classify') + 'src_img\\'
+
+# model = dir_dnn + 'opencv_face_detector_uint8.pb'
+# config = dir_dnn + 'opencv_face_detector.pbtxt'
+
+model = dir_dnn + 'res10_300x300_ssd_iter_140000_fp16.caffemodel'
+config = dir_dnn + 'deploy.prototxt'
 
 
-model = 'res10_300x300_ssd_iter_140000_fp16.caffemodel'
-config = 'deploy.prototxt'
-#model = 'opencv_face_detector_uint8.pb'
-#config = 'opencv_face_detector.pbtxt'
-
+# if not cap.isOpened():
 cap = cv2.VideoCapture(0)
+cap = stop_if_none(cap, message='Camera open failed!')
 
-if not cap.isOpened():
-    print('Camera open failed!')
-    exit()
-
+# if net.empty():
 net = cv2.dnn.readNet(model, config)
-
-if net.empty():
-    print('Net open failed!')
-    exit()
+net = stop_if_none(net, 'Net open failed!')
 
 while True:
     _, frame = cap.read()

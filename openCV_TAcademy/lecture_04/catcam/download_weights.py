@@ -1,12 +1,13 @@
 """
-# DOWNLOAD model & Learning Value
+# DOWNLOAD model & Learning Value - via weights.meta4  (xml format file)
+#
 """
 #     * model = 'opencv_face_detector_uint8.pb'
 #     * Learn = 'res10_300x300_ssd_iter_140000_fp16.caffemodel'
 #       - add to .gitIgnore
-
-
 from __future__ import print_function
+
+print(__doc__)
 
 import sys
 import time
@@ -16,11 +17,14 @@ import xml.etree.ElementTree as ET
 from urllib.request import urlopen
 from _path import get_cut_dir
 
+# Weight 를 읽어 오는 곳
 dir_dnn = get_cut_dir('catcam') + 'src_dnn\\'
+
+xml_meta = dir_dnn + 'weights.meta4'
 
 
 def main():
-    sys.exit(0 if MetalinkDownloader(src_from=dir_dnn).download(dir_dnn + 'weights.meta4') else 1)
+    sys.exit(0 if MetalinkDownloader(dir_dnn).download(xml_meta) else 1)
 
 
 class HashMismatchException(Exception):

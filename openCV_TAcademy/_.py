@@ -1,3 +1,9 @@
+"""
+# REFERENCE : HOW BOUNDS LOOK LIKE
+"""
+print(__doc__)
+
+
 results = [
     (
         [[417, 57], [823, 57], [823, 119], [417, 119]],
