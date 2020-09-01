@@ -19,7 +19,7 @@ print('shape=', img.shape)
 print('dtype=', img.dtype)
 
 # 사진 속성설정
-img_resize = cv2.resize(src=img, dsize=(0,0), fx=0.5, fy=0.5)        # NOT KICK-IN
+img_resize = cv2.resize(src=img, dsize=(0,0), fx=0.5, fy=0.5)
 cv2.imshow(winname='image', mat=img_resize)
 cv2.moveWindow(winname='image',x=100, y=300)
 

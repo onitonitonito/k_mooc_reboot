@@ -24,8 +24,8 @@ def main():
 
 
 def get_cut_dir(name_cut:str) -> str:
-    dir_current = os.path.dirname(__file__)
-    dir_cut = "".join(dir_current.partition(name_cut)[:2])
+    dir_hereent = os.path.dirname(__file__)
+    dir_cut = "".join(dir_hereent.partition(name_cut)[:2])
     return dir_cut
 
 

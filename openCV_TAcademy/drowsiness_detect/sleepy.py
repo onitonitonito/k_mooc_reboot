@@ -1,12 +1,12 @@
 """
 # openCV CLOSE-EYE DETECTION : Haar-Cascade Classifier
 #  - IF SCORE over 15: CLOSE
-   # * ALARM RING!                   = DISABLED!
-   # * CAPTURE SCENE                 = DISABLED!
-   # * FRAME TURN RED! AND BLINKING! = ENABLE
+#   * ALARM RING!                   = DISABLED!
+#   * CAPTURE SCENE                 = DISABLED!
+#   * FRAME TURN RED! AND BLINKING! = ENABLE
 """
-# [OpenCV] putText 폰트 c++ = https://bit.ly/34IOQc3
 # need tensorflow==2.0
+# [OpenCV] putText 폰트 c++ = https://bit.ly/34IOQc3
 # TF higher version occure DICT issue : refer below
 # https://github.com/tensorflow/tensorflow/issues/38135
 
@@ -27,6 +27,7 @@ reye = cv2.CascadeClassifier(dir_dnn + 'haarcascade_righteye_2splits.xml')
 
 
 lbl = ['CLOSED', 'OPEN']
+face_x, face_y = 0, 0
 detect_color=(30, 182, 15)   # BGR <- rgb(15, 182, 20)
 
 model = tf.keras.models.load_model(dir_dnn + 'cnnCat2.h5')

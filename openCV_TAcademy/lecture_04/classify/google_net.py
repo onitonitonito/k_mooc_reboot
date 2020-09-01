@@ -91,6 +91,28 @@ for idx, vals in enumerate(ask_sheets.values()):
 
     print(f"{idx:02}. {filename:18} : {id[:29]:30} ... | {conf*100:>0.2f} %")
 
-
 cv2.destroyAllWindows()
+
+
+
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame.from_dict(ask_sheets).T
+df.columns = ['id','conf','filename']
+
+print('\n\n', df.describe())
+print('\n\n', df.info())
+
+# BAR 플롯이 필요하면, plot.barh() / .bar() 사용!
+
+fig, axes = plt.subplots(2,2, figsize=(12,6))
+df.conf.plot(ax=axes[0,0])
+df.conf.hist(bins=20, ax=axes[0,1])
+df.conf.plot.bar(ax=axes[1,0])
+sns.boxplot(df.conf, ax=axes[1,1])
+plt.show()
+
 input('\n\nCONTINUE?')

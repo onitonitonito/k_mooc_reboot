@@ -10,8 +10,8 @@ ROOT_NAME = 'pygame_flippy'
 CURRENT = os.path.dirname(__file__)
 
 DIR_ROOT = CURRENT.partition(ROOT_NAME)
-DIR_CURRENT = DIR_ROOT[0]+ DIR_ROOT[1]
-DIR_IMG = os.path.join(DIR_CURRENT, 'static', 'img')
+dir_hereENT = DIR_ROOT[0]+ DIR_ROOT[1]
+DIR_IMG = os.path.join(dir_hereENT, 'static', 'img')
 
 IMG_BOARD = os.path.join(DIR_IMG, 'flippyboard.png')
 IMG_BOARD_BG = os.path.join(DIR_IMG,'flippybackground.png')
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     print(ROOT_NAME)
     print(CURRENT)
     print(DIR_ROOT)
-    print(DIR_CURRENT)
+    print(dir_hereENT)
     print(DIR_IMG)
     print(IMG_BOARD)
     print(IMG_BOARD_BG)

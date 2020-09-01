@@ -19,8 +19,8 @@ def main():
 
 def abspath_by_name(dir_name:str) -> str:
     """get abspath(absolute path) cut util given 'dir_name'"""
-    dir_current = os.path.dirname(__file__)
-    dirs = dir_current.partition(dir_name)
+    dir_hereent = os.path.dirname(__file__)
+    dirs = dir_hereent.partition(dir_name)
     dir_cut_combined = "".join(dirs[:2]) + "\\"
     return dir_cut_combined
 

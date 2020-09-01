@@ -34,3 +34,6 @@ db.sqlite3-wal
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 *.pb
 *.caffemodel
+*.avi
+*.h5
+im_boxed_*.png
