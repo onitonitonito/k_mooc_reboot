@@ -5,22 +5,21 @@
 import sys
 import cv2
 
-from _path import get_cut_dir
+from _path import (DIR_HOME, get_cut_dir, stop_if_none)
 
-dir_home = get_cut_dir('openCV_TAcademy')
+dir_avi = DIR_HOME + 'src\\avi\\'
 
 
 # 동영상 파일로부터 cv2.VideoCapture 객체 생성
-cap = cv2.VideoCapture(dir_home + '/src/avi/input.avi')
-video_on = cap.isOpened()
-
-if not video_on:
-    print("Camera open failed!")
-    sys.exit()
+# if not cap.isOpened():
+# cap = cv2.VideoCapture(0)     #Device #0 = CAMERA_ON
+cap = cv2.VideoCapture(dir_avi + 'input.avi')
+cap = stop_if_none(cap, message="Camera open failed!")
 
 # 프레임 크기
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
 height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
 count = cap.get(cv2.CAP_PROP_FRAME_COUNT)
 fps = cap.get(cv2.CAP_PROP_FPS)
 
@@ -34,11 +33,9 @@ print('FPS:', fps)
 delay = round(1000 / fps)
 
 # 매 프레임 처리 및 화면 출력
-while video_on:
-    ret, frame = cap.read()
-
-    if not ret:
-        break
+while True:
+    _, frame = cap.read()
+    frame = stop_if_none(frame, message="No Video Input!")
 
     edge = cv2.Canny(frame, 50, 150)
 
