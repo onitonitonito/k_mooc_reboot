@@ -5,6 +5,7 @@
 
 print(__doc__)
 
+import sys
 import PIL
 import easyocr
 import pandas as pd
@@ -12,25 +13,36 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 from PIL import ImageDraw
-from _path import DIR_HOME, get_cut_dir, stop_if_none
+from _path import (get_cut_dir, stop_if_none)
 
-dir_ocr = DIR_HOME + 'src\\easyOCR\\'
-dir_read = DIR_HOME + 'src\\readOCR\\'
-dir_result = DIR_HOME + 'src\\resultOCR\\'
+dir_home = get_cut_dir('easyOCR_example')
+dir_ocr = dir_home + 'easyOCR\\'
+dir_read = dir_home + 'readOCR\\'
+dir_result = dir_home + 'resultOCR\\'
 
 
-# filename = 'korean.png'                 #  5 recogs
-# filename = 'namecard_extracted.png'     #  7 recogs
-# filename = 'english.png'                # 11 recogs
-# filename = 'news_daum.png'              # 41 recogs
-# filename = 'AI_compete_2020_KOGAS.jpg'  # 72 recogs
-filename = 'booksOrig090.jpg'            #  recogs
+
+# filename = 'korean.png'                 #  5 recogs - dir_ocr
+# filename = 'english.png'                # 11 recogs - dir_ocr
+
+# filename = 'namecard_extracted.png'     #  7 recogs - dir_read
+filename = 'booksOrig090.jpg'           #  recogs  - dir_read
+# filename = 'news_daum.png'              # 41 recogs - dir_read
+# filename = 'AI_compete_2020_KOGAS.jpg'  # 72 recogs - dir_read
+
+filename_w_dir = dir_read + filename
+echofile_w_dir = dir_result + 'ECHO_' + filename.split('.')[0] + '.txt'
+
+# TO WRITE : TERMINAL ECHO to ECHOFILE @ RESULT_DIR
+echofile = open(file=echofile_w_dir, mode='w', encoding='utf8')
+sys.stdout = echofile
 
 size_targeted = (640, 400)              # resize scale
 post_fix = filename.split('.')[0].split('_')[0]
 
+
 # TO LOAD IMAGE
-im = PIL.Image.open(dir_read + filename)
+im = PIL.Image.open(filename_w_dir)
 im = stop_if_none(im, message='Image loading failed!')
 
 print('filename =', filename)
@@ -44,7 +56,7 @@ im_resize = stop_if_none(im_resize, message='Image loading failed!')
 # im.show()             # NO need ... im_boxed image shows
 
 reader = easyocr.Reader(['en', 'ko',])
-bounds = reader.readtext(dir_read + filename)
+bounds = reader.readtext(filename_w_dir)
 
 # Draw bounding boxes
 def draw_boxes(image, bounds, color='red', width=3):
@@ -63,8 +75,8 @@ im_boxed.show()
 # 저장할 때 Quality 수준 : 보통 95 사용
 im_boxed.save(dir_result + f"im_boxed_{post_fix}.png", "png", quality=95 )
 
+print('\n\n')
 probs, recogs = [], []
-
 for idx, line in enumerate(bounds):
     recognition = line[-2]
     probablity = line[-1] * 100
@@ -72,15 +84,22 @@ for idx, line in enumerate(bounds):
     recogs.append([idx, recognition])
     probs.append([idx, probablity])
 
-    print(f"{probablity:0.2f} % ... | {recognition:30}")
+    print(f"{probablity:5.2f} % ... | {recognition:30}")
 
 
 # TO ANALYZE STATICS of PROBABLITY
+print()
 df_probs = pd.DataFrame(probs)
-print(df_probs[1].describe())
+print(df_probs[1].describe(), end='\n\n')
 
 for prob in probs:
     print(prob)
+
+
+
+# WARN(!): AT THE END of SYS.OUT(Print) : YOU GOTTA CLOSE OPEN(FILE)
+echofile.close()
+
 
 
 # TO DRAW GRAPH : PLOT / HISTOGRAM
@@ -108,5 +127,5 @@ sns.boxplot(
                 ax=axes[1,1],
             )
 
-plt.savefig(dir_result + f"chart_{post_fix}.png")
+plt.savefig(dir_result + f"CHART_{post_fix}.png")
 plt.show()

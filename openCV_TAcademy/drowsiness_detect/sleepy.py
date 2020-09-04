@@ -4,8 +4,8 @@
 #   * ALARM RING!                   = DISABLED!
 #   * CAPTURE SCENE                 = DISABLED!
 #   * FRAME TURN RED! AND BLINKING! = ENABLE
-"""
 # need tensorflow==2.0
+"""
 # [OpenCV] putText 폰트 c++ = https://bit.ly/34IOQc3
 # TF higher version occure DICT issue : refer below
 # https://github.com/tensorflow/tensorflow/issues/38135
@@ -18,7 +18,6 @@ import tensorflow as tf
 from _path import (get_cut_dir, stop_if_none)
 
 dir_dnn = get_cut_dir('drowsiness_detect') + 'src_dnn\\'
-dir_src = get_cut_dir('drowsiness_detect') + 'src\\'
 
 
 face = cv2.CascadeClassifier(dir_dnn + 'haarcascade_frontalface_alt.xml')

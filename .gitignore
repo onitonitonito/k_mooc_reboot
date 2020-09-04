@@ -37,3 +37,4 @@ db.sqlite3-wal
 *.avi
 *.h5
 im_boxed_*.png
+CHART_*.png

@@ -22,6 +22,10 @@ from keras.layers import (
                             BatchNormalization,
                         )
 
+from _path import (get_cut_dir, stop_if_none)
+
+dir_dnn = get_cut_dir('drowsiness_detect') + 'src_dnn\\'
+
 
 def generator(
         dir,
@@ -43,8 +47,19 @@ def generator(
 
 BS, TS = 32, (24,24)
 
-train_batch= generator('data/train',shuffle=True, batch_size=BS,target_size=TS)
-valid_batch= generator('data/valid',shuffle=True, batch_size=BS,target_size=TS)
+train_batch= generator(
+                        'data/train',
+                        shuffle=True,
+                        batch_size=BS,
+                        target_size=TS,
+                    )
+
+valid_batch= generator(
+                        'data/valid',
+                        shuffle=True,
+                        batch_size=BS,
+                        target_size=TS
+                    )
 
 SPE= len(train_batch.classes)//BS
 VS = len(valid_batch.classes)//BS
@@ -106,4 +121,4 @@ model.fit_generator(
                         validation_steps=VS
                     )
 
-model.save('models/cnnCat2.h5', overwrite=True)
+model.save(dir_dnn + 'cnnCat2-1.h5', overwrite=True)
