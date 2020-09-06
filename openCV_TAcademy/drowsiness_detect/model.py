@@ -1,4 +1,5 @@
 """
+# model training! 
 # tensor_flow version = keras -> 2.2 over
 """
 

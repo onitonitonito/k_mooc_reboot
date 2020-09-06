@@ -36,5 +36,6 @@ db.sqlite3-wal
 *.caffemodel
 *.avi
 *.h5
+*.xml
 im_boxed_*.png
 CHART_*.png

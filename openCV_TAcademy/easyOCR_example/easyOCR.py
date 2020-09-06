@@ -5,7 +5,12 @@
 
 print(__doc__)
 
+import io
 import sys
+
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf8')
+sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf8')
+
 import PIL
 import easyocr
 import pandas as pd
@@ -16,18 +21,18 @@ from PIL import ImageDraw
 from _path import (get_cut_dir, stop_if_none)
 
 dir_home = get_cut_dir('easyOCR_example')
+
 dir_ocr = dir_home + 'easyOCR\\'
 dir_read = dir_home + 'readOCR\\'
 dir_result = dir_home + 'resultOCR\\'
-
-
 
 # filename = 'korean.png'                 #  5 recogs - dir_ocr
 # filename = 'english.png'                # 11 recogs - dir_ocr
 
 # filename = 'namecard_extracted.png'     #  7 recogs - dir_read
-filename = 'booksOrig090.jpg'           #  recogs  - dir_read
-# filename = 'news_daum.png'              # 41 recogs - dir_read
+# filename = 'booksOrig000.jpg'           #  95 recogs  - dir_read
+# filename = 'booksOrig090.jpg'           # 95 recogs - dir_read
+filename = 'news_daum.png'              # 41 recogs - dir_read
 # filename = 'AI_compete_2020_KOGAS.jpg'  # 72 recogs - dir_read
 
 filename_w_dir = dir_read + filename
@@ -73,7 +78,7 @@ im_boxed.show()
 
 # 저장할 파일 Type : JPEG, PNG 등
 # 저장할 때 Quality 수준 : 보통 95 사용
-im_boxed.save(dir_result + f"im_boxed_{post_fix}.png", "png", quality=95 )
+im_boxed.save(dir_result + f"BOXED_{post_fix}.png", "png", quality=95 )
 
 print('\n\n')
 probs, recogs = [], []
@@ -95,11 +100,8 @@ print(df_probs[1].describe(), end='\n\n')
 for prob in probs:
     print(prob)
 
-
-
 # WARN(!): AT THE END of SYS.OUT(Print) : YOU GOTTA CLOSE OPEN(FILE)
 echofile.close()
-
 
 
 # TO DRAW GRAPH : PLOT / HISTOGRAM

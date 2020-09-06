@@ -20,7 +20,7 @@ from _path import (get_cut_dir, stop_if_none)
 dir_dnn = get_cut_dir('drowsiness_detect') + 'src_dnn\\'
 
 
-face = cv2.CascadeClassifier(dir_dnn + 'haarcascade_frontalface_alt.xml')
+face = cv2.CascadeClassifier(dir_dnn + 'haarcascade_frontalface.xml')
 leye = cv2.CascadeClassifier(dir_dnn + 'haarcascade_lefteye_2splits.xml')
 reye = cv2.CascadeClassifier(dir_dnn + 'haarcascade_righteye_2splits.xml')
 
@@ -34,9 +34,8 @@ model = tf.keras.models.load_model(dir_dnn + 'cnnCat2.h5')
 count = 0
 score = 0
 thicc = 2
-rpred = [99]
-lpred = [99]
 
+rpred, lpred = [-1], [-1]
 
 cap = cv2.VideoCapture(0)
 cap = stop_if_none(cap, "VIDEO LOAD FAILED!")
@@ -92,37 +91,30 @@ while(True):
         r_eye = frame[y:y + h, x:x + w]
         count = count + 1
         r_eye = cv2.cvtColor(r_eye, cv2.COLOR_BGR2GRAY)
+
         r_eye = cv2.resize(r_eye, (24, 24))
         r_eye = r_eye / 255
         r_eye = r_eye.reshape(24, 24, -1)
         r_eye = np.expand_dims(r_eye, axis=0)
+
         rpred = model.predict_classes(r_eye)
 
-
-        if(rpred[0] == 1):
-            lbl = 'OPEN'
-
-        if(rpred[0] == 0):
-            lbl = 'CLOSED'
-
+        lbl = 'OPEN' if(rpred[0] == 1) else 'CLOSED'
         break
 
     for (x, y, w, h) in left_eye:
         l_eye = frame[y:y + h, x:x + w]
         count = count + 1
         l_eye = cv2.cvtColor(l_eye, cv2.COLOR_BGR2GRAY)
+
         l_eye = cv2.resize(l_eye, (24, 24))
         l_eye = l_eye / 255
         l_eye = l_eye.reshape(24, 24, -1)
         l_eye = np.expand_dims(l_eye, axis=0)
+
         lpred = model.predict_classes(l_eye)
 
-        if(lpred[0] == 1):
-            lbl = 'OPEN'
-
-        if(lpred[0] == 0):
-            lbl = 'CLOSED'
-
+        lbl = 'OPEN' if(lpred[0] == 1) else 'CLOSED'
         break
 
     if(rpred[0] == 0 and lpred[0] == 0):

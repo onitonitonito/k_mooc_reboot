@@ -1,7 +1,6 @@
 """
 # Face Recognition by OpenCV-Python (py-2.7)
 # urllib.request.urlopen('http://216.58.192.142',timeout=1)
-# https://www.google.com/
 # https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml = https://bit.ly/3jFEy0v
 #"""
 print(__doc__)
@@ -21,8 +20,8 @@ model = 'haarcascade_frontalface.xml'
 model_dir = dir_dnn + model
 
 IMG_URL = "https://bit.ly/3hYctB3"    # telegraph - ski resort
-IMG_URL = 'https://bit.ly/3509nsL'    # baby with beard
-IMG_URL = 'https://bit.ly/3gUZIWJ'    # many faces
+IMG_URL = 'https://bit.ly/3509nsL'    # a baby with beard
+IMG_URL = 'https://bit.ly/3gUZIWJ'    # many faces inc'l a beard man
 
 
 def main():

@@ -39,4 +39,6 @@ for deg in degrees[1:]:
 
 cv2.imshow('im', im)
 cv2.waitKey()
+
+
 cv2.destroyAllWindows()
