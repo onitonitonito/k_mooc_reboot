@@ -10,39 +10,44 @@ import time
 import random
 from typing import (List, Dict)
 
+
+num_story = 8
+num_reward = 1
+names = 1 * [
+        'Kay',
+        'June',
+        'Philip',
+        'David',
+        'Yreum',
+        'Json',
+        # 'Tsong',
+        # 'Baek',
+    ]
 asks = {
     'excludes' : 'Key-In Exceptions   [Ent.]: No!',
-    'name' : 'Names of Participants? (divid by comma) :',
+    'name'   : 'Names of Participants? (divid by comma) :',
     'reward' : 'How Many Rewards?      [Ent.]: 1 (default)',
     'result' : '[SPC+Ent]:See Result / [Ent.]: Skip! :',
     'again'  : '[SPC+Ent]:Again!     / [Ent.]: Quit! : ',
 }
-
-num_story = 10
-num_reward = 4
-# check = input(asks['reward'])
-# num_reward = 1 if check.startswith('') else int(check)
-
-names = ['Kay', 'June', 'Philip', 'David', 'Baek', 'Tsong', 'Json'] * 2
-# names = input(asks['name']).split(',')
-random.shuffle(names)
-
-# excludes = input(asks['excludes']).split(',')
-excludes = ['Kay',]
-if excludes != '':
-    for ex in excludes:
-        # remove all the same value in list! : SOF = https://bit.ly/3llL4ez
-        # names = list(filter(ex.__ne__, names))
-        names = list(filter(lambda x: x != ex, names))
-
 
 # '1' can't be placed in a row more than once, '0' can.
 ladder_pattern = "001001001000101001010100101001010" + \
                 "010100100101010010000100101010010" + \
                 "101010100100101001010101010101001"
 
-num_person = len(names)
-idx_person = list(range(num_person))
+# check = input(asks['reward'])
+# num_reward = 1 if check.startswith('') else int(check)
+# names = input(asks['name']).split(',')
+
+# excludes = input(asks['excludes']).split(',')
+# remove all the same value in list! : SOF = https://bit.ly/3llL4ez
+# names = list(filter(ex.__ne__, names))    # or
+
+# excludes = ['Kay',]
+# if excludes != '':
+#     for ex in excludes:
+#         names = list(filter(lambda x: x != ex, names))
 
 
 def get_random_reward(
@@ -88,6 +93,20 @@ def get_result(
 
     return idx_person_reorder
 
+def show_header(idx_person:List[int]) -> None:
+    """# show result of luck person"""
+
+    filler = [":  ", "---"]
+    for i in range(len(idx_person)):
+        fill_ver = filler[0] * (i)
+        fill_hor = filler[1] * (len(idx_person) - 1 - i)
+        fill_hor = fill_hor.join('+>') + ' '
+
+        guide = fill_ver + fill_hor
+        print(guide, end="")
+        print(f"{i+1:02}.{names[i]}")
+
+
 def show_board(
         idx_person:List[int],
         idx_reward:List[str],
@@ -128,17 +147,22 @@ def show_result(
             print(f"{i+1:02}.{names[i]}")
 
 while True:
+    random.shuffle(names)
+    num_person = len(names)
+    idx_person = list(range(num_person))
+
     idx_reward = get_random_reward(num_reward, num_person)
     ladders = get_random_ladders(ladder_pattern, num_person, num_story)
     idx_person_reorder = get_result(idx_person, ladders)
 
+    show_header(idx_person_reorder)
     show_board(idx_person, idx_reward, ladders)
     print('\n')
 
     if input(asks['result']).startswith(' '):    # SPC_Ent.= see result
         print('--' * 15)
         show_result(idx_person_reorder, idx_reward)
-        print('--' * 15, '\n\n')
+        print('--' * 15, '\n')
 
-    if not input(asks['again'] + '\n\n').startswith(' '):  # Ent.=break
+    if not input(asks['again'] + '\n\n'*5).startswith(' '):  # Ent.=break
         break
