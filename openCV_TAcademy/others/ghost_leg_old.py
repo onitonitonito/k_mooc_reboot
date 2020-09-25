@@ -15,12 +15,22 @@ from typing import (List, Dict)
 
 # to load the user account information from config.ini(*hidden)
 config = configparser.ConfigParser()
-config.read('./ghost_leg_config.ini')
+config.read('ghost_leg_config.ini')
 
 # '1' can't be placed in a row more than once, '0' can.
 ladder_pattern = "001001001000101001010100101001010" + \
                 "010100100101010010000100101010010" + \
                 "101010100100101001010101010101001"
+
+# excludes = input(asks['excludes']).split(',')
+
+# remove all the same value in list! : SOF = https://bit.ly/3llL4ez
+# names = list(filter(ex.__ne__, names))    # or
+
+# excludes = ['Kay',]
+# if excludes != '':
+#     for ex in excludes:
+#         names = list(filter(lambda x: x != ex, names))
 
 def set_variables():
     global num_story, num_reward, names, asks
@@ -47,7 +57,7 @@ def set_variables():
             asks[key] = value
 
     except:
-        print("\n *** ERROR *** - There's something wrong in 'ConfigParser'..")
+        print("\n *** ERROR *** - There's something wrong in 'config.ini'..")
         quit()
 
 def get_random_reward(
